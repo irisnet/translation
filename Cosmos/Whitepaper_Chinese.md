@@ -428,14 +428,14 @@ for for more information on the two IBC transaction types._
 
 ## Use Cases | 用例 ###################################################################
 
-### Distributed Exchange | 分布式交易所
+### Distributed Exchange | 去中心化交易所
 
 In the same way that Bitcoin is more secure by being a distributed,
 mass-replicated ledger, we can make exchanges less vulnerable to external and
 internal hacks by running it on the blockchain.  We call this a distributed
 exchange.
 
-比特币借助多重备份的分布式账本技术来保证安全，同样的，利用这种技术方式，在区块链上运行，降低交易所受内部外部攻击的可能性。我们称之为分布式交易所。
+比特币借助大量复制的分布式账本来增加安全性。用类似的方式，我们可以在区块链上运行交易所，来降低其受内部外部攻击的可能性。我们称之为去中心化交易所。
 
 What the cryptocurrency community calls a decentralized exchange today are
 based on something called "atomic cross-chain" (AXC) transactions.  With an AXC
@@ -448,7 +448,7 @@ exchange on AXC transactions is that neither users need to trust each other or
 the trade-matching service.  The downside is that both parties need to be
 online for the trade to occur.
 
-现今，加密币社区认为的去中心化交易所是基于"原子交叉链"交易（AXC交易）的交易所。通过AXC交易，不同链上的两位用户可以发起两笔传输交易，交易在两个账本上委托执行，或者两个账本都不执行（即原子级）。如，两位用户可以通过AXC交易来处理比特币和以太币之间的交易（或不同账本上的任意两种代币），即使比特币和以太坊之间并没有彼此连接。AXC交互模式下的交易所用户双方不必须彼此确信，也不用依赖交易匹配服务。弊端是，交易双方必须同时在线操作。
+现今，加密货币社区认为的去中心化交易所是基于"原子交叉链"交易（ AXC 交易）的交易所。通过 AXC 交易，两条不同链上的两个用户可以发起两笔转让交易，交易在两个账本上要么一起提交执行，或者两个账本都不执行（即原子级）。比如，两位用户可以通过 AXC 交易来处理比特币和以太币之间的交易（或是在不同账本上的任意两种代币），即使比特币和以太坊之间并没有彼此连接。AXC 交易模式下的交易所用户双方不需要彼此信任，也不用依赖交易匹配服务。其弊端是，交易双方必须同时在线才能进行交易。
 
 Another type of decentralized exchange is a mass-replicated distributed
 exchange that runs on its own blockchain.  Users on this kind of exchange can
@@ -456,7 +456,7 @@ submit a limit order and turn their computer off, and the trade can execute
 without the user being online.  The blockchain matches and completes the trade
 on behalf of the trader.
 
-另一种去中心化交易所是交易所在各自的区块链上运行批多重备份的分布式账本。该种交易所的用户可以提交限价订单，脱机状态下执行交易，交易者不需要在线即可执行。区块链会以交易者名义完成匹配和交易。
+另一种去中心化交易所是其在各自的区块链上运行大量复制的分布式账本。该种交易所的用户可以提交限价订单并关闭他们的计算机，交易可以在离线状态下执行。区块链将会代表交易者去完成撮合和交易。
 
 A centralized exchange can create a deep orderbook of limit orders and thereby
 attract more traders.  Liquidity begets more liquidity in the exchange world,
@@ -469,14 +469,14 @@ centralized exchanges.  For a decentralized exchange to compete with a
 centralized exchange, it would need to support deep orderbooks with limit
 orders.  Only a distributed exchange on a blockchain can provide that.
 
-中心化的交易所可以创建大范围的限价订单，借以来吸引其更多交易者。在交易所界，流动性需求带来更多流动，因此交易所业务界内的网络效应也愈发明显（或者说至少产生了"赢家通吃"效应）。目前加密币交易所排名第一的是Poloniex，位列第二的Bitfinex则每24小时交易额为2000万美元。在这种强大的网络效应下，基于AXC的去中心化交易所的成交量不太可能超过中心化交易所。去中心化交易所要想和中心化交易所一争高下，就需要支持大范围限价订单的运行。唯有基于区块链的去中心化交易所可以实现这一点。
+一个中心化的交易所可以通过限价委托来构建一个具有深度的交易委托账本，以此来吸引更多的交易者。在交易所领域，流动性会引发更多流动性，因此在交易所业务中，其具有的网络效应也愈发明显（或者说至少产生了"赢家通吃"效应）。目前加密货币交易所 Poloniex 以每24小时2,000万美元的交易量排名第一， Bitfinex 则每24小时500万美元的交易额位列第二。在这种强大的网络效应之下，基于 AXC 的去中心化交易所的成交量是不太可能超过中心化交易所。去中心化交易所要想和中心化交易所一争高下，就需要支持以限价订单构成的具有深度的交易委托账本的运行。而只有基于区块链的去中心化交易所可以实现这一点。
 
 Tendermint provides additional benefits of faster transaction commits.  By
 prioritizing fast finality without sacrificing consistency, zones in Cosmos can
 finalize transactions fast -- for both exchange order transactions as well as
 IBC token transfers to and from other zones.
 
-Tendermint提供的快速交易委托是另一大优势。在Cosmos的空间可以不牺牲一致性，而通过优先级快速交易，实现交易的快速完成——针对双向订单交易，以及IBC（跨区块链通信）代币与其他空间的交易。
+Tendermint 提供的快速交易执行是另一大优势。Cosmos 的空间可以在不牺牲一致性的前提下能够优先快速的最终确定，来实现交易的快速完成 —— 同时针对交易订单交易，以及 IBC（跨区块链通信）代币与其他空间的交易。
 
 Given the state of cryptocurrency exchanges today, a great application for
 Cosmos is the distributed exchange (aka the Cosmos DEX).  The transaction
@@ -486,9 +486,9 @@ without both parties having to be online.  And with Tendermint, the Cosmos hub,
 and IBC, traders can move funds in and out of the exchange to and from other
 zones with speed.
 
-综上，根据现有加密币交易所的情况，Cosmos的重大应用就是分布式交易所（也就是Cosmos DEX）。其交易吞吐能力和可延时委托可以与那些中心化交易所媲美。交易者可以在当事人离线的状态下提交限价订单。并且，基于Tendermint，Cosmos中心以及IBC的环境下，交易者可以快速地完成在交易所及其他空间的资金进出。
+综上，根据现有加密货币交易所的情况，Cosmos 的一项重大应用就是去中心化交易所（称为 Cosmos DEX）。其交易吞吐能量和委托延时可以与那些中心化交易所媲美。交易者可以在各方离线的状态下提交限价订单。并且，基于 Tendermint，Cosmos 枢纽以及 IBC 的情况下，交易者可以快速地完成在交易所及其他空间的资金进出。
 
-### Bridging to Other Cryptocurrencies | 挂钩其他的加密币
+### Bridging to Other Cryptocurrencies | 和其他加密货币的纽带
 
 A privileged zone can act as the source of a bridged token of another
 cryptocurrency. A bridge is similar to the relationship between a
