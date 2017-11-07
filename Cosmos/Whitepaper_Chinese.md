@@ -476,7 +476,7 @@ prioritizing fast finality without sacrificing consistency, zones in Cosmos can
 finalize transactions fast -- for both exchange order transactions as well as
 IBC token transfers to and from other zones.
 
-Tendermint 提供的快速交易执行是另一大优势。Cosmos 的空间可以在不牺牲一致性的前提下能够优先快速的最终确定，来实现交易的快速完成 —— 同时针对交易订单交易，以及 IBC（跨区块链通信）代币与其他空间的交易。
+Tendermint 提供的快速交易执行是另一大优势。Cosmos 的空间可以在不牺牲一致性的前提下优先快速的最终确定，来实现交易的快速完成 —— 同时针对交易订单交易，以及 IBC（跨区块链通信）代币与其他空间的交易。
 
 Given the state of cryptocurrency exchanges today, a great application for
 Cosmos is the distributed exchange (aka the Cosmos DEX).  The transaction
