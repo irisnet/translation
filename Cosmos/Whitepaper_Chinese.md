@@ -1,6 +1,8 @@
 # Cosmos
 **A Network of Distributed Ledgers**
 
+**分布式账本网络**
+
 Jae Kwon jae@tendermint.com<br/>
 Ethan Buchman ethan@tendermint.com
 
@@ -8,6 +10,8 @@ For discussions, [join our Slack](http://forum.tendermint.com:3000/)!
 
 _NOTE: If you can read this on GitHub, then we're still actively developing this
 document.  Please check regularly for updates!_
+
+注意：如果你能在github上阅读，我们仍然积极地更新这个文档，请定期检查更新！
 
 ## Table of Contents ###########################################################
   * [Introduction](#introduction)
@@ -88,6 +92,8 @@ privacy), and generalized smart contract platforms such as Ethereum [\[3\]][3],
 with countless distributed applications for the Ethereum Virtual Machine (EVM) such as Augur (a prediction
 market) and TheDAO [\[4\]][4] (an investment club).
 
+开源的生态系统、去中心化的文件共享、以及公共的加密货币，这一系列技术的成功使人们启发和理解，去中心化的互联网协议是可以用来彻底地改善社会经济基础架构的。我们已经见识过专业区块链应用，诸如比特币（加密货币），ZCASH（隐私加密货币），也看过例如以太坊的大众智能合约平台，还有无数基于以太坊虚拟机开发的分布式应用，例如Augur（预测市场）和TheDAO（投资俱乐部）
+
 To date, however, these blockchains have suffered from a number of drawbacks,
 including their gross energy inefficiency, poor or limited performance, and
 immature governance mechanisms.  Proposals to scale
@@ -98,6 +104,8 @@ property of complete auditability.  The Lightning Network [\[7\]][7] can help
 scale Bitcoin transaction volume by leaving some transactions off the ledger
 completely, and is well suited for micropayments and privacy-preserving payment
 rails, but may not be suitable for more generalized scaling needs.
+
+然而，迄今为止，这些区块链已经暴露了各种缺陷，包括总体能效低下，性能不佳或受限和缺乏成熟的治理机制。为了扩大比特币交易并发量，已经研发了许多诸如隔离见证（Segregated-Witness）和BitcoinNG（一种新的可扩展协议）这样的解决方案，但这些垂直扩展解决方案仍然受到单一物理机容量的限制，以确保完全的可审计性。闪电网络可以通过部分交易完全记录在主链账本外来扩展比特币的交易容量，这种方法十分适用于微支付和隐私保护支付通道，但是无法适用于更广泛的扩展需求。
 
 An ideal solution is one that allows multiple parallel blockchains to
 interoperate while retaining their security properties. This has proven
@@ -111,6 +119,9 @@ architectures](http://vukolic.com/iNetSec_2015.pdf) is provided for additional
 context, and we provide summaries of other proposals and their drawbacks in
 [Related Work](#related-work).
 
+理想的解决方案是允许多个并行的区块链交互操作的同时保持其安全特性。事实证明，采用工作量证明很难做到这一点，但也并非不可能。例如合并挖矿，允许在工作完成的同时，确保母链在子链上重复使用，但交易必须通过每个节点验证，而且如果母链上的大多数哈希算力没有积极地对子链进行合并挖矿，那么就容易遭受到攻击。关于替代区块链网络架构的学术回顾将在附件中展示，我们也会在相关工作中对其他（技术）方案和缺陷进行概括。
+
+
 Here we present Cosmos, a novel blockchain network architecture that addresses all
 of these problems.  Cosmos is a network connecting many independent blockchains, called
 zones.  The zones are powered by Tendermint Core [\[8\]][8], which provides a
@@ -120,10 +131,14 @@ where strict [fork-accountability](#fork-accountability) guarantees hold over
 the behaviour of malicious actors.  Tendermint Core's BFT consensus algorithm is
 well suited for scaling public proof-of-stake blockchains.  Blockchains with other consensus models, including proof-of-work blockchains like Ethereum and Bitcoin can be connected to the Cosmos network using adapter zones.
 
+这里要介绍的Cosmos，一个全新的区块链网络架构，能够解决这些问题。Cosmos是由许多被称之为“分区”的独立区块链组成的网络。空间在Tendermint Core支持下运行，Tendermint Core是一个类似拜占庭容错安全共识引擎，具有高性能、一致性的特性，并且在严格的分叉追责机制下能够制止恶意破坏者的行为。Tendermint Core的拜占庭容错共识算法十分适合用于扩展大众权益证明（POS）区块链。
+
 The first zone on Cosmos is called the Cosmos Hub. The Cosmos Hub is a
 multi-asset proof-of-stake cryptocurrency with a simple governance mechanism
 which enables the network to adapt and upgrade.  In addition, the Cosmos Hub can be
 extended by connecting other zones.
+
+Cosmos的第一个区称之为Cosmos枢纽。Cosmos枢纽是一种多资产权益证明加密货币网络，它通过简单的治理机制能够对网络进行修补和升级。另外，Cosmos枢纽可以通过链接其他分区来扩展。
 
 The hub and zones of the Cosmos network communicate with each other via an
 inter-blockchain communication (IBC) protocol, a kind of virtual UDP or TCP for
@@ -134,6 +149,8 @@ total amount of tokens held by each zone.  The hub isolates each zone from the
 failure of other zones.  Because anyone can connect a new zone to the Cosmos Hub,
 zones allow for future-compatibility with new blockchain innovations.
 
+Cosmos网络的枢纽及各个分区可以通过区块链间通信（IBC）协议进行通信，这种协议就是针对区块链的虚拟用户数据报协议（UDP）或者传输控制协议（TCP）。代币可以安全、快速地从一个分区转到其他分区，而无需在两个分区之间需要有交易流动性。相反，所有分区内代币转移都会通过Cosmos枢纽，以此来追踪记录每个分区持有代币的总量。这个枢纽会将每个分区与其他故障分区隔离开。因为每个人都可以将新的分区连接到Cosmos枢纽，所以分区将兼容新的区块链。
+
 With Cosmos interoperability between blockchains can be achieved. The potential of an internet of value, where assets are issued and controlled by different sets of validators, yet can be moved and exchanged seamlessly between blockchains without relying on trusted third parties can be realized.
 
 ## Tendermint ##################################################################
@@ -141,7 +158,9 @@ With Cosmos interoperability between blockchains can be achieved. The potential 
 In this section we describe the Tendermint consensus protocol and the interface
 used to build applications with it. For more details, see the [appendix](#appendix).
 
-### Validators
+这一部分将阐述Tendermint共识协议和用于建立其应用程序的接口。
+
+### Validators | 验证人
 
 In classical Byzantine fault-tolerant (BFT) algorithms, each node has the same
 weight.  In Tendermint, nodes have a non-negative amount of _voting power_, and
@@ -149,16 +168,23 @@ nodes that have positive voting power are called _validators_.  Validators
 participate in the consensus protocol by broadcasting cryptographic signatures,
 or _votes_, to agree upon the next block.
 
+在经典的拜占庭容错算法中，每个节点有相同的权重。在Tendermint，节点有着不同数量（非负）的投票权，而那些拥有相当数量投票权的节点称之为验证人。验证人通过广播加密签名、投票或者对下一个区块表决同意来参与共识协议。
+
 Validators' voting powers are determined at genesis, or are changed
 deterministically by the blockchain, depending on the application.  For example,
 in a proof-of-stake application such as the Cosmos Hub, the voting power may be
 determined by the amount of staking tokens bonded as collateral.
 
+验证者的投票权是一开始就确定好了，或者根据应用程序由区块链来决定修改投票权。例如，在像Cosmos枢纽的权益证明应用里，投票权可由绑定为抵押品的代币数量来决定。
+
 _NOTE: Fractions like ⅔ and ⅓ refer to fractions of the total voting power,
 never the total number of validators, unless all the validators have equal
 weight. >⅔ means "more than ⅔", ≥⅓ means "at least ⅓"._
 
-### Consensus
+
+注意：像⅔和⅓这样的分数指的是占总投票权的分数，而不是总验证人，除非所有验证人拥有相同权重。而>⅔ 的意思是"超过⅔ "，≥⅓则是"⅓或者更多"的意思。
+
+### Consensus | 共识
 
 Tendermint is a partially synchronous BFT consensus protocol derived from the
 DLS consensus algorithm [\[20\]][20]. Tendermint is notable for its simplicity,
@@ -172,8 +198,12 @@ or move on to the next round. The proposer for a round is chosen
 deterministically from the ordered list of validators, in proportion to their
 voting power.
 
+Tendermint是部分同步运作的拜占庭容错共识协议，这种协议源自DLS共识算法 。Tendermint以简易性、高性能以及分叉责任制而著称。协议要求这组验证人固定且被熟知，并且每个验证人都有其公钥验证身份。这些验证人试图同时在一个区块上达成共识，这些区块是一系列的交易记录。每个区块的共识轮流进行，每一轮都会有个领头人，或者提议人，由他们来发起区块。之后验证人分阶段对是否接受该区块，或者是否进入下一轮做出投票。每轮的提议人会从验证人顺序列表中按照其选票比例来选择确定。
+
 The full details of the protocol are described
 [here](https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm).
+
+更多协议的全部细节，请点击这里
 
 Tendermint’s security derives from its use of optimal Byzantine fault-tolerance
 via super-majority (>⅔) voting and a locking mechanism.  Together, they ensure
@@ -185,6 +215,11 @@ that:
   to do so, they can be identified by the protocol.  This includes both voting
 for conflicting blocks and broadcasting unjustified votes.
 
+Tendermint采用了使用大多数投票（超过三分之二）和锁定机制的最优拜占庭容错，来确保其安全性。这些能够保证：
+
+* 蓄意破坏者想要造成安全性问题，必须有三分之一以上的投票权，并且要提交超过两份以上的值。
+* 如果有一组验证人成功破坏了安全性，或者试图这么做，他们会被协议识别验证身份。被识别的包括有问题的区块和广播不正当的投票。
+
 Despite its strong guarantees, Tendermint provides exceptional performance.  In
 benchmarks of 64 nodes distributed across 7 datacenters on 5 continents, on
 commodity cloud instances, Tendermint consensus can process thousands of
@@ -193,9 +228,11 @@ seconds.  Notably, performance of well over a thousand transactions per second
 is maintained even in harsh adversarial conditions, with validators crashing or
 broadcasting maliciously crafted votes.  See the figure below for details.
 
+除了其超强的安全性外，Tendermint还具备杰出的性能。以商用型云平台为例，Tendermint共识以分布在五大洲七个数据中心的64位节点为基准，其每秒可以处理成千上万笔交易，提交顺序延迟时间为1-2秒。而值得关注的是，即使是在极其恶劣的敌对环境中，比如验证人崩溃了或者是广播恶意只做的投票，也能维持这种每秒千笔交易的高绩效。详见下图。
+
 ![Figure of Tendermint throughput performance](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/images/tendermint_throughput_blocksize.png)
 
-### Light Clients
+### Light Clients | 轻客户端
 
 A major benefit of Tendermint's consensus algorithm is simplified light client
 security, making it an ideal candidate for mobile and internet-of-things use
@@ -204,10 +241,14 @@ the one with the most proof of work, Tendermint light clients need only to keep
 up with changes to the validator set, and then verify the >⅔ PreCommits
 in the latest block to determine the latest state.
 
+Tendermint共识算法的主要好处是具有安全简易的客户端，使其成为手机和物联网用例的理想选择。比特币轻客户端必须同步运行区块头组成的链，并且找到工作量证明最多的那一条链，而Tendermint轻客戸端只需和验证组的变化保持一致，然后简单地验证最新区块中预先提交的>⅔，来确定最新情况。
+
 Succinct light client proofs also enable [inter-blockchain
 communication](#inter-blockchain-communication-ibc).
 
-### Preventing Attacks
+这种简单的轻客戸端证明机制也可以实现区块链之间的通信。
+
+### Preventing Attacks | 防止攻击
 
 Tendermint has protective measures for preventing certain notable
 attacks, like [long-range-nothing-at-stake double
@@ -215,7 +256,9 @@ spends](#preventing-long-range-attacks) and
 [censorship](#overcoming-forks-and-censorship-attacks). These are discussed more
 fully in the [appendix](#appendix).
 
-### ABCI
+Tendermint有各种各样的防御措施来防止一些显著的攻击，比如远程无利害关系双花攻击及审查制度。 这些在附录中有更详细的讨论。
+
+### ABCI | 区块链应用接口
 
 The Tendermint consensus algorithm is implemented in a program called Tendermint
 Core.  Tendermint Core is an application-agnostic "consensus engine" that can
@@ -227,6 +270,8 @@ the programming language that the consensus engine is written in.  Additionally,
 ABCI makes it possible to easily swap out the consensus layer of any existing
 blockchain stack.
 
+Tendermint共识算法是在叫做Tendermint Core的程序中实现的。这个程序是独立于应用的“共识引擎”，可以将任何已经确定的黑盒子引擎转变为分布式、可复制的区块链。Tendermint Core 可以通过区块链接口与其他区块链应用连接。而且，区块链应用接口允许区块链应用以任何语言编程，而不仅仅是共识引擎中已经写好的语言。此外，ABCI也让交换任何现有区块链堆栈的共识层成为可能。
+
 We draw an analogy with the well-known cryptocurrency Bitcoin. Bitcoin is a
 cryptocurrency blockchain where each node maintains a fully audited Unspent
 Transaction Output (UTXO) database. If one wanted to create a Bitcoin-like
@@ -235,6 +280,11 @@ system on top of ABCI, Tendermint Core would be responsible for
 * Sharing blocks and transactions between nodes
 * Establishing a canonical/immutable order of transactions (the blockchain)
 
+我们将其与知名加密货币比特币进行了类比。在比特币这种加密币区块链中，每个节点都维持着完整的审核过的UTXO（未使用交易输出）数据库。如果您想要在ABCI基础上，创建出类似比特币的系统，那么Tendermint Core可以做到：
+
+* 在节点间共享区块及交易
+* 创建规范或不可改变的交易顺序（区块链）
+
 Meanwhile, the ABCI application would be responsible for
 
 * Maintaining the UTXO database
@@ -242,14 +292,27 @@ Meanwhile, the ABCI application would be responsible for
 * Preventing transactions from spending non-existent funds
 * Allowing clients to query the UTXO database
 
+同时，ABCI应用也可以做到：
+
+* 维护UTXO数据库
+* 验证交易的加密签名
+* 防止出现不存在的交易
+* 允许客户访问UTXO数据库
+
 Tendermint is able to decompose the blockchain design by offering a very simple
 API between the application process and consensus process.
 
-## Cosmos Overview #############################################################
+Tendermint 通过在应用进程和共识进程之间提供简单的API来分解区块链设计。
+
+
+## Cosmos Overview | Cosmos 概述 #############################################################
 
 Cosmos is a network of independent parallel blockchains that are each powered by
 classical BFT consensus algorithms like Tendermint
 [1](http://github.com/tendermint/tendermint).
+
+
+Cosmos是一种独立平行的区块链网络，其中每条区块链通过Tendermint 1这样的经典拜占庭容错共识算法来运行。
 
 The first blockchain in this network will be the Cosmos Hub.  The Cosmos Hub
 connects to many other blockchains (or _zones_) via a novel inter-blockchain
@@ -259,6 +322,8 @@ transferred from one zone to another securely and quickly without the need for
 a liquid exchange between zones, because all inter-zone coin transfers go
 through the Cosmos Hub.
 
+网络中第一条区块链将会是Cosmos枢纽。Cosmos枢纽通过全新区块链间通信协议来连接其他众多区块链（或将其称之为分区）。枢纽可以追踪无数代币种类，并且在各个连接的分区里记录代币总数。代币可以安全快速地从一个分区传递到另一个分区，两者之间无需体现汇兑流动性，因为所有分区之间的代币传输都会经过Cosmos枢纽。
+
 This architecture solves many problems that the blockchain space faces today,
 such as application interoperability, scalability, and seamless upgradability.
 For example, zones derived from Bitcoind, Go-Ethereum, CryptoNote, ZCash, or any
@@ -266,13 +331,18 @@ blockchain system can be plugged into the Cosmos Hub.  These zones allow Cosmos
 to scale infinitely to meet global transaction demand.  Zones are also a great
 fit for a distributed exchange, which will be supported as well.
 
+这一架构解决了当今区块链领域面临的许多问题，包括应用程序互操作性、可扩展性、以及无缝更新。比如，从Bitcoind、Go-Ethereum、CryptoNote、ZCash或其他区块链系统中衍生出来的分区，都可以接入Cosmos枢纽。这些分区允许Cosmos实现无限扩展，从而满足全球交易的需求。此外，分区也完全适用于去中心化交易所，反之交易所也支持分区运行。
+
 Cosmos is not just a single distributed ledger, and the Cosmos Hub isn't a
 walled garden or the center of its universe.  We are designing a protocol for
 an open network of distributed ledgers that can serve as a new foundation for
 future financial systems, based on principles of cryptography, sound economics,
 consensus theory, transparency, and accountability.
 
-### Tendermint-BFT
+
+Cosmos不仅仅是单一的分布式账本，而Cosmos枢纽也不是封闭式庭院或宇宙中心。我们正在为分布式账本的开放网络设计一套协议，这套协议会依据加密学、稳健经济学、共识理论、透明性及可追责制的原则，成为未来金融系统的全新基础。
+
+### Tendermint-BFT |  Tendermint-拜占庭容错
 
 The Cosmos Hub is the first public blockchain in the Cosmos Network, powered by
 Tendermint's BFT consensus algorithm.  The Tendermint open-source project was
@@ -283,17 +353,24 @@ team was the first to conceptually demonstrate a proof-of-stake cryptocurrency
 that addresses the nothing-at-stake problem suffered by first-generation
 proof-of-stake cryptocurrencies such as NXT and BitShares1.0.
 
+Cosmos枢纽是Cosmos网络中第一个公共区块链，通过Tendermint拜占庭共识算法运行。Tendermint开源项目于2014年开始，旨在解决比特币工作量证明算法的速度、可扩展性以及环境问题。通过过采用并提高已经过验证的拜占庭算法（1988年在麻省理工学院开发），Tendermint成为了首个在概念上论证了加密货币权益证明的团队，这种机制可以解决NXT和BitShares这些第一代权益证明加密币面临的"无利害关系"（nothing-at-stake）的问题。
+
 Today, practically all Bitcoin mobile wallets use trusted servers to provide
 them with transaction verification.  This is because proof-of-work requires
 waiting for many confirmations before a transaction can be considered
 irreversibly committed.  Double-spend attacks have already been demonstrated on
 services like CoinBase.
 
+如今，实际上所有比特币移动钱包都要使用可靠的服务器来进行交易验证。这是因为工作量证明机制需要在交易被认定为无法逆转前进行多次确认。而在CoinBase之类的服务中也已经出现双重支付攻击。
+
 Unlike other blockchain consensus systems, Tendermint offers instant and
 provably secure mobile-client payment verification. Since the Tendermint is
 designed to never fork at all, mobile wallets can receive instant transaction
 confirmation, which makes trustless and practical payments a reality on
 smartphones.  This has significant ramifications for Internet of Things applications as well.
+
+
+和其他区块链共识系统不同，Tendermint提供的是即时、可证明安全的移动客户端支付验证方式。因为Tendermint的设计完全不分叉，所以移动钱包就可以实时接收交易确认，从而在智能手机上真正实现去信任的支付方式。这一点也大大影响了物联网应用程序。
 
 Validators in Cosmos have a similar role to Bitcoin miners, but instead use
 cryptographic signatures to vote. Validators are secure, dedicated machines
@@ -305,13 +382,17 @@ guarantees of Tendermint BFT consensus, and the collateral deposit of
 stakeholders--validators and delegators--provide provable, quantifiable
 security for nodes and light clients.
 
-### Governance #################################################################
+Cosmos中的验证人角色类似比特币矿工，但是他们采用加密签名来进行投票。验证人是专门用来提交区块的安全机器。非验证人可以将权益代币（也叫做"atom"）委托给任何验证人来赚取一定的区块费用以及atom奖励，但是如果验证人被黑客攻击或者违反协议规定，那么就会面临被惩罚（削减）的风险。Tendermint拜占庭共识的可证明安全机制，以及利益相关方（验证人和委托人）的抵押品保证，为节点甚至是轻客户端提供了可证明、可计量的安全性。
+
+### Governance | 管理 #################################################################
 
 Distributed public ledgers should have a constitution and a governance system.
 Bitcoin relies on the Bitcoin Foundation and mining to
 coordinate upgrades, but this is a slow process.  Ethereum split into ETH and
 ETC after hard-forking to address TheDAO hack, largely because there was no
 prior social contract nor mechanism for making such decisions.
+
+分布式公共账本应该要有一套章程与管理体系。比特币依靠比特币基金会以及挖矿来协作更新，但是这是一个反应缓慢的管理制度。以太坊在采用硬分叉成ETH和ETCLAI 解决The DAO黑客，这主要是因为之前设定社会契约或机制来进行这类决定。
 
 Validators and delegators on the Cosmos Hub can vote on proposals that can
 change preset parameters of the system automatically (such as the block gas
@@ -320,22 +401,32 @@ constitution that govern the policies of the Cosmos Hub.  The constitution
 allows for cohesion among the stakeholders on issues such as theft
 and bugs (such as TheDAO incident), allowing for quicker and cleaner resolution.
 
+Cosmos枢纽的验证人与委托人可以对提案进行投票，从而改变预先默认设置好的系统参数（比如区块转账费用限制），协作更新，并对可读性的章程进行修订投票，从而管理Cosmos枢纽制度。这个章程允许权益相关者聚集到一起，来解决盗窃及漏洞等相关问题（比如The DAO事件），并快速得出明确的解决方案。
+
 Each zone can also have their own constitution and governance mechanism as well.
 For example, the Cosmos Hub could have a constitution that enforces immutability
 at the Hub (no roll-backs, save for bugs of the Cosmos Hub node implementation),
 while each zone can set their own policies regarding roll-backs.
 
+
+每个分区也可以制定自己的一套章程及管理机制。比如，Cosmos枢纽的章程可以设置为强制实现枢纽的不可改变性（不能回滚，除了Cosmos枢纽节点产生的漏洞），而每个分区则可自行设置与盗窃及漏洞相关的重新执行政策。
+
 By enabling interoperability among differing policy zones, the Cosmos network
 gives its users ultimate freedom and potential for permissionless
 experimentation.
 
-## The Hub and Zones ###########################################################
+Cosmos网络能够在制度不同的分区间实现互操作性，这一点给客户极高的自由度和潜力而无需许可即可实验（新技术）。
+
+## The Hub and Zones| 枢纽与分区 ###########################################################
 
 Here we describe a novel model of decentralization and scalability.  Cosmos is a
 network of many blockchains powered by Tendermint.  While existing proposals aim
 to create a "single blockchain" with total global transaction ordering, Cosmos
 permits many blockchains to run concurrently with one another while retaining
 interoperability.
+
+这里我们将描述一个全新的去中心化与可扩展性模型。Cosmos是一个由Tendermint共识算法来运行诸多区块链的网络。虽然现存提案的目标是创建一个包含全球所有交易订单的"单一区块链"，但是Cosmos允许众多区块链在并行运行的同时，保持可互操作性。
+
 
 At the basis, the Cosmos Hub manages many independent blockchains called "zones"
 (sometimes referred to as "shards", in reference to the database scaling
@@ -347,6 +438,8 @@ then communicated from one zone to another by posting Merkle-proofs as evidence
 that the information was sent and received.  This mechanism is called
 inter-blockchain communication, or IBC for short.
 
+在这个基础上，Cosmos枢纽负责管理称之为“分区”的众多独立区块链（有时也叫做"碎片"，根据数据库扩展技术"分片"得出）。枢纽上的分片会源源不断地提交最新区块，这一点可以让枢纽同步每一个分区的状态。同样地，每个分区也会和枢纽的状态保持一致（不过分区之间不会同彼此的同步，除非间接通过枢纽来实现）。通过发布默克尔证明来证明信息被接受和发送，来让信息从一个分区传递到另一个分区。这种机制叫做"区块链间通信"，或者简称为"IBC"机制。
+
 ![Figure of hub and zones
 acknowledgement](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/images/hub_and_zones.png)
 
@@ -354,7 +447,11 @@ Any of the zones can themselves be hubs to form an acyclic graph, but
 for the sake of clarity we will only describe the simple configuration where
 there is only one hub, and many non-hub zones.
 
-### The Hub
+
+任何分区都可以自行成为枢纽来建立非循环图表，但为了清楚起见，我们只描述这种只有一个枢纽和许多非枢纽的分区这样简单的配置
+
+
+### The Hub | 枢纽
 
 The Cosmos Hub is a blockchain that hosts a multi-asset distributed ledger,
 where tokens can be held by individual users or by zones themselves.  These
@@ -362,6 +459,8 @@ tokens can be moved from one zone to another in a special IBC packet called a
 "coin packet".  The hub is responsible for preserving the global invariance of
 the total amount of each token across the zones. IBC coin packet transactions
 must be committed by the sender, hub, and receiver blockchains.
+
+Cosmos枢纽是承载多种分布式账本资产的区块链，其中代币可以由个人或分区自己持有。这些代币能够通过特殊的IBC数据包，即"代币数据包"（coin packet）从一个分区转移到另一个分区。枢纽负责保持各个分区中各类代币总量不变。IBC代币数据包交易必须由发送人、枢纽及区块接受者执行。
 
 Since the Cosmos Hub acts as the central ledger for the whole
 system, the security of the Hub is of paramount importance.  While each
@@ -371,7 +470,10 @@ decentralized set of validators that can withstand the most severe attack
 scenarios, such as a continental network partition or a nation-state sponsored
 attack.
 
-### The Zones
+
+因为Cosmos枢纽在整个系统中扮演着中央代币账本的角色，其安全性极其重要。虽然每个分区可能都是一个Tendermint区块链——只需通过4个，或者在无需拜占庭容错共识的情况下更少的验证人来保证安全），但是Cosmos枢纽必须通过全球去中心化验证组来保证安全，而且这个验证组要能够承受最严重的攻击，比如大陆网络分区或者由国家发起的攻击。
+
+### The Zones | 分区
 
 A Cosmos zone is an independent blockchain that exchanges IBC messages with the
 Hub.  From the Hub's perspective, a zone is a multi-asset dynamic-membership
@@ -380,6 +482,8 @@ a cryptocurrency account, a zone cannot transfer more tokens than it has, but
 can receive tokens from others who have them. A zone may be designated as an
 "source" of one or more token types, granting it the power to inflate that token
 supply.
+
+Cosmos分区是独立的区块链，能够和Cosmos枢纽进行IBC信息交换。从枢纽的角度上看，分区是一种多重资产、动态会员制的多重签名账户，可以通过IBC数据包用来发送和接受代币。就像加密币账户一样，分区不能转移超出其持有量的代币，不过可以从其他拥有代币的人那里接收代币。分区可能会被指定为一种或多种代币的"来源"，从而赋予其增加代币供应量的权力。
 
 Atoms of the Cosmos Hub may be staked by validators of a zone connected to the
 Hub.  While double-spend attacks on these zones would result in the slashing of
@@ -392,7 +496,9 @@ failures.  For example, outbound token transfers from some (or all) zones may be
 throttled to allow for the emergency circuit-breaking of zones (a temporary halt
 of token transfers) when an attack is detected.
 
-## Inter-blockchain Communication (IBC) ########################################
+Cosmos枢纽的Atom或可作为分区验证人连接到枢纽的筹码。虽然在Tendermint分叉责任制下，分区出现双重支付攻击会导致atom数量减少，但是如果分区中有超过⅔的选票都出现拜占庭问题的话，那这个分区就可以提交无效状态。Cosmos枢纽不会验证或执行提交到其他分区的交易，因此将代币发送到可靠的分区间就是用户的责任了。未来Cosmos枢纽的管理系统可能会通过改善提案，来解决空间故障问题。比如，在检测到袭击时，可以将有些分区（或全部分区）发起的代币转账暂停下来，实现紧急断路（即暂时中止代币转账）。
+
+## Inter-blockchain Communication (IBC) | 跨链通信（IBC） ########################################
 
 Now we look at how the Hub and zones communicate with each other.  For example, if
 there are three blockchains, "Zone1", "Zone2", and "Hub", and we wish for
@@ -404,16 +510,22 @@ up with the sender's block headers.  This mechanism is similar to that used by
 sidechains, which requires two interacting chains to be aware of one another via a
 bidirectional stream of proof-of-existence datagrams (transactions).
 
+现在我们来介绍下枢纽与分区之前通信的方法。假如现在有三个区块链，分别是"分区1"、“分区2"以及"枢纽”，我们想要"分区1"生成一个数据包，通过"枢纽"发送给"分区2"。为了让数据包从一个区块链转移到另一个区块链，需要在接收方区块链上发布一个证明，来明确发送方已经发起了一个数据包到指定目的地。接收方要验证的这个证明，必须和发送方区块头保持一致。这种机制就类似与侧链采用的机制，它需要两个相互作用的链，通过双向传送存在证明数据元（交易），来"知晓"另一方的情况。
+
 The IBC protocol can naturally be defined using two types of transactions: an  `IBCBlockCommitTx` transaction, which allows a blockchain to prove to any
 observer of its most recent block-hash, and an `IBCPacketTx` transaction, which
 allows a blockchain to prove to any observer that the given packet was indeed
 published by the sender's application, via a Merkle-proof to the recent
 block-hash.
 
+BC协议可以自然定义为两种交易的使用：一种是IBCBlockCommitTx 交易，这种交易可以让区块链向任何观察员证明其最新区块哈希值；另一种是IBCPacketTx 交易，这种交易则可以证明某个数据包确实由发送者的应用程序，通过默克尔证明机制（Merkle-proof）传送到了最新区块的哈希值上。
+
 By splitting the IBC mechanics into two separate transactions, we allow the
 native fee market-mechanism of the receiving chain to determine which packets
 get committed (i.e. acknowledged), while allowing for complete freedom on the
 sending chain as to how many outbound packets are allowed.
+
+通过将IBC机制分裂成两个单独的交易，即IBCBlockCommitTx 交易与IBCPacketTx交易，我们可以让接收链的本地费用市场机制，来决定承认哪个数据包，与此同时还能确保发送方的完全自由，让其自行决定能够传出的数据包数量。
 
 ![Figure of Zone1, Zone2, and Hub IBC without
 acknowledgement](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/msc/ibc_without_ack.png)
@@ -422,6 +534,9 @@ acknowledgement](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/mast
 "Zone1" on "Hub" (or of "Hub" on "Zone2"), an `IBCBlockCommitTx`
 transaction must be posted on "Hub" with the block-hash of "Zone1" (or on
 "Zone2" with the block-hash of "Hub").
+
+
+在上述案例中，为了更新"枢纽"上"分区1"的区块哈希（或者说"分区2"上"枢纽"的区块哈希），必须将IBCBlockCommitTx交易的"分区1"区块哈希值发布到"枢纽"上（或者将该交易的"枢纽"区块哈希值发布到"分区2"中）。
 
 _See [IBCBlockCommitTx](#ibcblockcommittx) and [IBCPacketTx](#ibcpacketcommit)
 for for more information on the two IBC transaction types._
