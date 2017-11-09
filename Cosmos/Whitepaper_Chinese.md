@@ -574,7 +574,7 @@ submit a limit order and turn their computer off, and the trade can execute
 without the user being online.  The blockchain matches and completes the trade
 on behalf of the trader.
 
-另一种去中心化交易所是其在各自的区块链上运行大量复制的分布式账本。该种交易所的用户可以提交限价订单并关闭他们的计算机，交易可以在离线状态下执行。区块链将会代表交易者去完成撮合和交易。
+另一种去中心化交易所是进行大量复制的具有独立区块链的分布式交易所。该种交易所的用户可以提交限价订单并关闭他们的计算机，交易可以在用户离线状态下执行。区块链将会代表交易者去完成匹配和交易。
 
 A centralized exchange can create a deep orderbook of limit orders and thereby
 attract more traders.  Liquidity begets more liquidity in the exchange world,
@@ -587,14 +587,14 @@ centralized exchanges.  For a decentralized exchange to compete with a
 centralized exchange, it would need to support deep orderbooks with limit
 orders.  Only a distributed exchange on a blockchain can provide that.
 
-一个中心化的交易所可以通过限价委托来构建一个具有深度的交易委托账本，以此来吸引更多的交易者。在交易所领域，流动性会引发更多流动性，因此在交易所业务中，其具有的网络效应也愈发明显（或者说至少产生了"赢家通吃"效应）。目前加密货币交易所 Poloniex 以每24小时2,000万美元的交易量排名第一， Bitfinex 则每24小时500万美元的交易额位列第二。在这种强大的网络效应之下，基于 AXC 的去中心化交易所的成交量是不太可能超过中心化交易所。去中心化交易所要想和中心化交易所一争高下，就需要支持以限价订单构成的具有深度的交易委托账本的运行。而只有基于区块链的去中心化交易所可以实现这一点。
+一个中心化的交易所可以构建一个有大交易量的限价交易的买卖盘账目，以此来吸引更多的交易者。在交易所领域，流动性会引发更多流动性，因此在交易所业务中，其具有的网络效应也愈发明显（或者说至少产生了"赢家通吃"效应）。目前加密货币交易所 Poloniex 以每24小时2,000万美元的交易量排名第一， Bitfinex 则每24小时500万美元的交易额位列第二。在这种强大的网络效应之下，基于AXC的去中心化交易所的成交量是不太可能超过中心化交易所。去中心化交易所要想和中心化交易所一争高下，就需要支持以限价订单构成的具有深度的交易买卖盘账目的运行。而只有基于区块链的去中心化交易所可以实现这一点。
 
 Tendermint provides additional benefits of faster transaction commits.  By
 prioritizing fast finality without sacrificing consistency, zones in Cosmos can
 finalize transactions fast -- for both exchange order transactions as well as
 IBC token transfers to and from other zones.
 
-Tendermint 提供的快速交易执行是另一大优势。Cosmos 的分区可以在不牺牲一致性的前提下优先快速的最终确定，来实现交易的快速完成 —— 同时针对交易订单交易，以及 IBC（跨区块链通信）代币与其他空间的交易。
+Tendermint提供的快速交易执行是另一大优势。Cosmos的内部网络可以在不牺牲一致性的前提下优先快速的确定最终性，来实现交易的快速完成 —— 同时针对交易订单交易，以及IBC（跨区块链通信）代币与其他网络的交易。
 
 Given the state of cryptocurrency exchanges today, a great application for
 Cosmos is the distributed exchange (aka the Cosmos DEX).  The transaction
@@ -604,7 +604,7 @@ without both parties having to be online.  And with Tendermint, the Cosmos hub,
 and IBC, traders can move funds in and out of the exchange to and from other
 zones with speed.
 
-综上，根据现有加密货币交易所的情况，Cosmos 的一项重大应用就是分布式交易所（称为 Cosmos DEX）。其交易吞吐能量和委托延时可以与那些中心化交易所媲美。交易者可以在各方离线的状态下提交限价订单。并且，基于 Tendermint，Cosmos 枢纽以及 IBC 的情况下，交易者可以快速地完成在交易所及其他空间的资金进出。
+综上，根据现有加密货币交易所的情况，Cosmos的一项重大应用就是去中心化交易所（称为 Cosmos DEX）。其交易吞吐能量和委托延时可以与那些中心化交易所媲美。交易者可以在各方离线的状态下提交限价订单。并且，基于Tendermint，Cosmos枢纽以及IBC的情况下，交易者可以快速地完成在交易所及其他网络的资金进出。
 
 ### Bridging to Other Cryptocurrencies | 和其他加密货币的纽带
 
