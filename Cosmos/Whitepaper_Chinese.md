@@ -566,7 +566,7 @@ exchange on AXC transactions is that neither users need to trust each other or
 the trade-matching service.  The downside is that both parties need to be
 online for the trade to occur.
 
-现今，加密货币社区认为的去中心化交易所是基于"原子交叉链"交易（ AXC 交易）的交易所。通过 AXC 交易，两条不同链上的两个用户可以发起两笔转让交易，交易在两个账本上要么一起提交执行，或者两个账本都不执行（即原子级）。比如，两位用户可以通过 AXC 交易来处理比特币和以太币之间的交易（或是在不同账本上的任意两种代币），即使比特币和以太坊之间并没有彼此连接。AXC 交易模式下的交易所用户双方不需要彼此信任，也不用依赖交易匹配服务。其弊端是，交易双方必须同时在线才能进行交易。
+现今，加密货币社区认为的去中心化交易所基于"跨链原子事务"交易（ AXC 交易）。通过AXC交易，两条不同链上的两个用户可以发起两笔转账交易，交易在两个账本上要么一起提交执行，或者两个账本都不执行（即交易的原子性）。比如，两位用户可以通过AXC交易来实现比特币和以太币之间的交易（或是在不同账本上的任意两种代币），即使比特币和以太坊的区块链之间并没有彼此连接。AXC 交易模式下的交易所用户双方不需要彼此信任，也不用依赖交易匹配服务。其弊端是，交易双方必须同时在线才能进行交易。
 
 Another type of decentralized exchange is a mass-replicated distributed
 exchange that runs on its own blockchain.  Users on this kind of exchange can
