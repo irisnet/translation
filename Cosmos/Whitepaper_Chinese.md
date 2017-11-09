@@ -7,11 +7,12 @@ Jae Kwon jae@tendermint.com<br/>
 Ethan Buchman ethan@tendermint.com
 
 For discussions, [join our Slack](http://forum.tendermint.com:3000/)!
+讨论[请加入Slack](http://forum.tendermint.com:3000/)!
 
 _NOTE: If you can read this on GitHub, then we're still actively developing this
 document.  Please check regularly for updates!_
 
-注意：如果你能在github上阅读，我们仍然积极地更新这个文档，请定期检查更新！
+_注意：如果你能在github上阅读，我们仍然会积极地更新这个文档，请定期检查更新！_
 
 ## Table of Contents ###########################################################
   * [Introduction](#introduction)
@@ -92,7 +93,7 @@ privacy), and generalized smart contract platforms such as Ethereum [\[3\]][3],
 with countless distributed applications for the Ethereum Virtual Machine (EVM) such as Augur (a prediction
 market) and TheDAO [\[4\]][4] (an investment club).
 
-开源的生态系统、去中心化的文件共享、以及公共的加密货币，这一系列技术的成功使人们启发和理解，去中心化的互联网协议是可以用来彻底地改善社会经济基础架构的。我们已经见识过专业区块链应用，诸如比特币（加密货币），ZCASH（隐私加密货币），也看过例如以太坊的大众智能合约平台，还有无数基于以太坊虚拟机开发的分布式应用，例如Augur（预测市场）和TheDAO（投资俱乐部）
+开源的生态系统、去中心化的文件共享、以及公共的加密货币，这一系列技术的成功使人们启发和理解，去中心化的互联网协议是可以从根本上改善社会经济基础架构的。我们已经见识过个有专长的区块链应用，诸如比特币[\[1\]][1]（加密货币），ZCASH [\[2\]][2] (隐私加密货币)，也看到了例如以太坊 [\[3\]][3] 的大众智能合约平台，还有无数基于 EVM (以太坊虚拟机)开发的分布式应用，例如 Augur（预测市场）和 TheDAO [\[4\]][4] （投资俱乐部）
 
 To date, however, these blockchains have suffered from a number of drawbacks,
 including their gross energy inefficiency, poor or limited performance, and
@@ -105,7 +106,7 @@ scale Bitcoin transaction volume by leaving some transactions off the ledger
 completely, and is well suited for micropayments and privacy-preserving payment
 rails, but may not be suitable for more generalized scaling needs.
 
-然而，迄今为止，这些区块链已经暴露了各种缺陷，包括总体能效低下，性能不佳或受限和缺乏成熟的治理机制。为了扩大比特币交易并发量，已经研发了许多诸如隔离见证（Segregated-Witness）和BitcoinNG（一种新的可扩展协议）这样的解决方案，但这些垂直扩展解决方案仍然受到单一物理机容量的限制，以确保完全的可审计性。闪电网络可以通过部分交易完全记录在主链账本外来扩展比特币的交易容量，这种方法十分适用于微支付和隐私保护支付通道，但是无法适用于更广泛的扩展需求。
+然而，迄今为止，这些区块链已经暴露了各种缺陷，包括总体能效低下，性能不佳或受到限制和缺乏成熟的治理机制。为了扩大比特币交易吞吐量，已经研发了许多诸如隔离见证 [\[5\]][5]（Segregated-Witness）和BitcoinNG [\[6\]][6]（一种新的可扩展协议）这样的解决方案，但这些垂直扩展解决方案仍然受到单一物理机容量的限制，以确保完整的可审计性。闪电网络 [\[7\]][7] 可以通过部分交易完全记录在主链账本外来扩展比特币的交易容量，这种方法十分适用于微支付和隐私保护支付通道，但是无法适用于更通用的扩展需求。
 
 An ideal solution is one that allows multiple parallel blockchains to
 interoperate while retaining their security properties. This has proven
@@ -119,7 +120,7 @@ architectures](http://vukolic.com/iNetSec_2015.pdf) is provided for additional
 context, and we provide summaries of other proposals and their drawbacks in
 [Related Work](#related-work).
 
-理想的解决方案是允许多个并行的区块链交互操作的同时保持其安全特性。事实证明，采用工作量证明很难做到这一点，但也并非不可能。例如合并挖矿，允许在工作完成的同时，确保母链在子链上重复使用，但交易必须通过每个节点验证，而且如果母链上的大多数哈希算力没有积极地对子链进行合并挖矿，那么就容易遭受到攻击。关于替代区块链网络架构的学术回顾将在附件中展示，我们也会在相关工作中对其他（技术）方案和缺陷进行概括。
+理想的解决方案是允许多个并行的区块链交互操作的同时保持其安全特性。事实证明，采用工作量证明很难做到这一点，但也并非不可能。例如合并挖矿，允许在工作完成的同时，确保母链在子链上被重复使用，但交易必须通过每个节点依次进行验证，而且如果母链上的大多数哈希算力没有积极地对子链进行合并挖矿，那么就容易遭受到攻击。关于[可替代区块链网络架构的学术回顾](http://vukolic.com/iNetSec_2015.pdf) 将在附件中展示，我们也会在[相关工作](#related-work)中对其他（技术）方案和缺陷进行概括。
 
 
 Here we present Cosmos, a novel blockchain network architecture that addresses all
@@ -131,14 +132,14 @@ where strict [fork-accountability](#fork-accountability) guarantees hold over
 the behaviour of malicious actors.  Tendermint Core's BFT consensus algorithm is
 well suited for scaling public proof-of-stake blockchains.  Blockchains with other consensus models, including proof-of-work blockchains like Ethereum and Bitcoin can be connected to the Cosmos network using adapter zones.
 
-这里要介绍的Cosmos，一个全新的区块链网络架构，能够解决这些问题。Cosmos是由许多被称之为“分区”的独立区块链组成的网络。空间在Tendermint Core支持下运行，Tendermint Core是一个类似拜占庭容错安全共识引擎，具有高性能、一致性的特性，并且在严格的分叉追责机制下能够制止恶意破坏者的行为。Tendermint Core的拜占庭容错共识算法十分适合用于扩展大众权益证明（POS）区块链。
+这里我们要介绍的 Cosmos，一个全新的区块链网络架构，能够解决所有这些问题。Cosmos 是由许多被称之为“分区”的独立区块链组成的网络。分区在 Tendermint Core [\[8\]][8]的支持下运行，Tendermint Core 是一个[类似拜占庭容错](http://tendermint.com/blog/tendermint-vs-pbft/)安全共识引擎，具有高性能、一致性的特性，并且在严格的[分叉追责](#fork-accountability) 机制下能够制止恶意破坏者的行为。Tendermint Core 的拜占庭容错共识算法十分适合用于扩展权益证明(PoS)机制下的公共区块链。使用其他共识模型的区块链, 包括类似基于权益证明(PoS)的以太坊，以及比特币也能够通过使用适配分区被 Cosmos 网络连接。
 
 The first zone on Cosmos is called the Cosmos Hub. The Cosmos Hub is a
 multi-asset proof-of-stake cryptocurrency with a simple governance mechanism
 which enables the network to adapt and upgrade.  In addition, the Cosmos Hub can be
 extended by connecting other zones.
 
-Cosmos的第一个区称之为Cosmos枢纽。Cosmos枢纽是一种多资产权益证明加密货币网络，它通过简单的治理机制能够对网络进行修补和升级。另外，Cosmos枢纽可以通过链接其他分区来扩展。
+Cosmos 的第一个分区称之为 Cosmos 枢纽。Cosmos 枢纽是一种多资产权益证明加密货币网络，它通过简单的治理机制能够对网络进行适配和升级。此外，Cosmos 枢纽可以通过链接其他分区来实现扩展。
 
 The hub and zones of the Cosmos network communicate with each other via an
 inter-blockchain communication (IBC) protocol, a kind of virtual UDP or TCP for
@@ -149,16 +150,18 @@ total amount of tokens held by each zone.  The hub isolates each zone from the
 failure of other zones.  Because anyone can connect a new zone to the Cosmos Hub,
 zones allow for future-compatibility with new blockchain innovations.
 
-Cosmos网络的枢纽及各个分区可以通过区块链间通信（IBC）协议进行通信，这种协议就是针对区块链的虚拟用户数据报协议（UDP）或者传输控制协议（TCP）。代币可以安全、快速地从一个分区转到其他分区，而无需在两个分区之间需要有交易流动性。相反，所有分区内代币转移都会通过Cosmos枢纽，以此来追踪记录每个分区持有代币的总量。这个枢纽会将每个分区与其他故障分区隔离开。因为每个人都可以将新的分区连接到Cosmos枢纽，所以分区将兼容新的区块链。
+Cosmos 网络的枢纽及各个分区可以通过区块链间通信（IBC）协议进行通信，这种协议就是针对区块链的虚拟用户数据报协议（UDP）或者传输控制协议（TCP）。代币可以安全、快速地从一个分区转到其他分区，而无需在两个分区之间拥具有汇兑流动性。相反，所有跨分区的代币转移都会通过 Cosmos 枢纽，以此来追踪记录每个分区持有代币的总量。这个枢纽会将每个分区与其他故障分区隔离开。因为每个人都可以将新的分区连接到 Cosmos 枢纽，所以分区将可以向后兼容新的区块链技术。
 
 With Cosmos interoperability between blockchains can be achieved. The potential of an internet of value, where assets are issued and controlled by different sets of validators, yet can be moved and exchanged seamlessly between blockchains without relying on trusted third parties can be realized.
+
+利用 Cosmos 可以实现区块链间的互操作。这是一个具有潜力的有价值的互联网络，其中的资产由不同的验证人发布和控制，并可以在不依靠需要信任的第三方的情况下实现跨链资产无缝的转移和交易。
 
 ## Tendermint ##################################################################
 
 In this section we describe the Tendermint consensus protocol and the interface
 used to build applications with it. For more details, see the [appendix](#appendix).
 
-这一部分将阐述Tendermint共识协议和用于建立其应用程序的接口。
+在这一部分我们将阐述Tendermint共识协议和用于建立其应用程序的接口。 更多信息，请参见[附录](#appendix)
 
 ### Validators | 验证人
 
@@ -168,14 +171,14 @@ nodes that have positive voting power are called _validators_.  Validators
 participate in the consensus protocol by broadcasting cryptographic signatures,
 or _votes_, to agree upon the next block.
 
-在经典的拜占庭容错算法中，每个节点有相同的权重。在Tendermint，节点有着不同数量（非负）的投票权，而那些拥有相当数量投票权的节点称之为验证人。验证人通过广播加密签名、投票或者对下一个区块表决同意来参与共识协议。
+在经典的拜占庭容错算法中，每个节点有相同的权重。在 Tendermint，节点有着不同数量（非负）的 _投票权_，而那些拥有相当数量投票权的节点称之为  _验证人_。验证人通过广播加密签名、投票或者对下一个区块表决同意来参与共识协议。
 
 Validators' voting powers are determined at genesis, or are changed
 deterministically by the blockchain, depending on the application.  For example,
 in a proof-of-stake application such as the Cosmos Hub, the voting power may be
 determined by the amount of staking tokens bonded as collateral.
 
-验证者的投票权是一开始就确定好了，或者根据应用程序由区块链来决定修改投票权。例如，在像Cosmos枢纽的权益证明应用里，投票权可由绑定为抵押品的代币数量来决定。
+验证者的投票权是一开始就确定好了，或者根据应用程序由区块链来决定修改投票权。例如，在像Cosmos 枢纽的权益证明应用里，投票权可由绑定为押金的代币数量来决定。
 
 _NOTE: Fractions like ⅔ and ⅓ refer to fractions of the total voting power,
 never the total number of validators, unless all the validators have equal
@@ -198,12 +201,12 @@ or move on to the next round. The proposer for a round is chosen
 deterministically from the ordered list of validators, in proportion to their
 voting power.
 
-Tendermint是部分同步运作的拜占庭容错共识协议，这种协议源自DLS共识算法 。Tendermint以简易性、高性能以及分叉责任制而著称。协议要求这组验证人固定且被熟知，并且每个验证人都有其公钥验证身份。这些验证人试图同时在一个区块上达成共识，这些区块是一系列的交易记录。每个区块的共识轮流进行，每一轮都会有个领头人，或者提议人，由他们来发起区块。之后验证人分阶段对是否接受该区块，或者是否进入下一轮做出投票。每轮的提议人会从验证人顺序列表中按照其选票比例来选择确定。
+Tendermint 是部分同步运作的拜占庭容错共识协议，这种协议源自DLS共识算法 [\[20\]][20]。Tendermint以简易性、高性能以及[分叉问责制](#fork-accountability)而著称。协议要求这组验证人固定且被熟知，并且每个验证人都有其公钥验证身份。这些验证人试图同时在一个区块上达成共识，这些区块是一系列的交易记录。每个区块的共识轮流进行，每一轮都会有个领头人，或者提议人，由他们来发起区块。之后验证人分阶段对是否接受该区块，或者是否进入下一轮做出投票。每轮的提议人会从验证人顺序列表中按照其投票权比例来选择确定。
 
 The full details of the protocol are described
 [here](https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm).
 
-更多协议的全部细节，请点击这里
+更多协议的全部细节，请点击[这里](https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm).
 
 Tendermint’s security derives from its use of optimal Byzantine fault-tolerance
 via super-majority (>⅔) voting and a locking mechanism.  Together, they ensure
@@ -215,10 +218,10 @@ that:
   to do so, they can be identified by the protocol.  This includes both voting
 for conflicting blocks and broadcasting unjustified votes.
 
-Tendermint采用了使用大多数投票（超过三分之二）和锁定机制的最优拜占庭容错，来确保其安全性。这些能够保证：
+Tendermint 采用了使用大多数投票（超过三分之二）和锁定机制的最优拜占庭容错，来确保其安全性。这些能够保证：
 
 * 蓄意破坏者想要造成安全性问题，必须有三分之一以上的投票权，并且要提交超过两份以上的值。
-* 如果有一组验证人成功破坏了安全性，或者试图这么做，他们会被协议识别验证身份。被识别的包括有问题的区块和广播不正当的投票。
+* 如果有一组验证人成功破坏了安全性，或者曾试图这么做，他们会被协议识别。协议包括对有冲突的区块进行投票和广播那些有问题的投票。
 
 Despite its strong guarantees, Tendermint provides exceptional performance.  In
 benchmarks of 64 nodes distributed across 7 datacenters on 5 continents, on
