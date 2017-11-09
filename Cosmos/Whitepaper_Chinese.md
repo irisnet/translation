@@ -82,7 +82,7 @@ _注意：如果你能在github上阅读，我们仍然会积极地更新这个�
   * [Acknowledgements](#acknowledgements)
   * [Citations](#citations)
 
-## Introduction | 介绍 ################################################################
+## <P1-Reviewed>Introduction | 介绍 ################################################################
 
 The combined success of the open-source ecosystem, decentralized
 file-sharing, and public cryptocurrencies has inspired an understanding that
@@ -156,14 +156,14 @@ With Cosmos interoperability between blockchains can be achieved. The potential 
 
 利用 Cosmos 可以实现区块链间的互操作。这是一个具有潜力的有价值的互联网络，其中的资产由不同的验证人发布和控制，并可以在不依靠需要信任的第三方的情况下实现跨链资产无缝的转移和交易。
 
-## Tendermint ##################################################################
+## <P1-Reviewed>Tendermint ##################################################################
 
 In this section we describe the Tendermint consensus protocol and the interface
 used to build applications with it. For more details, see the [appendix](#appendix).
 
 在这一部分我们将阐述Tendermint共识协议和用于建立其应用程序的接口。 更多信息，请参见[附录](#appendix)
 
-### Validators | 验证人
+### <P1-Reviewed>Validators | 验证人
 
 In classical Byzantine fault-tolerant (BFT) algorithms, each node has the same
 weight.  In Tendermint, nodes have a non-negative amount of _voting power_, and
@@ -187,7 +187,7 @@ weight. >⅔ means "more than ⅔", ≥⅓ means "at least ⅓"._
 
 注意：像⅔和⅓这样的分数指的是占总投票权的分数，而不是总验证人，除非所有验证人拥有相同权重。而>⅔ 的意思是"超过⅔ "，≥⅓则是"⅓或者更多"的意思。
 
-### Consensus | 共识
+### <P1-Reviewed>Consensus | 共识
 
 Tendermint is a partially synchronous BFT consensus protocol derived from the
 DLS consensus algorithm [\[20\]][20]. Tendermint is notable for its simplicity,
@@ -231,7 +231,7 @@ seconds.  Notably, performance of well over a thousand transactions per second
 is maintained even in harsh adversarial conditions, with validators crashing or
 broadcasting maliciously crafted votes.  See the figure below for details.
 
-除了其超强的安全性外，Tendermint还具备杰出的性能。以商用型云平台为例，Tendermint共识以分布在五大洲七个数据中心的64位节点为基准，其每秒可以处理成千上万笔交易，提交顺序延迟时间为1-2秒。而值得关注的是，即使是在极其恶劣的敌对环境中，比如验证人崩溃了或者是广播恶意只做的投票，也能维持这种每秒千笔交易的高绩效。详见下图。
+除了其超强的安全性外，Tendermint还具备杰出的性能。以商用型云平台为例，Tendermint共识以分布在五大洲七个数据中心的64位节点为基准，其每秒可以处理成千上万笔交易，订单提交延迟时间为1-2秒。而值得关注的是，即使是在极其恶劣的敌对环境中，比如验证人崩溃了或者是广播恶意破坏的投票，也能维持这种每秒超过千笔交易的较高性能。详见下图。
 
 ![Figure of Tendermint throughput performance](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/images/tendermint_throughput_blocksize.png)
 
@@ -546,7 +546,7 @@ for for more information on the two IBC transaction types._
 
 ## Use Cases | 用例 ###################################################################
 
-### Distributed Exchange | 去中心化交易所
+### <P1-Reviewed> Distributed Exchange | 去中心化交易所
 
 In the same way that Bitcoin is more secure by being a distributed,
 mass-replicated ledger, we can make exchanges less vulnerable to external and
@@ -594,7 +594,7 @@ prioritizing fast finality without sacrificing consistency, zones in Cosmos can
 finalize transactions fast -- for both exchange order transactions as well as
 IBC token transfers to and from other zones.
 
-Tendermint 提供的快速交易执行是另一大优势。Cosmos 的空间可以在不牺牲一致性的前提下优先快速的最终确定，来实现交易的快速完成 —— 同时针对交易订单交易，以及 IBC（跨区块链通信）代币与其他空间的交易。
+Tendermint 提供的快速交易执行是另一大优势。Cosmos 的分区可以在不牺牲一致性的前提下优先快速的最终确定，来实现交易的快速完成 —— 同时针对交易订单交易，以及 IBC（跨区块链通信）代币与其他空间的交易。
 
 Given the state of cryptocurrency exchanges today, a great application for
 Cosmos is the distributed exchange (aka the Cosmos DEX).  The transaction
