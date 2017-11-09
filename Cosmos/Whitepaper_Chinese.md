@@ -553,7 +553,7 @@ mass-replicated ledger, we can make exchanges less vulnerable to external and
 internal hacks by running it on the blockchain.  We call this a distributed
 exchange.
 
-比特币借助大量复制的分布式账本来增加安全性。用类似的方式，我们可以在区块链上运行交易所，来降低其受内部外部攻击的可能性。我们称之为去中心化交易所。
+比特币借助大量复制来增加分布式账本的安全性。用类似的方式，我们可以在区块链上运行交易所，来降低其受内部及外部攻击的可能性。我们称之为去中心化交易所。
 
 What the cryptocurrency community calls a decentralized exchange today are
 based on something called "atomic cross-chain" (AXC) transactions.  With an AXC
