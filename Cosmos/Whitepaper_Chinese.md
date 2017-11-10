@@ -619,12 +619,12 @@ such as Bitcoin's proof-of-work mining.
 
 特权分区可以作为和其他加密货币挂钩的代币来源。这种挂钩类似Cosmos枢纽与分区之间的关系，两者都必须及时更新彼此最新的区块链，从而验证代币已经从一方转移到另一方。Cosmos网络上挂钩的”桥接空间“要和中心以及其他加密币保持同步。这种间接通过”桥接空间“可以保持枢纽逻辑的简洁。并且不必要了解其他的链上共识战略，如比特币工作量证明挖矿机制。
 
-#### Sending Tokens to the Cosmos Hub | 朝Cosmos中心发送代币
+#### Sending Tokens to the Cosmos Hub | 向Cosmos中心发送代币
 
 Each bridge-zone validator would run a Tendermint-powered blockchain with a special
 ABCI bridge-app, but also a full-node of the "origin" blockchain.
 
-每个挂钩过桥区验证人都会运行带有特殊的ABCI桥接应用程序的Tendermint区块链，而且会运行“起始点”区块链的所有节点。
+每个挂钩桥接分区的验证人都会在基于Tendermint公式的区块链之上，运行带有特殊的ABCI桥接应用程序，但同时也会运行一个原有区块链的“全节点”。
 
 When new blocks are mined on the origin, the bridge-zone validators will come
 to agreement on committed blocks by signing and sharing their respective local
@@ -633,7 +633,7 @@ origin (and sufficient confirmations were agreed to have been seen in the case
 of a PoW chain such as Ethereum or Bitcoin), a corresponding account is created
 on the bridge-zone with that balance.
 
-在起始点挖出新区块时，挂钩区验证人员将通过签署和分享起始点区块链的提示，各自局部视角可以达成一致。当一个挂钩区收到起始点的支付时（如在以太坊或比特币等PoW机制的链上有足够数目的确认），则在该挂钩区域上创建具有该对应账户的余额。
+在原有区块链挖出新区块时，桥接分区验证人员将通过签署和分享起始点区块链的提示，各自局部视角可以达成一致。当一个桥接分区收到原有区块链的支付时（如在以太坊或比特币等PoW机制的链上有足够数目的确认），则在该桥接分区上创建具有该对应账户的余额。
 
 In the case of Ethereum, the bridge-zone can share the same validator-set as the
 Cosmos Hub.  On the Ethereum side (the origin), a bridge-contract would allow
@@ -643,14 +643,14 @@ withdrawn unless an appropriate IBC packet is received by the bridge-contract fr
 the bridge-zone.  The bridge-contract tracks the validator-set of the bridge-zone, which
 may be identical to the Cosmos Hub's validator-set.
 
-就以太坊而言，挂钩区可以和Cosmos 中心共享相同的验证人。以太坊方面（起始点），一个挂钩合约将允许以太拥有者通过将以太币发送到以太坊的钩区的挂钩合约上。一旦挂钩合约接收到以太币，以太币就不能被撤回，除非从挂钩区接收到合适的IBC数据包。挂钩合约跟随挂钩区的验证组，它可能与Cosmos 中心的验证组相同。
+就以太坊而言，桥接分区可以和Cosmos枢纽共享相同的见证人。以太坊方面（原本区块链），一个桥接合约将允许以太拥有者通过将以太币发送到以太坊的桥接分区的桥接合约上。一旦挂桥接合约接收到以太币，以太币就不能被撤回，除非从桥接分区接收到对应的IBC数据包。桥接合约跟随桥接分区的验证组，它可能与Cosmos枢纽的见证人组相同。
 
 In the case of Bitcoin, the concept is similar except that instead of a single
 bridge-contract, each UTXO would be controlled by a threshold multisignature P2SH
 pubscript.  Due to the limitations of the P2SH system, the signers cannot be
 identical to the Cosmos Hub validator-set.
 
-就比特币而言，概念是相似，除了代替一个挂钩合约，每个UTXO将由一个门限多重签名P2SH 数据库限制。由于P2SH系统的限制，签名者不能与Cosmos 中心的验证组相同。
+就比特币而言，概念是相似，除了代替一个桥接合约，每个UTXO将由一个门限多重签名P2SH数据库限制。由于P2SH系统的限制，签名者不能与Cosmos枢纽的见证人组相同。
 
 #### Withdrawing Tokens from Cosmos Hub | 从Cosmos中心提出代币
 
