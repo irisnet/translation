@@ -660,7 +660,7 @@ withdrawal address on Ethereum. An IBC packet proving that the transaction
 occurred on the bridge-zone can be posted to the Ethereum bridge-contract to
 allow the ether to be withdrawn.
 
-挂钩区上的以太币（“挂钩以太”）可以转移到中心或从中心转出去，完成传送到特定以太坊提取地址后，再彻底删除。IBC包裹可以证明挂钩空间上的交易，这个包裹将被公布到以太坊挂钩合约中，以便以太币被提出。
+桥接分区上的以太币（“桥接以太币”）可以在枢纽间转进，转出，完成传送到特定以太坊提取地址后，转出的“桥接以太币”被彻底删除。一个IBC信息可以证明桥接分区上的交易，这个信息将被公布到以太坊桥接合约中，以便以太币被取出。
 
 In the case of Bitcoin, the restricted scripting system makes it difficult to
 mirror the IBC coin-transfer mechanism.  Each UTXO has its own independent
@@ -668,7 +668,7 @@ pubscript, so every UTXO must be migrated to a new UTXO when there is a change
 in the set of Bitcoin escrow signers. One solution is to compress and
 decompress the UTXO-set as necessary to keep the total number of UTXOs down.
 
-就比特币而言，严格受限的脚本写入系统很难反应IBC币的转换机制。每个UTXO都有自己的独立数据库，所以当比特币履约签名者发生变化时，每个UTXO都必须迁移到新的UTXO。一个解决方案是根据需要，压缩和解压缩UTXO-set，以保持UTXO的总数量下降。
+就比特币而言，严谨的交易脚本系统让IBC币的镜像转换机制很难实现。每个UTXO都有自己的特定的脚本，所以当比特币履约签名者发生变化时，每个UTXO都必须迁移到新的UTXO。一个解决方案是根据需要，压缩和解压缩UTXO-set，以保持UTXO的总数量下降。
 
 #### Total Accountability of Bridge Zones | 挂钩区完全责任制
 
