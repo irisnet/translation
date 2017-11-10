@@ -617,7 +617,7 @@ other cryptocurrency.  The indirection through the bridge-zone allows the logic 
 the Hub to remain simple and agnostic to other blockchain consensus strategies
 such as Bitcoin's proof-of-work mining.
 
-特权空间可以作为和其他加密货币挂钩的代币来源。这种挂钩类似Cosmos中心与空间之间的关系，两者都必须及时更新彼此最新的区块链，从而验证代币已经从一方转移到另一方。Cosmos网络上挂钩的过桥空间要和中心以及其他加密币保持同步。这种间的过桥空间可以保持中心逻辑的简洁。并且不必要了解其他的链上共识战略（如比特币工作量证明挖矿机制）。
+特权分区可以作为和其他加密货币挂钩的代币来源。这种挂钩类似Cosmos枢纽与分区之间的关系，两者都必须及时更新彼此最新的区块链，从而验证代币已经从一方转移到另一方。Cosmos网络上挂钩的”桥接空间“要和中心以及其他加密币保持同步。这种间接通过”桥接空间“可以保持枢纽逻辑的简洁。并且不必要了解其他的链上共识战略，如比特币工作量证明挖矿机制。
 
 #### Sending Tokens to the Cosmos Hub | 朝Cosmos中心发送代币
 
