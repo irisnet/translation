@@ -678,7 +678,7 @@ Ethereum while keeping the bridged-ether on the bridge-zone. Worse, >⅔ Byzanti
 voting power can steal ether outright from those who sent it to the
 bridge-contract by deviating from the original bridgeging logic of the bridge-zone.
 
-这类挂钩合约存在风险的风险是，可能会出现恶劣的验证组。如果拜占庭投票权超过⅓，就会造成分叉，即从以太坊挂钩合约中提取以太币的同时，还能保持挂钩空间中的挂钩以太币不变。甚至，如果拜占庭投票权超过⅔，可能会有人直接对发送以太币发到挂钩合约中（通过脱离原始挂钩空间的挂钩逻辑）的人下手，盗取以太币。
+这类挂钩合约存在风险的风险是，可能会出现恶意的见证人组。如果拜占庭投票权超过⅓，就会造成分叉，即从以太坊桥接合约中提取以太币的同时，还能保持桥接分区中的挂钩以太币不变。甚至，如果拜占庭投票权超过⅔，可能会有人直接通过脱离原始桥接分区的桥接逻辑，对发送以太币发到桥接合约中的帐户下手，盗取以太币。
 
 It is possible to address these issues by designing the bridge to be totally
 accountable.  For example, all IBC packets, from the hub and the origin, might
@@ -692,7 +692,7 @@ auditors.  We leave the design of the specification and implementation of this
 system open as a future Cosmos improvement proposal, to be passed by the Cosmos
 Hub's governance system.
 
-如果将这个挂钩方法完全设计成责任制，就有可能解决这一问题。比如，中心及起始点的全部IBC包裹可能需要先通过挂钩空间的认可，即让中心或起始点中的钩挂合约对挂钩空间的所有状态转换进行有效验证。中心及起始点要允许挂钩空间的验证人提供抵押物，而挂钩合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的挑战。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos中心的管理系统审批通过。
+如果将这个桥接方法完全设计成责任制，就有可能解决这一问题。比如，枢纽及起始点的全部IBC包裹可能需要先通过桥接分区的认可，即让枢纽或起始点中的桥接合约对桥接分区的所有状态转换进行有效验证。枢纽及起始点要允许桥接空间的验证人提供抵押物，而侨界合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的质询。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos中心的管理系统审批通过。
 
 ### Ethereum Scaling | 以太坊的扩展
 
