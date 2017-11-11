@@ -731,7 +731,7 @@ fault-tolerant exchange (with orderbooks), which can be a strict improvement
 over existing centralized cryptocurrency exchanges which tend to get hacked over
 time.
 
-Cosmos空间可以运行任意的应用逻辑，应用在空间运转初期设定好，可通过管理可以不断更新。这种灵活度使得Cosmos空间可以作为其他加密币的挂钩载体，比如以太坊或比特币，并且它还能和这些区块链的衍生品挂钩，利用同样的代码库，而在验证程序及初始分配有所区分。这样就允许多种现有加密币框架得以运行，如以太坊、Zerocash、比特币、CryptoNote等等，将其同Tendermint Core结合，成为通用网络中性能更优的共识引擎，为平台之间提供更多的交互机会。此外，作为多资产区块链，每笔交易都有可能包含多个输入输出项，其中每个输入项都可以是任意代币，使Cosmos直接成为去中心化交易所，当然这里假设订单通过其他平台进行匹配。替代方案是，让空间作为分布式容错交易所（包含订单簿），这算是对中心化加密币交易所之上的严格改进——现行交易所过去被攻击时常偶发。
+Cosmos分区可以运行任意的应用逻辑，应用在分区创建时设定好，可通过管理者可以不断更新。这种灵活度使得Cosmos分区可以作为其他加密币的挂钩载体，比如以太坊或比特币，并且它还能和这些区块链的衍生品挂钩，利用同样的代码库，而在验证程序及初始分配有所区分。这样就允许多种现有加密币框架得以运行，如以太坊、Zerocash、比特币、CryptoNote等等，将其同Tendermint Core结合，成为通用网络中性能更优的共识引擎，为平台之间提供更多的交互机会。此外，作为多资产区块链，每笔交易都有可能包含多个输入输出项，其中每个输入项都可以是任意代币，使Cosmos直接成为去中心化交易所，当然这里假设交易订单通过其他平台进行匹配。替代方案是，让分区作为分布式容错交易所（包含买卖盘账目），这算是对中心化加密币交易所之上的严格改进——现行交易所在过去时常发生被攻击的事件。
 
 Zones can also serve as blockchain-backed versions of enterprise and government
 systems, where pieces of a particular service that are traditionally run by an
@@ -742,7 +742,7 @@ Thus, Cosmos may offer the best of both worlds for organizations looking to
 utilize blockchain technology but who are wary of relinquishing control completely
 to a distributed third party.
 
-空间也可以作为区块链版的企业及政府系统，其原本由一个或多个组织运行的特定服务，现在作为TMSP应用在某个空间上运行，从而在不放弃对底层服务控制的前提下，维持公共Cosmos网络的安全性及交互性。所以，Cosmos或可为那些既想使用区块链技术，又不愿彻底放弃控制权给分布式第三方的人，提供绝佳的运行环境。
+分区也可以作为区块链版的企业及政府系统，其原本由一个或多个组织运行的特定服务，现在作为ABCI应用在某个分区上运行，从而在不放弃对底层服务控制的前提下，维持公共Cosmos网络的安全性及交互性。所以，Cosmos或可为那些既想使用区块链技术，又不愿彻底放弃控制权给分布式第三方的人，提供绝佳的运行环境。
 
 ### Network Partition Mitigation | 缓解网络分区问题
 
