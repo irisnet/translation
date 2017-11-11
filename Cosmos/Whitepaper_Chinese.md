@@ -700,7 +700,7 @@ Solving the scaling problem is an open issue for Ethereum.  Currently,
 Ethereum nodes process every single transaction and also store all the states.
 [link](https://docs.google.com/presentation/d/1CjD0W4l4-CwHKUvfF5Vlps76fKLEC6pIwu1a_kC_YRQ/mobilepresent?slide=id.gd284b9333_0_28).
 
-众所周知，扩展问题是一直围绕着以太坊的问题。目前以太坊会处理节点上每笔交易，并且存储所有的状态。
+众所周知，扩展问题是一直困扰着以太坊的问题。目前以太坊节点会处理节点上每笔交易，并且存储所有的状态。
 
 Since Tendermint can commit blocks much faster than Ethereum's proof-of-work,
 EVM zones powered by Tendermint consensus and operating on bridged-ether can
@@ -710,7 +710,7 @@ execution per se, it can be used to coordinate token movements between Ethereum
 contracts running on different zones, providing a foundation for token-centric
 Ethereum scaling via sharding.
 
-Tendermint提交区块的速度比以太坊工作量证明要快，所以由Tendermint共识推动且用于挂钩以太币运行的EVM（以太坊虚拟机）空间能够强化太坊区块链的性能。此外，虽然Cosmos中心及IBC包裹技术不能实现每秒合约逻辑的执行，但是它可以用来协调不同空间里以太坊合约之间的代币流通，通过分区方式为以代币为中心的以太坊扩展奠定基础。
+Tendermint提交区块的速度比以太坊工作量证明要快，所以由Tendermint共识推动且使用桥接以太币运行的以太坊虚拟机分区能够强化太坊区块链的性能。此外，虽然Cosmos枢纽及IBC包裹机制不能实现每秒合约逻辑的执行，但是它可以用来协调不同分区中以太坊合约之间的代币流通，通过分片方式为以代币为中心的以太坊扩展奠定基础。
 
 ### Multi-Application Integration | 多用一体化
 
