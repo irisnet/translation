@@ -678,7 +678,7 @@ Ethereum while keeping the bridged-ether on the bridge-zone. Worse, >⅔ Byzanti
 voting power can steal ether outright from those who sent it to the
 bridge-contract by deviating from the original bridgeging logic of the bridge-zone.
 
-这类挂钩合约存在风险的风险是，可能会出现恶劣的验证组。如果拜占庭投票权超过⅓，就会造成分叉，即从以太坊挂钩合约中提取以太币的同时，还能保持挂钩空间中的挂钩以太币不变。甚至，如果拜占庭投票权超过⅔，可能会有人直接对发送以太币发到挂钩合约中（通过脱离原始挂钩空间的挂钩逻辑）的人下手，盗取以太币。
+这类挂钩合约存在风险的风险是，可能会出现恶意的见证人组。如果拜占庭投票权超过⅓，就会造成分叉，即从以太坊桥接合约中提取以太币的同时，还能保持桥接分区中的挂钩以太币不变。甚至，如果拜占庭投票权超过⅔，可能会有人直接通过脱离原始桥接分区的桥接逻辑，对发送以太币发到桥接合约中的帐户下手，盗取以太币。
 
 It is possible to address these issues by designing the bridge to be totally
 accountable.  For example, all IBC packets, from the hub and the origin, might
@@ -692,7 +692,7 @@ auditors.  We leave the design of the specification and implementation of this
 system open as a future Cosmos improvement proposal, to be passed by the Cosmos
 Hub's governance system.
 
-如果将这个挂钩方法完全设计成责任制，就有可能解决这一问题。比如，中心及起始点的全部IBC包裹可能需要先通过挂钩空间的认可，即让中心或起始点中的钩挂合约对挂钩空间的所有状态转换进行有效验证。中心及起始点要允许挂钩空间的验证人提供抵押物，而挂钩合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的挑战。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos中心的管理系统审批通过。
+如果将这个桥接方法完全设计成责任制，就有可能解决这一问题。比如，枢纽及起始点的全部IBC包裹可能需要先通过桥接分区的认可，即让枢纽或起始点中的桥接合约对桥接分区的所有状态转换进行有效验证。枢纽及起始点要允许桥接空间的验证人提供抵押物，而侨界合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的质询。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos中心的管理系统审批通过。
 
 ### Ethereum Scaling | 以太坊的扩展
 
@@ -700,7 +700,7 @@ Solving the scaling problem is an open issue for Ethereum.  Currently,
 Ethereum nodes process every single transaction and also store all the states.
 [link](https://docs.google.com/presentation/d/1CjD0W4l4-CwHKUvfF5Vlps76fKLEC6pIwu1a_kC_YRQ/mobilepresent?slide=id.gd284b9333_0_28).
 
-众所周知，扩展问题是一直围绕着以太坊的问题。目前以太坊会处理节点上每笔交易，并且存储所有的状态。
+众所周知，扩展问题是一直困扰着以太坊的问题。目前以太坊节点会处理节点上每笔交易，并且存储所有的状态。
 
 Since Tendermint can commit blocks much faster than Ethereum's proof-of-work,
 EVM zones powered by Tendermint consensus and operating on bridged-ether can
@@ -710,7 +710,7 @@ execution per se, it can be used to coordinate token movements between Ethereum
 contracts running on different zones, providing a foundation for token-centric
 Ethereum scaling via sharding.
 
-Tendermint提交区块的速度比以太坊工作量证明要快，所以由Tendermint共识推动且用于挂钩以太币运行的EVM（以太坊虚拟机）空间能够强化太坊区块链的性能。此外，虽然Cosmos中心及IBC包裹技术不能实现每秒合约逻辑的执行，但是它可以用来协调不同空间里以太坊合约之间的代币流通，通过分区方式为以代币为中心的以太坊扩展奠定基础。
+Tendermint提交区块的速度比以太坊工作量证明要快，所以由Tendermint共识推动且使用桥接以太币运行的以太坊虚拟机分区能够强化太坊区块链的性能。此外，虽然Cosmos枢纽及IBC包裹机制不能实现每秒合约逻辑的执行，但是它可以用来协调不同分区中以太坊合约之间的代币流通，通过分片方式为以代币为中心的以太坊扩展奠定基础。
 
 ### Multi-Application Integration | 多用一体化
 
@@ -731,7 +731,7 @@ fault-tolerant exchange (with orderbooks), which can be a strict improvement
 over existing centralized cryptocurrency exchanges which tend to get hacked over
 time.
 
-Cosmos空间可以运行任意的应用逻辑，应用在空间运转初期设定好，可通过管理可以不断更新。这种灵活度使得Cosmos空间可以作为其他加密币的挂钩载体，比如以太坊或比特币，并且它还能和这些区块链的衍生品挂钩，利用同样的代码库，而在验证程序及初始分配有所区分。这样就允许多种现有加密币框架得以运行，如以太坊、Zerocash、比特币、CryptoNote等等，将其同Tendermint Core结合，成为通用网络中性能更优的共识引擎，为平台之间提供更多的交互机会。此外，作为多资产区块链，每笔交易都有可能包含多个输入输出项，其中每个输入项都可以是任意代币，使Cosmos直接成为去中心化交易所，当然这里假设订单通过其他平台进行匹配。替代方案是，让空间作为分布式容错交易所（包含订单簿），这算是对中心化加密币交易所之上的严格改进——现行交易所过去被攻击时常偶发。
+Cosmos分区可以运行任意的应用逻辑，应用在分区创建时设定好，可通过管理者可以不断更新。这种灵活度使得Cosmos分区可以作为其他加密币的挂钩载体，比如以太坊或比特币，并且它还能和这些区块链的衍生品挂钩，利用同样的代码库，而在验证程序及初始分配有所区分。这样就允许多种现有加密币框架得以运行，如以太坊、Zerocash、比特币、CryptoNote等等，将其同Tendermint Core结合，成为通用网络中性能更优的共识引擎，为平台之间提供更多的交互机会。此外，作为多资产区块链，每笔交易都有可能包含多个输入输出项，其中每个输入项都可以是任意代币，使Cosmos直接成为去中心化交易所，当然这里假设交易订单通过其他平台进行匹配。替代方案是，让分区作为分布式容错交易所（包含买卖盘账目），这算是对中心化加密币交易所之上的严格改进——现行交易所在过去时常发生被攻击的事件。
 
 Zones can also serve as blockchain-backed versions of enterprise and government
 systems, where pieces of a particular service that are traditionally run by an
@@ -742,7 +742,7 @@ Thus, Cosmos may offer the best of both worlds for organizations looking to
 utilize blockchain technology but who are wary of relinquishing control completely
 to a distributed third party.
 
-空间也可以作为区块链版的企业及政府系统，其原本由一个或多个组织运行的特定服务，现在作为TMSP应用在某个空间上运行，从而在不放弃对底层服务控制的前提下，维持公共Cosmos网络的安全性及交互性。所以，Cosmos或可为那些既想使用区块链技术，又不愿彻底放弃控制权给分布式第三方的人，提供绝佳的运行环境。
+分区也可以作为区块链版的企业及政府系统，其原本由一个或多个组织运行的特定服务，现在作为ABCI应用在某个分区上运行，从而在不放弃对底层服务控制的前提下，维持公共Cosmos网络的安全性及交互性。所以，Cosmos或可为那些既想使用区块链技术，又不愿彻底放弃控制权给分布式第三方的人，提供绝佳的运行环境。
 
 ### Network Partition Mitigation | 缓解网络分区问题
 
@@ -766,7 +766,7 @@ NameCoin was one of the first blockchains to attempt to solve the
 name-resolution problem by adapting the Bitcoin blockchain.  Unfortunately there
 have been several issues with this approach.
 
-NameCoin是首批试图通过比特币区块链解决名称解析问题的区块链之一。不过，这个方案存在一些不足。
+NameCoin是首批试图通过比特币技术解决名称解析问题的区块链之一。不过，这个方案存在一些不足。
 
 With Namecoin, we can verify that, for example, <em>@satoshi</em> was registered with a
 particular public key at some point in the past, but we wouldn’t know whether
@@ -779,7 +779,7 @@ can't know for certain the most recent value of a name without trusting a full
 node, or incurring significant costs in bandwidth by downloading the whole
 blockchain.
 
-如，我们可以通过Namecoin来验证_@satoshi_（中本聪）这个号是在过去某个时间点用特定公钥进行注册的。但是，该公钥是否更新过我们就不得而知了，除非将该名称最后一次更新之前的所有全部下载。这一点是比特币UTXO交易模式中梅克尔式模型的局限性导致的，这类模型中只有交易（而非可变的应用状态）会以梅克尔形式加入到区块哈希中。它让我们得在之后用更新证明名称的存在，而非不存在。因此，我们必须依靠全节点才能明确这个名称的最近的值，或者花费巨大投入下载整个区块链。
+例如，我们可以通过Namecoin来验证@satoshi（聪）这个号是在过去某个时间点用特定公钥进行注册的。但是，该公钥是否更新过我们就不得而知了，除非将该名称最后一次更新之前的所有全部下载。这一点是比特币UTXO交易模式中默克尔化模型的局限性导致的，这类模型中只有交易（而非可变的应用状态）会以默克尔化加入到区块哈希中。它让我们得在之后用更新证明名称的存在，而非不存在。因此，我们必须依靠全节点才能明确这个名称的最近的值，或者花费大量资源下载整个区块链。
 
 Even if a Merkle-ized search tree were implemented in NameCoin, its dependency
 on proof-of-work makes light client verification problematic. Light clients must
@@ -790,21 +790,21 @@ In addition, name-changes on a proof-of-work blockchain requires waiting for
 additional proof-of-work confirmation blocks, which can take up to an hour on
 Bitcoin.
 
-即使在NameCoin上运用默克尔化的搜索树，其工作量证明的独立性还是会导致轻客戸端的验证出现问题。轻客戸端必须下载区块链中所有区块头的完整复件（或者至少是自其最后的名称更新的所有区块头）。这意味着带宽需要随着时间做线性的扩展。 [\[21\]][21]此外，在工作量证明制度使区块链上的名称更改需要等额外的工作量证明验证确认才能进行，它在比特币上可能要花费一个小时。
+即使在NameCoin上运用默克尔化的搜索树，其工作量证明的独立性还是会导致轻客戸端的验证出现问题。轻客戸端必须下载区块链中所有区块头的完整备份（或者至少是自其最后的名称更新的所有区块头）。这意味着带宽需要随着时间做线性的扩展。 [21]此外，在工作量证明制度使区块链上的名称更改需要等额外的工作量证明验证确认才能进行，它在比特币上可能要花费一个小时。
 
 With Tendermint, all we need is the most recent block-hash signed by a quorum of
 validators (by voting power), and a Merkle proof to the current value associated
 with the name.  This makes it possible to have a succinct, quick, and secure
 light-client verification of name values.
 
-有了Tendermint，我们只需用到由法定数量验证人签署（通过投票权）的区块哈希，以及与名称相关的当前值的默克尔证明。这点让简易、快速、安全的轻客戸端名称值验证成为可能。
+有了Tendermint，我们只需用到由法定数量见证人签署（通过投票权）的区块哈希，以及与名称相关的当前值的默克尔证明。这点让简易、快速、安全的轻客戸端名称值验证成为可能。
 
 In Cosmos, we can take this concept and extend it further. Each
 name-registration zone in Cosmos can have an associated top-level-domain
 (TLD) name such as ".com" or ".org", and each name-registration zone can have
 its own governance and registration rules.
 
-在Cosmos中，我们可以利用这个概念并延伸。每一个在Cosmos上的姓名注册都能有一个相关的最高级别域名（TLD），比如".com"或者".org"等，而且每个名称注册空间都有自己的管理和登记规则。
+在Cosmos中，我们可以利用这个概念并延伸。每一个在Cosmos上的名称注册都能有一个相关的最高级别域名（TLD），比如".com"或者".org"等，而且每个名称注册空间都有自己的管理和登记规则。
 
 ## Issuance and Incentives | 发行与激励 #####################################################
 
