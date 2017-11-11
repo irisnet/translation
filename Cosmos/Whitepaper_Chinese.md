@@ -766,7 +766,7 @@ NameCoin was one of the first blockchains to attempt to solve the
 name-resolution problem by adapting the Bitcoin blockchain.  Unfortunately there
 have been several issues with this approach.
 
-NameCoin是首批试图通过比特币区块链解决名称解析问题的区块链之一。不过，这个方案存在一些不足。
+NameCoin是首批试图通过比特币技术解决名称解析问题的区块链之一。不过，这个方案存在一些不足。
 
 With Namecoin, we can verify that, for example, <em>@satoshi</em> was registered with a
 particular public key at some point in the past, but we wouldn’t know whether
@@ -779,7 +779,7 @@ can't know for certain the most recent value of a name without trusting a full
 node, or incurring significant costs in bandwidth by downloading the whole
 blockchain.
 
-如，我们可以通过Namecoin来验证_@satoshi_（中本聪）这个号是在过去某个时间点用特定公钥进行注册的。但是，该公钥是否更新过我们就不得而知了，除非将该名称最后一次更新之前的所有全部下载。这一点是比特币UTXO交易模式中梅克尔式模型的局限性导致的，这类模型中只有交易（而非可变的应用状态）会以梅克尔形式加入到区块哈希中。它让我们得在之后用更新证明名称的存在，而非不存在。因此，我们必须依靠全节点才能明确这个名称的最近的值，或者花费巨大投入下载整个区块链。
+例如，我们可以通过Namecoin来验证@satoshi（聪）这个号是在过去某个时间点用特定公钥进行注册的。但是，该公钥是否更新过我们就不得而知了，除非将该名称最后一次更新之前的所有全部下载。这一点是比特币UTXO交易模式中默克尔化模型的局限性导致的，这类模型中只有交易（而非可变的应用状态）会以默克尔化加入到区块哈希中。它让我们得在之后用更新证明名称的存在，而非不存在。因此，我们必须依靠全节点才能明确这个名称的最近的值，或者花费大量资源下载整个区块链。
 
 Even if a Merkle-ized search tree were implemented in NameCoin, its dependency
 on proof-of-work makes light client verification problematic. Light clients must
@@ -790,21 +790,21 @@ In addition, name-changes on a proof-of-work blockchain requires waiting for
 additional proof-of-work confirmation blocks, which can take up to an hour on
 Bitcoin.
 
-即使在NameCoin上运用默克尔化的搜索树，其工作量证明的独立性还是会导致轻客戸端的验证出现问题。轻客戸端必须下载区块链中所有区块头的完整复件（或者至少是自其最后的名称更新的所有区块头）。这意味着带宽需要随着时间做线性的扩展。 [\[21\]][21]此外，在工作量证明制度使区块链上的名称更改需要等额外的工作量证明验证确认才能进行，它在比特币上可能要花费一个小时。
+即使在NameCoin上运用默克尔化的搜索树，其工作量证明的独立性还是会导致轻客戸端的验证出现问题。轻客戸端必须下载区块链中所有区块头的完整备份（或者至少是自其最后的名称更新的所有区块头）。这意味着带宽需要随着时间做线性的扩展。 [21]此外，在工作量证明制度使区块链上的名称更改需要等额外的工作量证明验证确认才能进行，它在比特币上可能要花费一个小时。
 
 With Tendermint, all we need is the most recent block-hash signed by a quorum of
 validators (by voting power), and a Merkle proof to the current value associated
 with the name.  This makes it possible to have a succinct, quick, and secure
 light-client verification of name values.
 
-有了Tendermint，我们只需用到由法定数量验证人签署（通过投票权）的区块哈希，以及与名称相关的当前值的默克尔证明。这点让简易、快速、安全的轻客戸端名称值验证成为可能。
+有了Tendermint，我们只需用到由法定数量见证人签署（通过投票权）的区块哈希，以及与名称相关的当前值的默克尔证明。这点让简易、快速、安全的轻客戸端名称值验证成为可能。
 
 In Cosmos, we can take this concept and extend it further. Each
 name-registration zone in Cosmos can have an associated top-level-domain
 (TLD) name such as ".com" or ".org", and each name-registration zone can have
 its own governance and registration rules.
 
-在Cosmos中，我们可以利用这个概念并延伸。每一个在Cosmos上的姓名注册都能有一个相关的最高级别域名（TLD），比如".com"或者".org"等，而且每个名称注册空间都有自己的管理和登记规则。
+在Cosmos中，我们可以利用这个概念并延伸。每一个在Cosmos上的名称注册都能有一个相关的最高级别域名（TLD），比如".com"或者".org"等，而且每个名称注册空间都有自己的管理和登记规则。
 
 ## Issuance and Incentives | 发行与激励 #####################################################
 
