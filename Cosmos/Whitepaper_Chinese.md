@@ -441,7 +441,7 @@ then communicated from one zone to another by posting Merkle-proofs as evidence
 that the information was sent and received.  This mechanism is called
 inter-blockchain communication, or IBC for short.
 
-在这个基础上，Cosmos枢纽负责管理称之为“分区”的众多独立区块链（有时也叫做"碎片"，根据数据库扩展技术"分片"得出）。枢纽上的分片会源源不断地提交最新区块，这一点可以让枢纽同步每一个分区的状态。同样地，每个分区也会和枢纽的状态保持一致（不过分区之间不会同彼此的同步，除非间接通过枢纽来实现）。通过发布默克尔证明来证明信息被接受和发送，来让信息从一个分区传递到另一个分区。这种机制叫做"区块链间通信"，或者简称为"IBC"机制。
+在这个基础上，Cosmos枢纽负责管理称之为“分区”的众多独立区块链（有时也叫做"碎片"，根据数据库扩展技术"分片"得出）。枢纽上的分片会源源不断地提交最新区块，这一点可以让枢纽同步每一个分区的状态。同样地，每个分区也会和枢纽的状态保持一致（不过分区之间不会同彼此的同步，除非间接通过枢纽来实现）。通过发布默克尔证明来证明消息被接受和发送，来让消息从一个分区传递到另一个分区。这种机制叫做"区块链间通信"，或者简称为"IBC"机制。
 
 ![Figure of hub and zones
 acknowledgement](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/images/hub_and_zones.png)
@@ -486,7 +486,7 @@ can receive tokens from others who have them. A zone may be designated as an
 "source" of one or more token types, granting it the power to inflate that token
 supply.
 
-Cosmos分区是独立的区块链，能够和Cosmos枢纽进行IBC信息交换。从枢纽的角度上看，分区是一种多重资产、动态会员制的多重签名账户，可以通过IBC数据包用来发送和接受代币。就像加密币账户一样，分区不能转移超出其持有量的代币，不过可以从其他拥有代币的人那里接收代币。分区可能会被指定为一种或多种代币的"来源"，从而赋予其增加代币供应量的权力。
+Cosmos分区是独立的区块链，能够和Cosmos枢纽进行IBC消息交换。从枢纽的角度上看，分区是一种多重资产、动态会员制的多重签名账户，可以通过IBC数据包用来发送和接受代币。就像加密币账户一样，分区不能转移超出其持有量的代币，不过可以从其他拥有代币的人那里接收代币。分区可能会被指定为一种或多种代币的"来源"，从而赋予其增加代币供应量的权力。
 
 Atoms of the Cosmos Hub may be staked by validators of a zone connected to the
 Hub.  While double-spend attacks on these zones would result in the slashing of
@@ -660,7 +660,7 @@ withdrawal address on Ethereum. An IBC packet proving that the transaction
 occurred on the bridge-zone can be posted to the Ethereum bridge-contract to
 allow the ether to be withdrawn.
 
-桥接分区上的以太币（“桥接以太币”）可以在枢纽间转进，转出，完成传送到特定以太坊提取地址后，转出的“桥接以太币”被彻底删除。一个IBC信息可以证明桥接分区上的交易，这个信息将被公布到以太坊桥接合约中，以便以太币被取出。
+桥接分区上的以太币（“桥接以太币”）可以在枢纽间转进，转出，完成传送到特定以太坊提取地址后，转出的“桥接以太币”被彻底删除。一个IBC消息可以证明桥接分区上的交易，这个消息将被公布到以太坊桥接合约中，以便以太币被取出。
 
 In the case of Bitcoin, the restricted scripting system makes it difficult to
 mirror the IBC coin-transfer mechanism.  Each UTXO has its own independent
