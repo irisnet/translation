@@ -499,7 +499,7 @@ failures.  For example, outbound token transfers from some (or all) zones may be
 throttled to allow for the emergency circuit-breaking of zones (a temporary halt
 of token transfers) when an attack is detected.
 
-Cosmos枢纽的Atom或可作为分区验证人连接到枢纽的筹码。虽然在Tendermint分叉责任制下，分区出现双重支付攻击会导致atom数量减少，但是如果分区中有超过⅔的选票都出现拜占庭问题的话，那这个分区就可以提交无效状态。Cosmos枢纽不会验证或执行提交到其他分区的交易，因此将代币发送到可靠的分区间就是用户的责任了。未来Cosmos枢纽的管理系统可能会通过改善提案，来解决空间故障问题。比如，在检测到袭击时，可以将有些分区（或全部分区）发起的代币转账暂停下来，实现紧急断路（即暂时中止代币转账）。
+Cosmos枢纽的Atom或可作为分区验证人连接到枢纽的筹码。虽然在Tendermint分叉责任制下，分区出现双重支付攻击会导致atom数量减少，但是如果分区中有超过⅔的选票都出现拜占庭问题的话，那这个分区就可以提交无效状态。Cosmos枢纽不会验证或执行提交到其他分区的交易，因此将代币发送到可靠的分区间就是用户的责任了。未来Cosmos枢纽的管理系统可能会通过改善提案，来解决分区故障问题。比如，在检测到袭击时，可以将有些分区（或全部分区）发起的代币转账暂停下来，实现紧急断路（即暂时中止代币转账）。
 
 ## Inter-blockchain Communication (IBC) | 跨链通信（IBC） ########################################
 
@@ -617,7 +617,7 @@ other cryptocurrency.  The indirection through the bridge-zone allows the logic 
 the Hub to remain simple and agnostic to other blockchain consensus strategies
 such as Bitcoin's proof-of-work mining.
 
-特权分区可以作为和其他加密货币挂钩的代币来源。这种挂钩类似Cosmos枢纽与分区之间的关系，两者都必须及时更新彼此最新的区块链，从而验证代币已经从一方转移到另一方。Cosmos网络上挂钩的”桥接空间“要和中心以及其他加密币保持同步。这种间接通过”桥接空间“可以保持枢纽逻辑的简洁。并且不必要了解其他的链上共识战略，如比特币工作量证明挖矿机制。
+特权分区可以作为和其他加密货币挂钩的代币来源。这种挂钩类似Cosmos枢纽与分区之间的关系，两者都必须及时更新彼此最新的区块链，从而验证代币已经从一方转移到另一方。Cosmos网络上挂钩的”桥接分区“要和中心以及其他加密币保持同步。这种间接通过”桥接分区“可以保持枢纽逻辑的简洁。并且不必要了解其他的链上共识战略，如比特币工作量证明挖矿机制。
 
 #### Sending Tokens to the Cosmos Hub | 向Cosmos中心发送代币
 
@@ -692,7 +692,7 @@ auditors.  We leave the design of the specification and implementation of this
 system open as a future Cosmos improvement proposal, to be passed by the Cosmos
 Hub's governance system.
 
-如果将这个桥接方法完全设计成责任制，就有可能解决这一问题。比如，枢纽及起始点的全部IBC包裹可能需要先通过桥接分区的认可，即让枢纽或起始点中的桥接合约对桥接分区的所有状态转换进行有效验证。枢纽及起始点要允许桥接空间的验证人提供抵押物，而侨界合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的质询。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos中心的管理系统审批通过。
+如果将这个桥接方法完全设计成责任制，就有可能解决这一问题。比如，枢纽及起始点的全部IBC包裹可能需要先通过桥接分区的认可，即让枢纽或起始点中的桥接合约对桥接分区的所有状态转换进行有效验证。枢纽及起始点要允许桥接分区的见证人提供抵押物，而侨界合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的质询。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos中心的管理系统审批通过。
 
 ### Ethereum Scaling | 以太坊的扩展
 
@@ -758,7 +758,7 @@ persist in the event that the hub halts due to a temporary network partition.
 Note that this allows real geological, political, and network-topological
 features to be considered in designing robust federated fault-tolerant systems.
 
-有人认为像Tendermint这种支持一致性的共识算法有一个重大问题，就是网络分区会导致没有任何一个分区会拥有超过⅔的投票权（比如超过⅓投票权在线下），这会中断共识。而Cosmos架构可以缓解这个问题，它可以使用全球中心，同时，各空间实行地区自治，然后让每个空间的投票权按照正常的地域位置进行分配。如，一般范例就有可能是针对个别城市或地区的，让他们各自运行自己空间的同时，还能共享共同的中心（比如Cosmos中心），并且在临时的网络分区导致的中断期间，也可以继续维持地区自治活动。注意，这样一来在设计稳健的联邦式容错系统过程中，就可以去考虑真实的地理、政治及网络拓扑的特征了。
+有人认为像Tendermint这种支持一致性的共识算法有一个重大问题，就是网络分区会导致没有任何一个分区会拥有超过⅔的投票权（比如超过⅓投票权在线下），这会中断共识。而Cosmos架构可以缓解这个问题，它可以使用全球中心，同时，各分区实行地区自治，然后让每个分区的投票权按照正常的地域位置进行分配。如，一般范例就有可能是针对个别城市或地区的，让他们各自运行自己分区的同时，还能共享共同的枢纽（比如Cosmos枢纽），并且在临时的网络分区导致的中断期间，也可以继续维持地区自治活动。注意，这样一来在设计稳健的联邦式容错系统过程中，就可以去考虑真实的地理、政治及网络拓扑的特征了。
 
 ### Federated Name Resolution System | 联邦式名称解析系统
 
@@ -804,7 +804,7 @@ name-registration zone in Cosmos can have an associated top-level-domain
 (TLD) name such as ".com" or ".org", and each name-registration zone can have
 its own governance and registration rules.
 
-在Cosmos中，我们可以利用这个概念并延伸。每一个在Cosmos上的名称注册都能有一个相关的最高级别域名（TLD），比如".com"或者".org"等，而且每个名称注册空间都有自己的管理和登记规则。
+在Cosmos中，我们可以利用这个概念并延伸。每一个在Cosmos上的名称注册都能有一个相关的最高级别域名（TLD），比如".com"或者".org"等，而且每个名称注册分区都有自己的管理和登记规则。
 
 ## Issuance and Incentives | 发行与激励 #####################################################
 
