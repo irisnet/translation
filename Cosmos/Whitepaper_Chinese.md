@@ -273,7 +273,7 @@ the programming language that the consensus engine is written in.  Additionally,
 ABCI makes it possible to easily swap out the consensus layer of any existing
 blockchain stack.
 
-Tendermint共识算法是在叫做 Tendermint Core 的程序中实现的。这个程序是独立于应用的“共识引擎”，可以将任何已经确定的黑盒应用转变为分布式、可复制的区块链。Tendermint Core 可以通过应用区块链接口(ABCI) [\[17\]][17]与其他区块链应用连接。而且，应用区块链接口(ABCI) 接口允许区块链应用以任何语言编程实现，而不仅仅是写这个共识引擎所使用的语言。此外，应用区块链接口(ABCI) 也让交换任何现有区块链堆栈的共识层成为可能。
+Tendermint共识算法是在叫做 Tendermint Core 的程序中实现的。这个程序是独立于应用的“共识引擎”，可以将任何已经确定的黑盒应用转变为分布式、可复制的区块链。Tendermint Core 可以通过应用区块链接口(ABCI) [\[17\]][17]与其他区块链应用连接。而且，应用区块链接口(ABCI) 接口允许区块链应用以任何语言编程实现，而不仅仅是写这个共识引擎所使用的语言。此外，应用区块链接口(ABCI) 也让交换任何现有区块链栈的共识层成为可能。
 
 We draw an analogy with the well-known cryptocurrency Bitcoin. Bitcoin is a
 cryptocurrency blockchain where each node maintains a fully audited Unspent
@@ -299,7 +299,7 @@ Meanwhile, the ABCI application would be responsible for
 
 * 维护 UTXO 数据库
 * 验证交易的加密签名
-* 防止出现不存在的交易
+* 防止出现不存在的余额被交易
 * 允许客户访问UTXO数据库
 
 Tendermint is able to decompose the blockchain design by offering a very simple
@@ -356,7 +356,7 @@ team was the first to conceptually demonstrate a proof-of-stake cryptocurrency
 that addresses the nothing-at-stake problem suffered by first-generation
 proof-of-stake cryptocurrencies such as NXT and BitShares1.0.
 
-Cosmos 枢纽是 Cosmos 网络中第一条公共区块链，通过 Tendermint 的拜占庭共识算法运行。Tendermint 开源项目创立于2014年，旨在解决比特币工作量证明共识算法的速度、可扩展性以及造成的环境问题。通过过采用并提高已经过验证的拜占庭算法（1988年在麻省理工学院开发）[\[20\]][20]，Tendermint 成为了首个在概念论证了权益证明加密货币的团队，这种机制可以解决 NXT 和 BitShares 这些第一代权益证明加密币面临的"无利害关系"的问题。
+Cosmos 枢纽是 Cosmos 网络中第一条公共区块链，通过 Tendermint 的拜占庭共识算法运行。Tendermint 开源项目创立于2014年，旨在解决比特币工作量证明共识算法的速度、可扩展性以及造成的环境问题。通过采用并提高已经过验证的拜占庭算法（1988年在麻省理工学院开发）[\[20\]][20]，Tendermint 成为了首个在概念论证了权益证明加密货币的团队，这种机制可以解决 NXT 和 BitShares 这些第一代权益证明加密币面临的"无利害关系"的问题。
 
 Today, practically all Bitcoin mobile wallets use trusted servers to provide
 them with transaction verification.  This is because proof-of-work requires
@@ -441,7 +441,7 @@ then communicated from one zone to another by posting Merkle-proofs as evidence
 that the information was sent and received.  This mechanism is called
 inter-blockchain communication, or IBC for short.
 
-在这个基础上，Cosmos枢纽负责管理称之为“分区”的众多独立区块链（有时也叫做"碎片"，根据数据库扩展技术"分片"得出）。枢纽上的分片会源源不断地提交最新区块，这一点可以让枢纽同步每一个分区的状态。同样地，每个分区也会和枢纽的状态保持一致（不过分区之间不会同彼此的同步，除非间接通过枢纽来实现）。通过发布默克尔证明来证明消息被接受和发送，来让消息从一个分区传递到另一个分区。这种机制叫做"区块链间通信"，或者简称为"IBC"机制。
+在这个基础上，Cosmos枢纽负责管理称之为“分区”的众多独立区块链（有时也叫做"分片"，参考自众所周知的数据库扩展技术"分片"）。枢纽上的分片会源源不断地提交最新区块，这一点可以让枢纽同步每一个分区的状态。同样地，每个分区也会和枢纽的状态保持一致（不过分区之间不会同彼此的同步，除非间接通过枢纽来实现）。通过发布默克尔证明来证明消息被接受和发送，来让消息从一个分区传递到另一个分区。这种机制叫做"区块链间通信"，或者简称为"IBC"机制。
 
 ![Figure of hub and zones
 acknowledgement](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/images/hub_and_zones.png)
@@ -474,7 +474,7 @@ scenarios, such as a continental network partition or a nation-state sponsored
 attack.
 
 
-因为Cosmos枢纽在整个系统中扮演着中央代币账本的角色，其安全性极其重要。虽然每个分区可能都是一个Tendermint区块链——只需通过4个，或者在无需拜占庭容错共识的情况下更少的验证人来保证安全），但是Cosmos枢纽必须通过全球去中心化验证组来保证安全，而且这个验证组要能够承受最严重的攻击，比如大陆网络分区或者由国家发起的攻击。
+因为Cosmos枢纽在整个系统中扮演着中央代币账本的角色，其安全性极其重要。虽然每个分区可能都是一个Tendermint区块链——只需通过4个，(或者在无需拜占庭容错共识的情况下更少的验证人来保证安全），但是Cosmos枢纽必须通过全球去中心化验证组来保证安全，而且这个验证组要能够承受最严重的攻击，比如区域网络分裂或者由国家发起的攻击。
 
 ### The Zones | 分区
 
@@ -499,7 +499,7 @@ failures.  For example, outbound token transfers from some (or all) zones may be
 throttled to allow for the emergency circuit-breaking of zones (a temporary halt
 of token transfers) when an attack is detected.
 
-Cosmos枢纽的Atom或可作为分区验证人连接到枢纽的筹码。虽然在Tendermint分叉责任制下，分区出现双重支付攻击会导致atom数量减少，但是如果分区中有超过⅔的选票都出现拜占庭问题的话，那这个分区就可以提交无效状态。Cosmos枢纽不会验证或执行提交到其他分区的交易，因此将代币发送到可靠的分区间就是用户的责任了。未来Cosmos枢纽的管理系统可能会通过改善提案，来解决分区故障问题。比如，在检测到袭击时，可以将有些分区（或全部分区）发起的代币转账暂停下来，实现紧急断路（即暂时中止代币转账）。
+Cosmos枢纽的Atom或可作为分区验证人连接到枢纽的筹码。虽然在Tendermint分叉责任制下，分区出现双重支付攻击会导致atom数量减少，但是如果分区中有超过⅔的选票都出现拜占庭问题的话，那这个分区就可以提交无效状态。Cosmos枢纽不会验证或执行提交到其他分区的交易，因此将代币发送到可靠的分区间就是用户的责任了。未来Cosmos枢纽的管理系统可能会通过改善提案，来解决分区故障问题。比如，在检测到袭击时，可以将有些分区（或全部分区）发起的代币转账将被暂停，实现紧急断路（即暂时中止代币转账）。
 
 ## Inter-blockchain Communication (IBC) | 跨链通信（IBC） ########################################
 
@@ -513,7 +513,7 @@ up with the sender's block headers.  This mechanism is similar to that used by
 sidechains, which requires two interacting chains to be aware of one another via a
 bidirectional stream of proof-of-existence datagrams (transactions).
 
-现在我们来介绍下枢纽与分区之前通信的方法。假如现在有三个区块链，分别是"分区1"、“分区2"以及"枢纽”，我们想要"分区1"生成一个数据包，通过"枢纽"发送给"分区2"。为了让数据包从一个区块链转移到另一个区块链，需要在接收方区块链上发布一个证明，来明确发送方已经发起了一个数据包到指定目的地。接收方要验证的这个证明，必须和发送方区块头保持一致。这种机制就类似与侧链采用的机制，它需要两个相互作用的链，通过双向传送存在证明数据元（交易），来"知晓"另一方的情况。
+现在我们来介绍下枢纽与分区之间通信的方法。假如现在有三个区块链，分别是"分区1"、“分区2"以及"枢纽”，我们想要"分区1"生成一个数据包，通过"枢纽"发送给"分区2"。为了让数据包从一个区块链转移到另一个区块链，需要在接收方区块链上发布一个证明，来明确发送方已经发起了一个数据包到指定目的地。接收方要验证的这个证明，必须和发送方区块头保持一致。这种机制就类似与侧链采用的机制，它需要两个相互作用的链，通过双向传送存在证明数据元（交易），来"知晓"另一方的情况。
 
 The IBC protocol can naturally be defined using two types of transactions: an  `IBCBlockCommitTx` transaction, which allows a blockchain to prove to any
 observer of its most recent block-hash, and an `IBCPacketTx` transaction, which
@@ -521,14 +521,14 @@ allows a blockchain to prove to any observer that the given packet was indeed
 published by the sender's application, via a Merkle-proof to the recent
 block-hash.
 
-BC协议可以自然定义为两种交易的使用：一种是IBCBlockCommitTx 交易，这种交易可以让区块链向任何观察员证明其最新区块哈希值；另一种是IBCPacketTx 交易，这种交易则可以证明某个数据包确实由发送者的应用程序，通过默克尔证明机制（Merkle-proof）传送到了最新区块的哈希值上。
+IBC协议可以自然定义为两种交易的使用：一种是IBCBlockCommitTx 交易，这种交易可以让区块链向任何观察员证明其最新区块哈希值；另一种是IBCPacketTx 交易，这种交易则可以证明某个数据包确实由发送者的应用程序，通过默克尔证明机制（Merkle-proof）传送到了最新区块的哈希值上。
 
 By splitting the IBC mechanics into two separate transactions, we allow the
 native fee market-mechanism of the receiving chain to determine which packets
 get committed (i.e. acknowledged), while allowing for complete freedom on the
 sending chain as to how many outbound packets are allowed.
 
-通过将IBC机制分裂成两个单独的交易，即IBCBlockCommitTx 交易与IBCPacketTx交易，我们可以让接收链的本地费用市场机制，来决定承认哪个数据包，与此同时还能确保发送方的完全自由，让其自行决定能够传出的数据包数量。
+通过将IBC机制分离成两个单独的交易，即IBCBlockCommitTx 交易与 IBCPacketTx 交易，我们可以让接收方链的本地费用市场机制，来决定承认哪个数据包，与此同时还能确保发送方的完全自由，让其自行决定能够传出的数据包数量。
 
 ![Figure of Zone1, Zone2, and Hub IBC without
 acknowledgement](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/msc/ibc_without_ack.png)
@@ -543,6 +543,8 @@ transaction must be posted on "Hub" with the block-hash of "Zone1" (or on
 
 _See [IBCBlockCommitTx](#ibcblockcommittx) and [IBCPacketTx](#ibcpacketcommit)
 for for more information on the two IBC transaction types._
+
+_关于两种IBC交易类型，详细请参见 [IBCBlockCommitTx](#ibcblockcommittx) 和 [IBCPacketTx](#ibcpacketcommit)
 
 ## Use Cases | 用例 ###################################################################
 
@@ -1075,7 +1077,7 @@ arbitrarily.  PBFT became the standard algorithm, spawning many variations,
 including most recently one created by IBM as part of their contribution to
 Hyperledger.
 
-二十世纪八十年代早期久开始研究存在恶意参与者的共识机制，当时Leslie Lamport创造了”拜占庭容错”这个词，用来指那些图谋不轨参与者做出的恶意的行为，与”死机故障”不同，后者只是处理过程崩溃而已。早期针对同步网络也探索出了一些解决方案，网络信息滞后有一个上限，但实际使用是在高度受控的环境下进行，比如精密飞行仪器以及使用原子钟同步的数据中心。直到九十年代后期，实用拜占庭容错（ Practical Byzantine Fault Tolerance ,PBFT）[\[11\]][11]才作为有效的、部分同步的共识算法被逐步推广。它可以容忍⅓参与者有恶意行为。PBFT成为标准算法，催生了各种版本，包括最近由IBM提出并使用于Hyperledger超级账本中的算法。
+二十世纪八十年代早期就开始研究存在恶意参与者的共识机制，当时Leslie Lamport创造了”拜占庭容错”这个词，用来指那些图谋不轨参与者做出的恶意的行为，与”死机故障”不同，后者只是处理过程崩溃而已。早期针对同步网络也探索出了一些解决方案，网络信息滞后有一个上限，但实际使用是在高度受控的环境下进行，比如精密飞行仪器以及使用原子钟同步的数据中心。直到九十年代后期，实用拜占庭容错（ Practical Byzantine Fault Tolerance ,PBFT）[\[11\]][11]才作为有效的、部分同步的共识算法被逐步推广。它可以容忍⅓参与者有恶意行为。PBFT成为标准算法，催生了各种版本，包括最近由IBM提出并使用于Hyperledger超级账本中的算法。
 
 The main benefit of Tendermint consensus over PBFT is that Tendermint has an
 improved and simplified underlying structure, some of which is a result of
@@ -1398,7 +1400,7 @@ evidence as justification, and that validators which have already PreCommit
 cannot contribute to evidence to PreCommit something else.  This ensures both
 safety and liveness of the consensus algorithm.
 
-另一个附加的约束条件，或者叫锁定条例，它能确保网络最终在每个高度只提交一个区块。任何试图在给定高度提交超过一个区块的恶意行为都会被识别出来。首先，一个区块的预提交必须被认为是正当的，并且以Polka的形式提交。如果验证人已经准备在R_1轮中预提交一个区块，我们称他们锁定了这个区块，并且然后用于验证R_2轮新预提交动作的Polka必须进入R_polka轮，其中 R_1 < R_polka <= R_2。其次，验证人们必须为他们锁定的区块提议并且（或者）预投票。这两个条件共同作用，确保了验证人在对其正当性没有充分论证的情况下不能进行预提交操作，并且保证已经完成预提交的验证人不能再为其他东西的预提交贡献证明。这样不但可以保证共识算法的安全性，还能保证它的活跃度。
+另一个附加的约束条件，或者叫锁定条例，它能确保网络最终在每个高度只提交一个区块。任何试图在给定高度提交超过一个区块的恶意行为都会被识别出来。首先，一个区块的预提交必须被认为是正当的，并且以Polka的形式提交。如果验证人已经准备在R_1轮中预提交一个区块，我们称他们锁定了这个区块，并且然后用于验证R_2轮新预提交动作的Polka必须进入R_polka轮，其中 R_1 < R_polka <= R_2。其次，验证人们必须为他们锁定的区块提议并且（或者）预投票。这两个条件共同作用，确保了验证人在对其正当性没有充分论证的情况下不能进行预提交操作，并且保证已经完成预提交的验证人不能再为其他东西的预提交贡献证明。这样不但可以保证共识算法的安全性，还能保证它的活跃度。
 
 The full details of the protocol are described
 [here](https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm).
@@ -1441,7 +1443,7 @@ cause a fork and are hence punishable (assuming a fork-accountable BFT algorithm
 like Tendermint consensus). Long Range Attacks are often thought to be a
 critical blow to proof-of-stake.
 
-假设有一个足够有弹性的广播网络采集与一组静态验证组存在，那么任何区块链分叉都可以被检测到，而且发起攻击的验证人提交的保证金会被扣除。这个在2014年早期由Vitalik Buterin首次提出的新方法，解决了其他权益证明加密货币的"没有任何权益"问题（详见 [相关工作部分](#related-work)）。但由于验证组必须是能够变化的，在较长的一个时间段内最初的一些验证人会解除绑定，这就使他们可以自由地从创世区块中创建新链，并且因为他们不再有锁定的保证金，他们将不需要为这个行为支付任何费用。这类攻击被称为远程攻击（LRA），与短程攻击相比，后者对处在绑定中的验证人发起的分叉是可以对其进行惩罚的（假设有类似Tendermint共识这样的分叉问责制拜占庭容错算法）。所以远程攻击经常被认为是对权益证明机制的一种危险打击。
+假设有一个足够有弹性的广播网络采集与一组静态验证组存在，那么任何区块链分叉都可以被检测到，而且发起攻击的验证人提交的保证金会被扣除。这个在2014年早期由Vitalik Buterin首次提出的新方法，解决了其他权益证明加密货币的"没有任何权益"问题（详见 [相关工作部分](#related-work)）。但由于验证组必须是能够变化的，在较长的一个时间段内最初的一些验证人会解除绑定，这就使他们可以自由地从创世区块中创建新链，并且因为他们不再有锁定的保证金，他们将不需要为这个行为支付任何费用。这类攻击被称为远程攻击（LRA），与短程攻击相比，后者对处在绑定中的验证人发起的分叉是可以对其进行惩罚的（假设有类似Tendermint共识这样的分叉问责制拜占庭容错算法）。所以远程攻击经常被认为是对权益证明机制的一种危险打击。
 
 Fortunately, the LRA can be mitigated as follows.  First, for a validator to
 unbond (thereby recovering their collateral deposit and no longer earning fees
@@ -1698,7 +1700,7 @@ transactions
 
 See [the ABCI repository](https://github.com/tendermint/abci#message-types) for more details
 
-更多细节请参考 [ABCI知识库](https://github.com/tendermint/abci#message-types)。
+更多细节请参考 [ABCI知识库](https://github.com/tendermint/abci#message-types)。
 
 ### IBC Packet Delivery Acknowledgement | IBC数据包交付确认
 
@@ -1900,7 +1902,7 @@ hash can be computed efficiently.  The tree is balanced using a variant of the
 [AVL algorithm](http://en.wikipedia.org/wiki/AVL_tree), and all operations are
 O(log(n)).
 
-IAVL+数据结构的目的是永久储存应用状态中的密钥对，这样就可以对确定的梅克尔根哈希进行高效的运算。这个树的平衡通过 AVL算法的变体来实现，所有运行都是O(log(n))。
+IAVL+数据结构的目的是永久储存应用状态中的密钥对，这样就可以对确定的梅克尔根哈希进行高效的运算。这个树的平衡通过 AVL算法的变体来实现，所有运行都是O(log(n))。
 
 In an AVL tree, the heights of the two child subtrees of any node differ by at
 most one.  Whenever this condition is violated upon an update, the tree is
@@ -2032,9 +2034,9 @@ An `IBCPacketTx` transaction is composed of:
 
 `IBCPacketTx` 交易有下列项组成：
 - `FromChainID (string)`: 提供给这个数据包的区块链ID，不是源所必须的
-- `FromBlockHeight (int)`:  区块链高度，其中接下来的包会包含在（梅克尔化的）源链的区块哈希中
+- `FromBlockHeight (int)`:  区块链高度，其中接下来的包会包含在（梅克尔化的）源链的区块哈希中
 - `Packet (IBCPacket)`:数据包, 其状态可能是`AckPending`, `AckSent`, `AckReceived`, `NoAck`, 或者 `Timeout`其中的一个
-- `PacketProof (IAVLProof)`:  IAVL树梅克尔证明，用于验证在给定高度下的源链应用哈希中的数据包哈希
+- `PacketProof (IAVLProof)`:  IAVL树梅克尔证明，用于验证在给定高度下的源链应用哈希中的数据包哈希
 
 The sequence for sending a packet from "Zone1" to "Zone2" through the
 "Hub" is depicted in {Figure X}.  First, an `IBCPacketTx` proves to
@@ -2084,9 +2086,9 @@ wording, especially under the ABCI section
 * [SkuChain](https://www.skuchain.com/)的[Zaki Manian](https://github.com/zmanian)在格式与措辞方面提供了很多帮助，尤其在ABCI部分。
 * Althea的[Jehan Tremback](https://github.com/jtremback)和Dustin Byington在初始迭代方面的帮助。
 * [Honey
-  Badger](https://eprint.iacr.org/2016/199)的 [Andrew Miller](http://soc1024.com/) 在共识部分给予的反馈。
+  Badger](https://eprint.iacr.org/2016/199)的 [Andrew Miller](http://soc1024.com/) 在共识部分给予的反馈。
 * [Greg Slepak](https://fixingtao.com/)对共识部分的反馈以及在措辞方面的帮助。
-* 同时还要感谢 [Bill Gleim](https://github.com/gleim)和 [Seunghwan
+* 同时还要感谢 [Bill Gleim](https://github.com/gleim)和 [Seunghwan
   Han](http://www.seunghwanhan.com)在多方面的支持与贡献。
 * **此处还有您及您的组织对本文的贡献。
 
