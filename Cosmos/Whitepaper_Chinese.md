@@ -645,14 +645,14 @@ withdrawn unless an appropriate IBC packet is received by the bridge-contract fr
 the bridge-zone.  The bridge-contract tracks the validator-set of the bridge-zone, which
 may be identical to the Cosmos Hub's validator-set.
 
-就以太坊而言，桥接分区可以和Cosmos枢纽共享相同的见证人。以太坊方面（原本区块链），一个桥接合约将允许以太拥有者通过将以太币发送到以太坊的桥接分区的桥接合约上。一旦挂桥接合约接收到以太币，以太币就不能被撤回，除非从桥接分区接收到对应的IBC数据包。桥接合约跟随桥接分区的验证组，它可能与Cosmos枢纽的见证人组相同。
+就以太坊而言，桥接分区可以和Cosmos枢纽共享相同的验证人。以太坊方面（原本区块链），一个桥接合约将允许以太拥有者通过将以太币发送到以太坊的桥接分区的桥接合约上。一旦挂桥接合约接收到以太币，以太币就不能被撤回，除非从桥接分区接收到对应的IBC数据包。桥接合约跟随桥接分区的验证组，它可能与Cosmos枢纽的验证人组相同。
 
 In the case of Bitcoin, the concept is similar except that instead of a single
 bridge-contract, each UTXO would be controlled by a threshold multisignature P2SH
 pubscript.  Due to the limitations of the P2SH system, the signers cannot be
 identical to the Cosmos Hub validator-set.
 
-就比特币而言，概念是相似，除了代替一个桥接合约，每个UTXO将由一个门限多重签名P2SH数据库限制。由于P2SH系统的限制，签名者不能与Cosmos枢纽的见证人组相同。
+就比特币而言，概念是相似，除了代替一个桥接合约，每个UTXO将由一个门限多重签名P2SH数据库限制。由于P2SH系统的限制，签名者不能与Cosmos枢纽的验证人组相同。
 
 #### Withdrawing Tokens from Cosmos Hub | 从Cosmos枢纽提出代币
 
@@ -680,7 +680,7 @@ Ethereum while keeping the bridged-ether on the bridge-zone. Worse, >⅔ Byzanti
 voting power can steal ether outright from those who sent it to the
 bridge-contract by deviating from the original bridgeging logic of the bridge-zone.
 
-这类挂钩合约存在风险的风险是，可能会出现恶意的见证人组。如果拜占庭投票权超过⅓，就会造成分叉，即从以太坊桥接合约中提取以太币的同时，还能保持桥接分区中的挂钩以太币不变。甚至，如果拜占庭投票权超过⅔，可能会有人直接通过脱离原始桥接分区的桥接逻辑，对发送以太币发到桥接合约中的帐户下手，盗取以太币。
+这类挂钩合约存在风险的风险是，可能会出现恶意的验证人组。如果拜占庭投票权超过⅓，就会造成分叉，即从以太坊桥接合约中提取以太币的同时，还能保持桥接分区中的挂钩以太币不变。甚至，如果拜占庭投票权超过⅔，可能会有人直接通过脱离原始桥接分区的桥接逻辑，对发送以太币发到桥接合约中的帐户下手，盗取以太币。
 
 It is possible to address these issues by designing the bridge to be totally
 accountable.  For example, all IBC packets, from the hub and the origin, might
@@ -694,7 +694,7 @@ auditors.  We leave the design of the specification and implementation of this
 system open as a future Cosmos improvement proposal, to be passed by the Cosmos
 Hub's governance system.
 
-如果将这个桥接方法完全设计成责任制，就有可能解决这一问题。比如，枢纽及起始点的全部IBC包裹可能需要先通过桥接分区的认可，即让枢纽或起始点中的桥接合约对桥接分区的所有状态转换进行有效验证。枢纽及起始点要允许桥接分区的见证人提供抵押物，而侨界合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的质询。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos枢纽的管理系统审批通过。
+如果将这个桥接方法完全设计成责任制，就有可能解决这一问题。比如，枢纽及起始点的全部IBC包裹可能需要先通过桥接分区的认可，即让枢纽或起始点中的桥接合约对桥接分区的所有状态转换进行有效验证。枢纽及起始点要允许桥接分区的验证人提供抵押物，而侨界合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的质询。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos枢纽的管理系统审批通过。
 
 ### Ethereum Scaling | 以太坊的扩展
 
@@ -799,7 +799,7 @@ validators (by voting power), and a Merkle proof to the current value associated
 with the name.  This makes it possible to have a succinct, quick, and secure
 light-client verification of name values.
 
-有了Tendermint，我们只需用到由法定数量见证人签署（通过投票权）的区块哈希，以及与名称相关的当前值的默克尔证明。这点让简易、快速、安全的轻客戸端名称值验证成为可能。
+有了Tendermint，我们只需用到由法定数量验证人签署（通过投票权）的区块哈希，以及与名称相关的当前值的默克尔证明。这点让简易、快速、安全的轻客戸端名称值验证成为可能。
 
 In Cosmos, we can take this concept and extend it further. Each
 name-registration zone in Cosmos can have an associated top-level-domain
@@ -842,7 +842,7 @@ for additional details.
 
 更多细节见 [Cosmos Plan](https://github.com/cosmos/cosmos/blob/master/PLAN.md)
 
-### <P1 Reviewd> Limitations on the Number of Validators | 见证人的数量限制
+### <P1 Reviewd> Limitations on the Number of Validators | 验证人的数量限制
 
 Unlike Bitcoin or other proof-of-work blockchains, a Tendermint blockchain gets
 slower with more validators due to the increased communication complexity.
@@ -851,13 +851,13 @@ distributed blockchain with very fast transaction confirmation times, and, as
 bandwidth, storage, and parallel compute capacity increases, we will be able to
 support more validators in the future.
 
-与比特币或其他工作量证明区块链不同的是, 由于通信的复杂性增加, Tendermint 区块链会随着见证人的增加而变慢。幸运的是, 我们可以支持足够多的见证人来实现可靠的全球化分布式区块链， 并具有非常快的交易确认时间。 而且随着带宽、存储和并行计算容量的增加, 我们将来能够支持更多的见证人。
+与比特币或其他工作量证明区块链不同的是, 由于通信的复杂性增加, Tendermint 区块链会随着验证人的增加而变慢。幸运的是, 我们可以支持足够多的验证人来实现可靠的全球化分布式区块链， 并具有非常快的交易确认时间。 而且随着带宽、存储和并行计算容量的增加, 我们将来能够支持更多的验证人。
 
 On genesis day, the maximum number of validators will be set to 100, and this
 number will increase at a rate of 13% for 10 years, and settle at 300
 validators.
 
-在创世日, 见证人的最大数量将设置为 100, 这个数字将以13% 的速度增长10年, 最终达到300位。
+在创世日, 验证人的最大数量将设置为 100, 这个数字将以13% 的速度增长10年, 最终达到300位。
 
 ```
 Year 0: 100
@@ -874,7 +874,7 @@ Year 10: 300
 ...
 ```
 
-### <P1 Reviewd> Becoming a Validator After Genesis Day | 成为创世日后的见证人
+### <P1 Reviewd> Becoming a Validator After Genesis Day | 成为创世日后的验证人
 
 Atom holders who are not already can become validators by signing and
 submitting a `BondTx` transaction.  The amount of atoms provided as collateral
@@ -886,9 +886,9 @@ validator, where effective atoms include delegated atoms.  When a new validator
 replaces an existing validator in such a way, the existing validator becomes
 inactive and all the atoms and delegated atoms enter the unbonding state.
 
-Atom 持有者可以通过签署和提交 `BondTx` 交易成为见证人。抵押的 atom 数量不能为零。任何人任何时候都成为见证人, 除非当前见证人组的数量超过了最大值。在这种情况下, 只有当持有 atom 的数量大于现有见证人中持有有效 atom 数量的最少者, 该交易才有效, 其中有效 atom 包括受委托的 atom。当一个新的见证人以这种方式替换现有的见证人时, 现有的见证人将离线， 其所有的 atom 和受委托的 atom 进入解绑状态。
+Atom 持有者可以通过签署和提交 `BondTx` 交易成为验证人。抵押的 atom 数量不能为零。任何人任何时候都成为验证人, 除非当前验证人组的数量超过了最大值。在这种情况下, 只有当持有 atom 的数量大于现有验证人中持有有效 atom 数量的最少者, 该交易才有效, 其中有效 atom 包括受委托的 atom。当一个新的验证人以这种方式替换现有的验证人时, 现有的验证人将离线， 其所有的 atom 和受委托的 atom 进入解绑状态。
 
-### Penalties for Validators | 对见证人的惩罚
+### Penalties for Validators | 对验证人的惩罚
 
 There must be some penalty imposed on the validators for any intentional
 or unintentional deviation from the sanctioned protocol. Some evidence is
@@ -898,7 +898,7 @@ Such evidence will result in the validator losing its good standing and its
 bonded atoms as well its proportionate share of tokens in the reserve pool --
 collectively called its "stake" -- will get slashed.
 
-对于任何有意或无意的偏离认可协议的见证人, 必须对其施加一定的惩罚。有些证据立即可予受理, 比如在同样高度和回合的双重签名, 或违反 "预投票锁定" (Tendermint 协商一致议定书的规则)。这样的证据将导致见证人失去其良好的声誉, 其绑定的 atom 以及在储备池中的比例份额 – 统称为 “权益” – 将被大幅削减。
+对于任何有意或无意的偏离认可协议的验证人, 必须对其施加一定的惩罚。有些证据立即可予受理, 比如在同样高度和回合的双重签名, 或违反 "预投票锁定" (Tendermint 协商一致议定书的规则)。这样的证据将导致验证人失去其良好的声誉, 其绑定的 atom 以及在储备池中的比例份额 – 统称为 “权益” – 将被大幅削减。
 
 Sometimes, validators will not be available, either due to regional network
 disruptions, power failure, or other reasons.  If, at any point in the past
@@ -906,14 +906,14 @@ disruptions, power failure, or other reasons.  If, at any point in the past
 the blockchain more than `ValidatorTimeoutMaxAbsent` times, that validator will
 become inactive, and lose `ValidatorTimeoutPenalty` (DEFAULT 1%) of its stake.
 
-有时, 由于区域网络中断、电源故障或其他原因, 见证人将不可用。如果在过去任意时间点的 `ValidatorTimeoutWindow` 块中, 见证人的提交投票不包括在区块链中超过  `ValidatorTimeoutMaxAbsent` 次, 该见证人将离线, 并减少 `ValidatorTimeoutPenalty` (默认 1%) 的权益。
+有时, 由于区域网络中断、电源故障或其他原因, 验证人将不可用。如果在过去任意时间点的 `ValidatorTimeoutWindow` 块中, 验证人的提交投票不包括在区块链中超过  `ValidatorTimeoutMaxAbsent` 次, 该验证人将离线, 并减少 `ValidatorTimeoutPenalty` (默认 1%) 的权益。
 
 Some "malicious" behavior does not produce obviously discernible evidence on the
 blockchain. In these cases, the validators can coordinate out of band to force
 the timeout of these malicious validators, if there is a supermajority
 consensus.
 
-一些 "恶意" 行为在区块链上并没有产生明显的证据。在这些情况下, 如果存在多数的协商一致, 则见证人可以在带外协调,强制将这些恶意见证人超时。
+一些 "恶意" 行为在区块链上并没有产生明显的证据。在这些情况下, 如果存在多数的协商一致, 则验证人可以在带外协调,强制将这些恶意验证人超时。
 
 In situations where the Cosmos Hub halts due to a ≥⅓ coalition of voting power
 going offline, or in situations where a ≥⅓ coalition of voting power censor
@@ -932,7 +932,7 @@ the `BlockGasLimit` is not exceeded.  The collected fees, minus any taxes
 specified below, are redistributed to the bonded stakeholders in proportion to
 their bonded atoms, every `ValidatorPayoutPeriod` (DEFAULT 1 hour).
 
-Cosmos 枢纽见证人可以接受任何种类的代币或组合作为处理交易的费用。每个见证人可自行设置兑换率， 并选择其想要的交易, 只要不超过 `BlockGasLimit`,  每隔 `ValidatorPayoutPeriod` (默认为1小时) 时间会根据权益相关人绑定的 Atom 比例进行分配。
+Cosmos 枢纽验证人可以接受任何种类的代币或组合作为处理交易的费用。每个验证人可自行设置兑换率， 并选择其想要的交易, 只要不超过 `BlockGasLimit`,  每隔 `ValidatorPayoutPeriod` (默认为1小时) 时间会根据权益相关人绑定的 Atom 比例进行分配。
 
 Of the collected transaction fees, `ReserveTax` (DEFAULT 2%) will go toward the
 reserve pool to increase the reserve pool and increase the security and value of
@@ -945,7 +945,7 @@ Atom holders who delegate their voting power to other validators pay a
 commission to the delegated validator.  The commission can be set by each
 validator.
 
-将投票权委托给其他见证人的 Atom 持有人会支付一定佣金给委托方，而这笔费用可以由每个见证人进行设置。
+将投票权委托给其他验证人的 Atom 持有人会支付一定佣金给委托方，而这笔费用可以由每个验证人进行设置。
 
 ### <P1 Reviewd> Incentivizing Hackers | 激励黑客
 
@@ -960,7 +960,7 @@ will get slashed, and `HackRewardRatio` (default 5%) of everyone's atoms will
 get rewarded to the hacker's bounty address.  The validator must recover the
 remaining atoms by using their backup key.
 
-Cosmos 枢纽的安全取决于底层见证人的安全性和委托人的委托选择。为了鼓励发现和早期报告发现的漏洞, Cosmos 枢纽鼓励黑客通过 `ReportHackTx` 交易发布成功的漏洞, 说, "这个见证人被入侵了，请把赏金发送到这个地址"。这种情况下, 见证人和委托人将挂起闲置, 每个人 `HackPunishmentRatio` (默认 5%) 的 atom 将被削减,  `HackRewardRatio` (默认 5%) 的 atom 将发送到黑客的赏金地址作为奖励。见证人必须使用其备份密钥来恢复剩余的 atom。
+Cosmos 枢纽的安全取决于底层验证人的安全性和委托人的委托选择。为了鼓励发现和早期报告发现的漏洞, Cosmos 枢纽鼓励黑客通过 `ReportHackTx` 交易发布成功的漏洞, 说, "这个验证人被入侵了，请把赏金发送到这个地址"。这种情况下, 验证人和委托人将挂起闲置, 每个人 `HackPunishmentRatio` (默认 5%) 的 atom 将被削减,  `HackRewardRatio` (默认 5%) 的 atom 将发送到黑客的赏金地址作为奖励。验证人必须使用其备份密钥来恢复剩余的 atom。
 
 In order to prevent this feature from being abused to transfer unvested atoms,
 the portion of vested vs unvested atoms of validators and delegators before and
@@ -983,12 +983,12 @@ a proposal in a timely manner will result in the validator being deactivated
 automatically for a period of time called the `AbsenteeismPenaltyPeriod`
 (DEFAULT 1 week).
 
-所有见证人负责对所有提案进行表决。如果未能及时对提案进行表决, 将导致见证人被自动停用一段时间。 这段时间被称为 `AbsenteeismPenaltyPeriod` (默认1周)。
+所有验证人负责对所有提案进行表决。如果未能及时对提案进行表决, 将导致验证人被自动停用一段时间。 这段时间被称为 `AbsenteeismPenaltyPeriod` (默认1周)。
 
 Delegators automatically inherit the vote of the delegated validator.  This vote
 may be overridden manually.  Unbonded atoms get no vote.
 
-委托人自动继承其委托的见证人的投票权。这一投票可以被手动覆盖掉。而未绑定的 Atom 是没有投票权的。
+委托人自动继承其委托的验证人的投票权。这一投票可以被手动覆盖掉。而未绑定的 Atom 是没有投票权的。
 
 Each proposal requires a deposit of `MinimumProposalDeposit` tokens, which may
 be a combination of one or more tokens including atoms.  For each proposal, the
@@ -1107,7 +1107,7 @@ improves broadcasting performance (see LibSwift [\[19\]][19] for inspiration).
 Also, Tendermint Core doesn't make any assumption about point-to-point
 connectivity, and functions for as long as the P2P network is weakly connected.
 
-Tendermint Core中也优化了很多PBFT特性以外的功能。比如，见证人提交的区块被分割多个部分，对其默克尔化后，然后在节点间广播。这种方式可以提高其广播性能（具体请查看LibSwift [19]）。而且，Tendermint Core不会对点对点连接做任何假设，只要点对点间的网络不断开，那么它就能正常运行。
+Tendermint Core中也优化了很多PBFT特性以外的功能。比如，验证人提交的区块被分割多个部分，对其默克尔化后，然后在节点间广播。这种方式可以提高其广播性能（具体请查看LibSwift [19]）。而且，Tendermint Core不会对点对点连接做任何假设，只要点对点间的网络不断开，那么它就能正常运行。
 
 #### BitShares delegated stake | BitShare委托权益
 
@@ -1124,7 +1124,7 @@ misbehaving witnesses on a daily basis, but there is no significant collateral
 of witnesses or delegators in the likeness of Tendermint PoS that get slashed
 in the case of a successful double-spend attack.
 
-BitShares [\[12\]][12]不是第一个采用权益证明机制（proof-of-stake,PoS）的区块链，但是其对PoS在区块链上的研究与推进做出了巨大的贡献，尤其是在DPoS，即受委托权益证明方面。在BitShares中，相关方选择”见证者”负责提交交易顺序并提交；相关方选择”委托人”负责协调软件更新与参数变化。尽管BitShare在理想环境下能达到很高的性能：100k tx/s，1秒的滞后。每一块只有一个单独的签名，得到交易的最终性的时间比区块时间略长。一个标准的协议仍在开发中。利益相关者可以每天去除或者替换有恶意行为的见证人，但是不同于Tendermint PoS的保证金机制，BitShares没有要求见证人或者代理人的提交押金，如果发生双花攻击的话，押金不会被削减。
+BitShares [\[12\]][12]不是第一个采用权益证明机制（proof-of-stake,PoS）的区块链，但是其对PoS在区块链上的研究与推进做出了巨大的贡献，尤其是在DPoS，即受委托权益证明方面。在BitShares中，相关方选择”见证者”负责提交交易顺序并提交；相关方选择”委托人”负责协调软件更新与参数变化。尽管BitShare在理想环境下能达到很高的性能：100k tx/s，1秒的滞后。每一块只有一个单独的签名，得到交易的最终性的时间比区块时间略长。一个标准的协议仍在开发中。利益相关者可以每天去除或者替换有恶意行为的验证人，但是不同于Tendermint PoS的保证金机制，BitShares没有要求验证人或者代理人的提交押金，如果发生双花攻击的话，押金不会被削减。
 
 #### Stellar
 
@@ -1217,7 +1217,7 @@ IBC is designed specifically for blockchains, where validators can have
 different weights, and where membership can change over the course of the
 blockchain.
 
-1.ILP不支持连接器公证员的变更，也不允许公证员之间有灵活的权重。 另一方面，IBC是专门为区块链设计的，见证人可以拥有不同的权重，并且随着区块链的发展，成员可以随时更改。
+1.ILP不支持连接器公证员的变更，也不允许公证员之间有灵活的权重。 另一方面，IBC是专门为区块链设计的，验证人可以拥有不同的权重，并且随着区块链的发展，成员可以随时更改。
 
 2.As in the Lightning Network, the receiver of payment in ILP must be online to
    send a confirmation back to the sender.  In a token transfer over IBC, the
@@ -1235,7 +1235,7 @@ that allows for secure asymmetric transfer of tokens from zone to zone; the
 analog to ILP's connector in Cosmos is a persistent and maximally secure
 blockchain ledger, the Cosmos Hub.
 
-3.最大的不同在于ILP连接器不需要负责对支付状态保持权威性，然而在Cosmos中，hub的见证人负责IBC代币传输状态和每个zone内持有代币数量的权威性。允许从zone之间的安全地不对称地交换代币是本质的创新。在cosmos中的ILP连接器可以看作是一个持久和最安全的区块链分类账：cosmos hub。
+3.最大的不同在于ILP连接器不需要负责对支付状态保持权威性，然而在Cosmos中，hub的验证人负责IBC代币传输状态和每个zone内持有代币数量的权威性。允许从zone之间的安全地不对称地交换代币是本质的创新。在cosmos中的ILP连接器可以看作是一个持久和最安全的区块链分类账：cosmos hub。
 
 4.The inter-ledger payments in ILP need to be backed by an exchange orderbook,
    as there is no asymmetric transfer of coins from one ledger to another, only
@@ -1286,7 +1286,7 @@ Cosmos 和 Ethereum 2.0 Mauve [\[22\]][[22] 有不同的设计理念。
 
 * Cosmos是针对代币儿 Mauve 是关于扩大计算能力。
 * Cosmos不仅限于 EVM, 所以即使不同的VM也可以交互。
-* Cosmos 让zone的创建者决定见证人。
+* Cosmos 让zone的创建者决定验证人。
 * 任何人都可以在Cosmos中建立新的zone（除非管理者另做决定）。
 * hub与zone的失效隔离，所以全局的代币不变量可以保持。
 
@@ -1319,7 +1319,7 @@ mechanism, for cost-saving and privacy reasons.
 
 虽然闪电网络也可以轻松地跨越多个独立的区块链，并借助交易市场实现价值转移，但它不能实现从一个区块链到另一个区块链的非对称代币交易。 这里描述的Cosmos网络的主要优点是实现直接的代币交换。 也就是说，我们希望支付渠道和闪电网络将会与我们的代币传输机制一起被广泛采用，从而节省成本和保护隐私。
 
-#### Segregated Witness | 隔离见证人
+#### Segregated Witness | 隔离验证人
 
 Segregated Witness is a Bitcoin improvement proposal
 [link](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki) that aims
@@ -1460,7 +1460,7 @@ which would allow it to deceive the client by carrying out a long range attack
 by creating new blocks beginning back at a height where it was bonded (assuming
 it has control of sufficiently many of the early private keys).
 
-幸运的是，远程攻击（LRA）可以用以下的途径来缓解。第一，对于解除绑定的见证人而言（取回抵押保证金并且不再从参与共识中获取费用），保证金在一定时间内不能转移，也可以称其为"解绑周期"，这个周期可能长达数周或数月。第二，对于轻客户端的安全性而言，其首次连接到网络时必须根据可信源验证最新的一个区块哈希或者多个最好的区块哈希。这种情况有时被称为"弱主观性"。最后，为了保证安全，必须与最新的验证组进行频繁的同步，时长与解绑周期一致。
+幸运的是，远程攻击（LRA）可以用以下的途径来缓解。第一，对于解除绑定的验证人而言（取回抵押保证金并且不再从参与共识中获取费用），保证金在一定时间内不能转移，也可以称其为"解绑周期"，这个周期可能长达数周或数月。第二，对于轻客户端的安全性而言，其首次连接到网络时必须根据可信源验证最新的一个区块哈希或者多个最好的区块哈希。这种情况有时被称为"弱主观性"。最后，为了保证安全，必须与最新的验证组进行频繁的同步，时长与解绑周期一致。
 
 这样就确保了轻客戸端在因验证人解绑资金而失去任何权益之前，知道验证组的变化情况，否则解绑的验证人就会在其绑定的高度后面开始创建新区块来实施远程攻击，以此来欺骗客户端（假设它可以控制足够多的早期私钥）。
 
@@ -1727,7 +1727,7 @@ First, an `IBCBlockCommit` and `IBCPacketTx` are posted on "Hub" that proves
 the existence of an `IBCPacket` on "Zone1".  Say that `IBCPacketTx` has the
 following value:
 
-首先，一个`IBCBlockCommit`和`IBCPacketTx`是被上传到“Hub”上用来证明"Zone1"（空间1）上的`IBCPacket`的存在的。假设`IBCPacketTx`的值如下：
+首先，一个`IBCBlockCommit`和`IBCPacketTx`是被上传到“Hub”上用来证明"Zone1"（分区1）上的`IBCPacket`的存在的。假设`IBCPacketTx`的值如下：
 
 - `FromChainID`: "Zone1"
 - `FromBlockHeight`: 100 (say)
@@ -1758,7 +1758,7 @@ Next, an `IBCBlockCommit` and `IBCPacketTx` are posted on "Zone2" that proves
 the existence of an `IBCPacket` on "Hub".  Say that `IBCPacketTx` has the
 following value:
 
-其次，一个`IBCBlockCommit` 和 `IBCPacketTx`被传输都“Zone2”（空间2）上用来证明`IBCPacket`在“Hub”上的存在。假设`IBCPacketTx`的值如下：
+其次，一个`IBCBlockCommit` 和 `IBCPacketTx`被传输都“Zone2”（分区2）上用来证明`IBCPacket`在“Hub”上的存在。假设`IBCPacketTx`的值如下：
 
 - `FromChainID`: "Hub"
 - `FromBlockHeight`: 300
