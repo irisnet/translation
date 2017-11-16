@@ -654,7 +654,7 @@ identical to the Cosmos Hub validator-set.
 
 就比特币而言，概念是相似，除了代替一个桥接合约，每个UTXO将由一个门限多重签名P2SH数据库限制。由于P2SH系统的限制，签名者不能与Cosmos枢纽的见证人组相同。
 
-#### Withdrawing Tokens from Cosmos Hub | 从Cosmos中心提出代币
+#### Withdrawing Tokens from Cosmos Hub | 从Cosmos枢纽提出代币
 
 Ether on the bridge-zone ("bridged-ether") can be transferred to and from the
 Hub, and later be destroyed with a transaction that sends it to a particular
@@ -694,7 +694,7 @@ auditors.  We leave the design of the specification and implementation of this
 system open as a future Cosmos improvement proposal, to be passed by the Cosmos
 Hub's governance system.
 
-如果将这个桥接方法完全设计成责任制，就有可能解决这一问题。比如，枢纽及起始点的全部IBC包裹可能需要先通过桥接分区的认可，即让枢纽或起始点中的桥接合约对桥接分区的所有状态转换进行有效验证。枢纽及起始点要允许桥接分区的见证人提供抵押物，而侨界合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的质询。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos中心的管理系统审批通过。
+如果将这个桥接方法完全设计成责任制，就有可能解决这一问题。比如，枢纽及起始点的全部IBC包裹可能需要先通过桥接分区的认可，即让枢纽或起始点中的桥接合约对桥接分区的所有状态转换进行有效验证。枢纽及起始点要允许桥接分区的见证人提供抵押物，而侨界合约的代币转出需要延时（且抵押品解绑时间也要足够长），从而让单独的审计人有时间发起任何的质询。我们会把这一系统的设计说明以及执行方式开放，作为未来Cosmos改善的提议，以待Cosmos枢纽的管理系统审批通过。
 
 ### Ethereum Scaling | 以太坊的扩展
 
