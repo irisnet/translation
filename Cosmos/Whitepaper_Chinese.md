@@ -420,7 +420,7 @@ experimentation.
 
 Cosmos 网络能够在制度不同的分区间实现互操作性，这一点给客户极高的自由度和潜力而无需许可即可实验（新技术）。
 
-## The Hub and Zones| 枢纽与分区 ###########################################################
+## <P1-Reviewed>The Hub and Zones| 枢纽与分区 ###########################################################
 
 Here we describe a novel model of decentralization and scalability.  Cosmos is a
 network of many blockchains powered by Tendermint.  While existing proposals aim
@@ -454,7 +454,7 @@ there is only one hub, and many non-hub zones.
 任何分区都可以自行成为枢纽来建立非循环图表，但为了清楚起见，我们只描述这种只有一个枢纽和许多非枢纽的分区这样简单的配置
 
 
-### The Hub | 枢纽
+### <P1-Reviewed> The Hub | 枢纽
 
 The Cosmos Hub is a blockchain that hosts a multi-asset distributed ledger,
 where tokens can be held by individual users or by zones themselves.  These
@@ -476,7 +476,7 @@ attack.
 
 因为Cosmos枢纽在整个系统中扮演着中央代币账本的角色，其安全性极其重要。虽然每个分区可能都是一个Tendermint区块链——只需通过4个，(或者在无需拜占庭容错共识的情况下更少的验证人来保证安全），但是Cosmos枢纽必须通过全球去中心化验证组来保证安全，而且这个验证组要能够承受最严重的攻击，比如区域网络分裂或者由国家发起的攻击。
 
-### The Zones | 分区
+### <P1-Reviewed> The Zones | 分区
 
 A Cosmos zone is an independent blockchain that exchanges IBC messages with the
 Hub.  From the Hub's perspective, a zone is a multi-asset dynamic-membership
@@ -499,9 +499,9 @@ failures.  For example, outbound token transfers from some (or all) zones may be
 throttled to allow for the emergency circuit-breaking of zones (a temporary halt
 of token transfers) when an attack is detected.
 
-Cosmos枢纽的Atom或可作为分区验证人连接到枢纽的筹码。虽然在Tendermint分叉责任制下，分区出现双重支付攻击会导致atom数量减少，但是如果分区中有超过⅔的选票都出现拜占庭问题的话，那这个分区就可以提交无效状态。Cosmos枢纽不会验证或执行提交到其他分区的交易，因此将代币发送到可靠的分区间就是用户的责任了。未来Cosmos枢纽的管理系统可能会通过改善提案，来解决分区故障问题。比如，在检测到袭击时，可以将有些分区（或全部分区）发起的代币转账将被暂停，实现紧急断路（即暂时中止代币转账）。
+Cosmos 枢纽的 Atom 或可作为分区验证人连接到枢纽的筹码。虽然在Tendermint分叉责任制下，分区出现双重支付攻击会导致atom数量减少，但是如果分区中有超过⅔的选票都出现拜占庭问题的话，那这个分区就可以提交无效状态。Cosmos 枢纽不会验证或执行提交到其他分区的交易，因此将代币发送到可靠的分区间就是用户的责任了。未来 Cosmos 枢纽的管理系统可能会通过改善提案，来解决分区故障问题。比如，在检测到袭击时，可以将有些分区（或全部分区）发起的代币转账将被暂停，实现紧急断路（即暂时中止代币转账）。
 
-## Inter-blockchain Communication (IBC) | 跨链通信（IBC） ########################################
+## <P1-Reviewed> Inter-blockchain Communication (IBC) | 跨链通信（IBC） ########################################
 
 Now we look at how the Hub and zones communicate with each other.  For example, if
 there are three blockchains, "Zone1", "Zone2", and "Hub", and we wish for
@@ -810,7 +810,7 @@ its own governance and registration rules.
 
 ## Issuance and Incentives | 发行与激励 #####################################################
 
-### The Atom Token | Atom 代币
+### <P1 Reviewd> The Atom Token | Atom 代币
 
 While the Cosmos Hub is a multi-asset distributed ledger, there is a special
 native token called the _atom_.  Atoms are the only staking token of the Cosmos
@@ -820,14 +820,14 @@ transaction fees to mitigate spam.  Additional inflationary atoms and block
 transaction fees are rewarded to validators and delegators who delegate to
 validators.
 
-Cosmos Hub（Cosmos中心）是多资产分布式账本，它有自己的代币，是Atom。Atom是Cosmos Hub唯一的权益代币。Atom是持有人投票、验证或委托给其他验证人的许可证明，就像以太坊上的以太币一样，Atom也可以用来支付交易费以减少电子垃圾。额外的通胀Atom和区块交易费用就作为激励分给验证人及委托验证人。
+Cosmos 枢纽是多资产分布式账本，它有自己的代币，是 Atom 。Atom 是 Cosmos 枢纽唯一的权益代币。Atom是持有人投票、验证或委托给其他验证人的许可证明，就像以太坊上的以太币一样，Atom也可以用来支付交易费以减少电子垃圾。额外的通胀 Atom 和区块交易费用就作为激励分给验证人及委托验证人。
 
 The `BurnAtomTx` transaction can be used to recover any proportionate amount of
 tokens from the reserve pool.
 
 `BurnAtomTx`交易可以用来恢复储蓄池中任意比例的代币。
 
-#### Fundraiser | 众筹
+#### <P1 Reviewd> Fundraiser | 众筹
 
 The initial distribution of atom tokens and validators on Genesis will go to the
 donors of the Cosmos Fundraiser (75%), lead donors (5%), Cosmos Network
@@ -835,14 +835,14 @@ Foundation (10%), and ALL IN BITS, Inc (10%).  From genesis onward, 1/3 of the
 total amount of atoms will be rewarded to bonded validators and delegators
 every year.
 
-创世块上的Atom代币及验证人的初次分发是Cosmos 众售参与者占75%，预售参与者5%，Cosmos网络基金会10%，ALL IN BITS, 集团10%。从创世块开始，Atom总量的1/3将作为奖励发放给每年担保持有的验证人以及委托人。
+创世块上的 Atom 代币及验证人的初次分发是 Cosmos 众售参与者持有75%，预售参与者持有5%，Cosmos网络基金会持有10%，ALL IN BITS, 集团持有10%。从创世块开始，Atom 总量的1/3将作为奖励发放给每年担保持有的验证人以及委托人。
 
 See the [Cosmos Plan](https://github.com/cosmos/cosmos/blob/master/PLAN.md)
 for additional details.
 
 更多细节见 [Cosmos Plan](https://github.com/cosmos/cosmos/blob/master/PLAN.md)
 
-### Limitations on the Number of Validators | 见证人的数量限制
+### <P1 Reviewd> Limitations on the Number of Validators | 见证人的数量限制
 
 Unlike Bitcoin or other proof-of-work blockchains, a Tendermint blockchain gets
 slower with more validators due to the increased communication complexity.
@@ -851,7 +851,7 @@ distributed blockchain with very fast transaction confirmation times, and, as
 bandwidth, storage, and parallel compute capacity increases, we will be able to
 support more validators in the future.
 
-与比特币或其他工作量证明区块链不同的是, 由于通信的复杂性增加, Tendermint 区块链会随着见证人的增加而变慢。幸运的是, 我们可以支持足够多的见证人来实现可靠的全局分布式区块链， 并具有非常快的交易确认时间。 而且随着带宽、存储和并行计算容量的增加, 我们将来能够支持更多的见证人。
+与比特币或其他工作量证明区块链不同的是, 由于通信的复杂性增加, Tendermint 区块链会随着见证人的增加而变慢。幸运的是, 我们可以支持足够多的见证人来实现可靠的全球化分布式区块链， 并具有非常快的交易确认时间。 而且随着带宽、存储和并行计算容量的增加, 我们将来能够支持更多的见证人。
 
 On genesis day, the maximum number of validators will be set to 100, and this
 number will increase at a rate of 13% for 10 years, and settle at 300
@@ -874,7 +874,7 @@ Year 10: 300
 ...
 ```
 
-### Becoming a Validator After Genesis Day | 成为创世日后的见证人
+### <P1 Reviewd> Becoming a Validator After Genesis Day | 成为创世日后的见证人
 
 Atom holders who are not already can become validators by signing and
 submitting a `BondTx` transaction.  The amount of atoms provided as collateral
@@ -921,9 +921,9 @@ evidence of malicious behavior from entering the blockchain, the hub must
 recover with a hard-fork reorg-proposal.  (Link to "Forks and Censorship
 Attacks").
 
-如果 Cosmos Hub 因为超过⅓的投票权离线而出现了中止情况，或者说超过⅓的投票权审查到进入区块链的恶意行为，这时候 hub 就必须借助硬分叉重组协议来恢复。（详见“分叉与审查攻击”）
+如果 Cosmos 枢纽 因为超过⅓的投票权离线而出现了中止情况，或者说超过⅓的投票权审查到进入区块链的恶意行为，这时候枢纽就必须借助硬分叉重组协议来恢复。（详见“分叉与审查攻击”）
 
-### Transaction Fees | 交易费用
+### <P1 Reviewd> Transaction Fees | 交易费用
 
 Cosmos Hub validators can accept any token type or combination of types as fees
 for processing a transaction.  Each validator can subjectively set whatever
@@ -932,14 +932,14 @@ the `BlockGasLimit` is not exceeded.  The collected fees, minus any taxes
 specified below, are redistributed to the bonded stakeholders in proportion to
 their bonded atoms, every `ValidatorPayoutPeriod` (DEFAULT 1 hour).
 
-Cosmos Hub 见证人可以接受任何种类的代币或组合作为处理交易的费用。每个见证人可自行设置兑换率， 并选择其想要的交易, 只要不超过 `BlockGasLimit`,  每隔 `ValidatorPayoutPeriod` (默认为1小时)  时间会根据权益相关人绑定的 Atom 比例进行分配。
+Cosmos 枢纽见证人可以接受任何种类的代币或组合作为处理交易的费用。每个见证人可自行设置兑换率， 并选择其想要的交易, 只要不超过 `BlockGasLimit`,  每隔 `ValidatorPayoutPeriod` (默认为1小时) 时间会根据权益相关人绑定的 Atom 比例进行分配。
 
 Of the collected transaction fees, `ReserveTax` (DEFAULT 2%) will go toward the
 reserve pool to increase the reserve pool and increase the security and value of
 the Cosmos network. These funds can also be distributed in accordance with the
 decisions made by the governance system.
 
-在所收取的交易费用中, `ReserveTax` (默认 2%) 将存入储备池来增加储备量, 增加 Cosmos Hub 的安全性和价值。这些资金也可以按照治理系统的决策进行分配。
+在所收取的交易费用中, `ReserveTax` (默认 2%) 将存入储备池来增加储备量, 增加 Cosmos 枢纽的安全性和价值。这些资金也可以按照治理系统的决策进行分配。
 
 Atom holders who delegate their voting power to other validators pay a
 commission to the delegated validator.  The commission can be set by each
@@ -947,7 +947,7 @@ validator.
 
 将投票权委托给其他见证人的 Atom 持有人会支付一定佣金给委托方，而这笔费用可以由每个见证人进行设置。
 
-### Incentivizing Hackers | 激励黑客
+### <P1 Reviewd> Incentivizing Hackers | 激励黑客
 
 The security of the Cosmos Hub is a function of the security of the underlying
 validators and the choice of delegation by delegators.  In order to encourage
@@ -960,23 +960,23 @@ will get slashed, and `HackRewardRatio` (default 5%) of everyone's atoms will
 get rewarded to the hacker's bounty address.  The validator must recover the
 remaining atoms by using their backup key.
 
-Cosmos Hub的安全取决于底层见证人的安全性和委托人的委托选择。为了鼓励发现和早期报告发现的漏洞, Cosmos Hub 鼓励黑客通过 `ReportHackTx` 交易发布成功的漏洞, 说, "这个见证人被入侵了，请把赏金发送到这个地址"。这种情况下, 见证人和委托人将成为非活动, 每个人 `HackPunishmentRatio` (默认 5%) 的 atom 将被削减,  `HackRewardRatio` (默认 5%) 的 atom 将发送到黑客的赏金地址作为奖励。见证人必须使用其备份密钥来恢复剩余的 atom。
+Cosmos 枢纽的安全取决于底层见证人的安全性和委托人的委托选择。为了鼓励发现和早期报告发现的漏洞, Cosmos 枢纽鼓励黑客通过 `ReportHackTx` 交易发布成功的漏洞, 说, "这个见证人被入侵了，请把赏金发送到这个地址"。这种情况下, 见证人和委托人将挂起闲置, 每个人 `HackPunishmentRatio` (默认 5%) 的 atom 将被削减,  `HackRewardRatio` (默认 5%) 的 atom 将发送到黑客的赏金地址作为奖励。见证人必须使用其备份密钥来恢复剩余的 atom。
 
 In order to prevent this feature from being abused to transfer unvested atoms,
 the portion of vested vs unvested atoms of validators and delegators before and
 after the `ReportHackTx` will remain the same, and the hacker bounty will
 include some unvested atoms, if any.
 
-为了防止这一特性被滥用于转移未授权的 atom, 在 `ReportHackTx` Atom 比例将保持不变, 而黑客的赏金将包括一些未授权的 atom (如果有的话)。
+为了防止这一特性被滥用于转移未授权的 atom, 在 `ReportHackTx` 前后，Atom的比例（授权的与未授权的） 将保持不变, 而黑客的赏金将包括一些未授权的 atom (如果有的话)。
 
-### Governance Specification | 治理规范 ###################################################
+### <P1 Reviewd>  Governance Specification | 治理规范 ###################################################
 
 The Cosmos Hub is operated by a distributed organization that requires a well-defined
 governance mechanism in order to coordinate various changes to the blockchain,
 such as the variable parameters of the system, as well as software upgrades and
 constitutional amendments.
 
-Cosmos Hub是由一个分布式组织管理的, 需要一个明确的治理机制, 以协调对区块链的各种变化, 如系统的参数变量, 以及软件升级和宪法修订.
+Cosmos 枢纽是由一个分布式组织管理的, 需要一个明确的治理机制, 以协调对区块链的各种变化, 如系统的参数变量, 以及软件升级和宪法修订.
 
 All validators are responsible for voting on all proposals.  Failing to vote on
 a proposal in a timely manner will result in the validator being deactivated
@@ -1022,27 +1022,27 @@ majority is vetoed, everyone gets punished by losing `VetoPenaltyFeeBlocks`
 affected), and the party that vetoed the majority decision will be additionally
 punished by losing `VetoPenaltyAtoms` (DEFAULT 0.1%) of its atoms.
 
-决定采纳（或不采纳）提案需要严格的多数投“同意”或“强烈同意”（或者“反对”及“强烈反对”），但是超过1/3的人投“强烈反对”或“强烈支持”的话就可以否决大多数人的决定。如果严格的大多数人被否决，那么他们每个人都会失去 `VetoPenaltyFeeBlocks` (默认是一天的区块值 ，税费除外) 作为惩罚，而否决大多数决定的那一方还将额外失去 `VetoPenaltyAtoms` 默认为0.1%）的 Atom 作为惩罚。
+决定采纳（或不采纳）提案需要严格的多数投“同意”或“强烈同意”（或者“反对”及“强烈反对”），但是超过1/3的人投“强烈反对”或“强烈支持”的话就可以否决大多数人的决定。如果大多数人票被否决，那么他们每个人都会失去 `VetoPenaltyFeeBlocks` (默认是一天的区块值 ，税费除外) 作为惩罚，而否决大多数决定的那一方还将额外失去 `VetoPenaltyAtoms` 默认为0.1%）的 Atom 作为惩罚。
 
-### Parameter Change Proposal | 参数变更提案
+### <P1 Reviewd> Parameter Change Proposal | 参数变更提案
 
 Any of the parameters defined here can be changed with the passing of a
 `ParameterChangeProposal`.
 
 这里定义的任何参数都可在 `ParameterChangeProposal` 通过后改变。
 
-### Bounty Proposal | 赏金提案
+### <P1 Reviewd>  Bounty Proposal | 赏金提案
 
 Atoms can be inflated and reserve pool funds spent with the passing of a `BountyProposal`.
 
 通过 `BountyProposal` 后， Atom 可以增发和预留储备池资金作为赏金。
 
-### Text Proposal | 文本提案
+### <P1 Reviewd>  Text Proposal | 文本提案
 
 All other proposals, such as a proposal to upgrade the protocol, will be
 coordinated via the generic `TextProposal`.
 
-所有其他提案，比如用来更新协议的提案，都会通过通用的TextProposal 来协调。
+所有其他提案，比如用来更新协议的提案，都会通过通用的 TextProposal 来协调。
 
 
 ## Roadmap | 路线图 #####################################################################
