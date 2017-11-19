@@ -1564,14 +1564,14 @@ validators of a Tendermint blockchain may be expected to be identifiable,
 commitment of an invalid state may even be punishable by law or some external
 jurisprudence, if desired.
 
-除了需要大于⅓的拜占庭投票权益才能启动的分叉和审查制度以外，超过⅔的联合投票权益可能会提交任意、无效的状态。这是任何拜占庭容错算法的共识系统所特有的。与利用简单可验证证明来创建分叉的双重签名不同，检测无效状态的提交需要非验证节点来验证整个区块，这意味着非验证节点会保留一份本地的状态副本并执行每一笔交易，然后为他们自己独立计算出状态的根源。一旦检测出来，处理这类故障的唯一方法就是社会共识。打一个比方，在比特币出现问题的情况下，无论是由于软件漏洞造成的分叉（正如2013年3月），还是由于矿工拜占庭行为提交的无效状态（正如2015年7月），由商户、开发者、矿工和其他组织组成的联系紧密的社区所建立起来的社会共识会让他们按照分工来参与到修复网络的工作当中去。此外，由于Tendermint区块链的验证人可能希望是其身份是可识别的，那么如果需要的话，无效状态的提交实际上是可以被法律或其他外部法律体系惩治的。
+除了需要大于⅓的拜占庭投票权益才能启动的分叉和审查制度以外，超过⅔的联合投票权益可能会提交任意、无效的状态。这是任何拜占庭容错算法的共识系统所特有的问题。与利用简单可验证证明来创建分叉的双重签名不同，检测无效状态的提交需要非验证节点来验证整个区块，这意味着非验证节点会保留一份本地的状态副本并执行每一笔交易，然后为他们自己独立计算出状态的根源。一旦检测出来，处理这类故障的唯一方法就是社会共识。打一个比方，在比特币出现问题的情况下，无论是由于软件漏洞造成的分叉（正如2013年3月），还是由于矿工拜占庭行为提交的无效状态（正如2015年7月），由商户、开发者、矿工和其他组织组成的联系紧密的社区所建立起来的社会共识会让他们按照分工来参与到修复网络的工作当中去。此外，由于Tendermint区块链的验证人身份是可识别的，那么如果需要的话，无效状态的提交实际上是可以被法律或其他外部法律体系惩治的。
 
 ### ABCI Specification | ABCI说明书
 
 ABCI consists of 3 primary message types that get delivered from the core to the
 application. The application replies with corresponding response messages.
 
-ABCI由3种主要的信息类型组成，这三类信息从核心传递到应用程序上，然后应用程序用相应回复信息做出应答。
+ABCI由3种主要的信息类型组成，这三类信息从共识引擎传递到应用程序上，然后应用程序用相应回复信息做出应答。
 
 The `AppendTx` message is the work horse of the application. Each transaction in
 the blockchain is delivered with this message. The application needs to validate
@@ -1580,7 +1580,7 @@ application protocol, and the cryptographic credentials of the transaction. A
 validated transaction then needs to update the application state — by binding a
 value into a key values store, or by updating the UTXO database.
 
-`AppendTx` 信息是应用程序的主要设备。区块链中的每一笔交易都通过这个信息来传递。应用程序需要验证每笔交易，这将通过接收针对当前状态、应用协议和交易密码证书的AppendTx信息来实现。验证过的交易将需要通过捆绑数值到键值存储或者更新UTXO数据库的方式来升级应用状态。
+`AppendTx` 信息是应用程序的主要传递媒介。区块链中的每一笔交易都通过这个信息来传递。应用程序需要验证每笔交易，这将通过接收针对当前状态、应用协议和交易密码证书的AppendTx信息来实现。验证过的交易将需要通过添加数值到键值存储或者更新UTXO数据库的方式来更新应用状态。
 
 The `CheckTx` message is similar to AppendTx, but it’s only for validating
 transactions. Tendermint Core’s mempool first checks the validity of a
@@ -1588,7 +1588,7 @@ transaction with CheckTx, and only relays valid transactions to its peers.
 Applications may check an incrementing nonce in the transaction and return an
 error upon CheckTx if the nonce is old.
 
-`CheckTx`信息与AppendTx信息类似，但它只是为了交易验证。Tendermint Core的内存池会先用CheckTx验证交易有效性，并且只会将有效的交易分程传递给它的节点。应用程序会检查交易中递增随机数，如果随机数过期就会根据CheckTx返回一个错误。
+`CheckTx`信息与AppendTx信息类似，但它只是为了交易验证。Tendermint Core的内存池会先用CheckTx验证交易有效性，并且只会将有效的交易传递给其他的节点。应用程序会检查交易序列号，如果序列号过期就会根据CheckTx返回一个错误。
 
 The `Commit` message is used to compute a cryptographic commitment to the
 current application state, to be placed into the next block header. This has
@@ -1598,13 +1598,13 @@ simplifies the development of secure lightweight clients, as Merkle-hash proofs
 can be verified by checking against the block-hash, and the block-hash is signed
 by a quorum of validators (by voting power).
 
-`Commit`信息是用来计算之后会存入到下一区块头中的当前应用状态上的加密提交项的。这具有一些便利的特性。状态更新的矛盾性将会像引起整个阶段编程错误的区块链分叉一样的形式出现。这也简化了安全轻客戸端的开发，因为梅克尔哈希证明可以通过检查区块哈希来加以验证，而区块哈希是由规定人数的验证人们签署的（通过投票权益）。
+`Commit`信息是用来计算之后会存入到下一区块头中的当前应用状态的加密提交项。这具有便利的特性。状态的前后矛盾性将会像引起程序错误，从而导致区块链分叉。这也简化了安全轻客戸端的开发，因为梅克尔哈希证明可以通过检查区块哈希来加以验证，而区块哈希是由规定人数的验证人们签署的（通过投票权益）。
 
 Additional ABCI messages allow the application to keep track of and change the
 validator set, and for the application to receive the block information, such as
 the height and the commit votes.
 
-此外，ABCI信息允许应用程序保持追踪与改变验证组，并让应用程序接收诸如高度和提交选票之类的区块信息。
+此外，ABCI信息允许应用程序保持追踪验证人组的改变，并让应用程序接收诸如高度和提交选票之类的区块信息。
 
 ABCI requests/responses are simple Protobuf messages.  Check out the [schema
 file](https://github.com/tendermint/abci/blob/master/types/types.proto).
