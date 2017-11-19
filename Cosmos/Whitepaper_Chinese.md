@@ -1691,6 +1691,10 @@ mempool layer.
     Flush the response queue.  Applications that implement `types.Application`
 need not implement this message -- it's handled by the project.
 
+##### 刷新
+  * __使用__:<br/>
+    刷新回复队列。应用types.Application的应用程序无需实施这条信息——这个由项目进行处理。
+
 ##### Info
   * __Returns__:
     * `Data ([]byte)`: The info bytes
@@ -1728,12 +1732,24 @@ connection, or Key="mode", Value="consensus" for a consensus connection.
     * `Validators ([]Validator)`: Initial genesis-validators
   * __Usage__:<br/>
     Called once upon genesis 在创世区块创建时调用
+    
+##### 初始链
+  * __参数__:
+    * `Validators ([]Validator)`: 初始化创世验证人
+  * __使用__:<br/>
+    在创世区块创建时调用
 
 ##### BeginBlock
   * __Arguments__:
     * `Height (uint64)`: The block height that is starting
   * __Usage__:<br/>
     Signals the beginning of a new block. Called prior to any AppendTxs.
+    
+##### BeginBlock
+  * __参数__:
+    * `Height (uint64)`: 区块刚开始的高度
+  * __使用__:<br/>
+    为新区块的开始提供信号。在附加交易（AppendTxs）前进行调用。
 
 ##### EndBlock
   * __Arguments__:
@@ -1744,6 +1760,13 @@ connection, or Key="mode", Value="consensus" for a consensus connection.
   * __Usage__:<br/>
     Signals the end of a block.  Called prior to each Commit after all
 transactions
+##### EndBlock
+  * __参数__:
+    * `Height (uint64)`: 结束时的区块高度
+  * __返回值__:
+    * `Validators ([]Validator)`: 具有新选票的变动后的验证人（归零就去除）
+  * __使用__:<br/>
+     为区块结束提供信号。在每次提交前所有交易后调用。
 
 See [the ABCI repository](https://github.com/tendermint/abci#message-types) for more details
 
