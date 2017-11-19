@@ -1613,40 +1613,59 @@ ABCI请求/响应是简单的Protobuf信息。请参考这里的[模式文件](h
 
 ##### AppendTx
   * __Arguments__:
-    * `Data ([]byte)`: The request transaction bytes
+    * `Data ([]byte)`: The request transaction bytes 交易请求信息
   * __Returns__:
-    * `Code (uint32)`: Response code
+    * `Code (uint32)`: Response code 回复代码
     * `Data ([]byte)`: Result bytes, if any
-    * `Log (string)`: Debug or error message
+    * `Log (string)`: Debug or error message 错误信息
   * __Usage__:<br/>
     Append and run a transaction.  If the transaction is valid, returns
-CodeType.OK
+CodeType.OK 用途：提交并执行一笔交易
+##### 附加交易
+  * __命令行参数__:
+    * `Data ([]byte)`: 交易请求信息
+  * __Returns__:
+    * `Code (uint32)`: 回复代码
+    * `Data ([]byte)`: 结果字节，如果有的话
+    * `Log (string)`:  错误信息
+  * __使用__:<br/>
+    提交并执行一笔交易，如果交易有效，那返回CodeType.OK
 
 ##### CheckTx
   * __Arguments__:
-    * `Data ([]byte)`: The request transaction bytes
+    * `Data ([]byte)`: The request transaction bytes 交易请求信息
   * __Returns__:
-    * `Code (uint32)`: Response code
+    * `Code (uint32)`: Response code 回复代码
     * `Data ([]byte)`: Result bytes, if any
-    * `Log (string)`: Debug or error message
+    * `Log (string)`: Debug or error message 错误信息
   * __Usage__:<br/>
     Validate a transaction.  This message should not mutate the state.
     Transactions are first run through CheckTx before broadcast to peers in the
 mempool layer.
     You can make CheckTx semi-stateful and clear the state upon `Commit` or
 `BeginBlock`,
-    to allow for dependent sequences of transactions in the same block.
+    to allow for dependent sequences of transactions in the same block. 
+    
+##### 检查交易
+  * __命令行参数__:
+    * `Data ([]byte)`: 交易请求信息
+  * __Returns__:
+    * `Code (uint32)`: 回复代码
+    * `Data ([]byte)`: 结果字节，如果有的话
+    * `Log (string)`:  错误信息
+  * __使用__:<br/>
+    验证一笔交易。这个信息不应该改变应用状态。交易在广播给其他节点前，首先通过CheckTx运行。你可以发起半状态化CheckTx，并在Commit or BeginBlock上清算状态，以允许序列执行同一区块中相关的交易。
 
 ##### Commit
   * __Returns__:
-    * `Data ([]byte)`: The Merkle root hash
+    * `Data ([]byte)`: The Merkle root hash 默克尔根值
     * `Log (string)`: Debug or error message
   * __Usage__:<br/>
-    Return a Merkle root hash of the application state.
+    Return a Merkle root hash of the application state.返回当前应用状态。
 
 ##### Query
   * __Arguments__:
-    * `Data ([]byte)`: The query request bytes
+    * `Data ([]byte)`: The query request bytes 请求数据
   * __Returns__:
     * `Code (uint32)`: Response code
     * `Data ([]byte)`: The query response bytes
@@ -1678,7 +1697,7 @@ connection, or Key="mode", Value="consensus" for a consensus connection.
   * __Arguments__:
     * `Validators ([]Validator)`: Initial genesis-validators
   * __Usage__:<br/>
-    Called once upon genesis
+    Called once upon genesis 在创世区块创建时调用
 
 ##### BeginBlock
   * __Arguments__:
