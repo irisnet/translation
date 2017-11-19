@@ -1384,7 +1384,7 @@ adversary to indefinitely thwart the weak synchrony assumption (causing the
 consensus to fail to ever commit a block), and doing so can be made even more
 difficult by using randomized values of TimeoutPropose on each validator.
 
-注意到协议中的严格决定论会引发一个弱同步假设，因为错误的前导字符必须被检测到并将其略过。验证人们在为Nil预投票之前会等待一段时间，称之为超时提议，这个超时提议的数值也会随着每一轮的进行而递增。每一轮的进行都是完全不同步的，在这个过程中，只有当验证人收听到超过⅔的网络投票才能进入到下一轮中。实际上，它需要极其强大的敌对者无限阻挠这个较弱的同步假设（导致共识无法提交区块），而且通过每个验证人超时提议（TimeoutPropose）的随机值还可更加提高这么做的难度。
+注意到协议中的严格的确定性会引发一个弱同步假设，因为错误的发起者必须被检测到并将其略过。验证人们在为Nil预投票之前会等待一段时间，称之为超时提议，这个超时提议的hi等待时间也会随着每一轮的进行而递增。每一轮的进行都是完全不同步的，在这个过程中，只有当验证人收听到超过⅔的网络投票才能进入到下一轮中。实际上，它需要极其强大的阻碍才能阻挠这个弱同步假设（导致无达成共识，无法提交区块），而且通过每个验证人超时提议（TimeoutPropose）的随机值还可更加提高这么做的难度。
 
 An additional set of constraints, or Locking Rules, ensure that the network will
 eventually commit just one block at each height. Any malicious attempt to cause
@@ -1400,7 +1400,7 @@ evidence as justification, and that validators which have already PreCommit
 cannot contribute to evidence to PreCommit something else.  This ensures both
 safety and liveness of the consensus algorithm.
 
-另一个附加的约束条件，或者叫锁定条例，它能确保网络最终在每个高度只提交一个区块。任何试图在给定高度提交超过一个区块的恶意行为都会被识别出来。首先，一个区块的预提交必须被认为是正当的，并且以Polka的形式提交。如果验证人已经准备在R_1轮中预提交一个区块，我们称他们锁定了这个区块，并且然后用于验证R_2轮新预提交动作的Polka必须进入R_polka轮，其中 R_1 < R_polka <= R_2。其次，验证人们必须为他们锁定的区块提议并且（或者）预投票。这两个条件共同作用，确保了验证人在对其正当性没有充分论证的情况下不能进行预提交操作，并且保证已经完成预提交的验证人不能再为其他东西的预提交贡献证明。这样不但可以保证共识算法的安全性，还能保证它的活跃度。
+另一个附加的约束条件，或者叫锁定条例，它能确保网络最终在每个高度只提交一个区块。任何试图在给定高度提交超过一个区块的恶意行为都会被识别出来。首先，一个区块的预提交必须被认为是正当的，并且以Polka的形式提交。如果验证人已经准备在R_1轮中预提交一个区块，我们称他们锁定了这个区块，并且然后用于验证R_2轮新预提交动作的Polka必须进入R_polka轮，其中 R_1 < R_polka <= R_2。其次，验证人们必须为他们锁定的区块提议并且（或者）预投票。这两个条件共同作用，确保了验证人在对其正当性没有充分论证的情况下不能进行预提交操作，并且保证已经完成预提交的验证人不能再为其他东西的预提交贡献证明投票。这样不但可以保证共识算法的安全性，还能保证它的活跃度。
 
 The full details of the protocol are described
 [here](https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm).
