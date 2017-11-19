@@ -1781,14 +1781,14 @@ may want to impose a timeout on the packet (with the `MaxHeight` packet field),
 while any destination chain may suffer from a denial-of-service attack with a
 sudden spike in the number of incoming packets.
 
-发送者有很多需要接收链提供数据包交付确认的原因。比如，如果预计目的链会出错，那发送者就可能无法了解目的链的状态。或者，当目的链可能遇到因接收数据包猛烈增多而形成的拒绝服务攻击时，发送者会想要向数据包强加一次超时（借助`MaxHeight` 即最大值包域）。
+发送者有很多需要接收链提供数据包交付确认的原因。比如，如果预计目的链会出错，那发送者就可能无法了解目的链的状态。或者，当目的链可能遇到因接收数据包猛烈增多而形成的拒绝服务攻击时，发送者会想要设定数据包超时时限（借助`MaxHeight` 即最大值包域）。
 
 In these cases, the sender can require delivery acknowledgement by setting the
 initial packet status to `AckPending`.  Then, it is the receiving chain's
 responsibility to confirm delivery by including an abbreviated `IBCPacket` in the
 app Merkle hash.
 
-在这些案例中，发送人可以通过在`AckPending`上设置初始数据包状态来要求提供交付确认。然后就由接收链通过包含一个简略的`IBCPacket`的应用梅克尔哈希来确认交付。
+在这些案例中，发送人可以通过在`AckPending`上设置初始数据包状态来要求提供交付确认。然后就由接收链通过包含一个简化的`IBCPacket`的应用梅克尔哈希来确认交付。
 
 ![Figure of Zone1, Zone2, and Hub IBC with
 acknowledgement](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/msc/ibc_with_ack.png)
@@ -1797,10 +1797,10 @@ First, an `IBCBlockCommit` and `IBCPacketTx` are posted on "Hub" that proves
 the existence of an `IBCPacket` on "Zone1".  Say that `IBCPacketTx` has the
 following value:
 
-首先，一个`IBCBlockCommit`和`IBCPacketTx`是被上传到“Hub”上用来证明"Zone1"（分区1）上的`IBCPacket`的存在的。假设`IBCPacketTx`的值如下：
+首先，一个`IBCBlockCommit`和`IBCPacketTx`是被上传到“枢纽”上用来证明"分区1"上的`IBCPacket`的存在的。假设`IBCPacketTx`的值如下：
 
 - `FromChainID`: "Zone1"
-- `FromBlockHeight`: 100 (say)
+- `FromBlockHeight`: 100 (假设)
 - `Packet`: an `IBCPacket`:
   - `Header`: an `IBCPacketHeader`:
     - `SrcChainID`: "Zone1"
@@ -1808,8 +1808,8 @@ following value:
     - `Number`: 200 (say)
     - `Status`: `AckPending`
     - `Type`: "coin"
-    - `MaxHeight`: 350 (say "Hub" is currently at height 300)
-  - `Payload`: &lt;The bytes of a "coin" payload&gt;
+    - `MaxHeight`: 350 (假设 "枢纽" 当前高度为 300)
+  - `Payload`: &lt;一个"代币"的有效负荷字节&gt;
 
 
 - `FromChainID`: "Zone1"
@@ -1828,7 +1828,7 @@ Next, an `IBCBlockCommit` and `IBCPacketTx` are posted on "Zone2" that proves
 the existence of an `IBCPacket` on "Hub".  Say that `IBCPacketTx` has the
 following value:
 
-其次，一个`IBCBlockCommit` 和 `IBCPacketTx`被传输都“Zone2”（分区2）上用来证明`IBCPacket`在“Hub”上的存在。假设`IBCPacketTx`的值如下：
+其次，一个`IBCBlockCommit` 和 `IBCPacketTx`被传输都“分区2”上用来证明`IBCPacket`在“枢纽”上的存在。假设`IBCPacketTx`的值如下：
 
 - `FromChainID`: "Hub"
 - `FromBlockHeight`: 300
@@ -1840,7 +1840,7 @@ following value:
     - `Status`: `AckPending`
     - `Type`: "coin"
     - `MaxHeight`: 350
-  - `Payload`: &lt;The same bytes of a "coin" payload&gt;
+  - `Payload`: &lt;一个"代币"相同的有效负荷字节&gt;
 
 
 - `FromChainID`: "Hub"
@@ -1860,11 +1860,11 @@ new status of `AckSent`.  An `IBCBlockCommit` and `IBCPacketTx` are posted back
 on "Hub" that proves the existence of an abbreviated `IBCPacket` on
 "Zone2".  Say that `IBCPacketTx` has the following value:
 
-接下来，"Zone2"必须将缩写的包放入其应用程序哈希中来显示`AckSent`的最新状态。
-`IBCBlockCommitand` 和`IBCPacketTx` 会传输到“Hub"上来证明缩写的`IBCPacket` 存在于"Zone2"上。假设`IBCPacketTx` 的值如下：
+接下来，"Zone2"必须将缩写的来显示`AckSent`的最新状态包添加到应用程序状态哈希中。
+`IBCBlockCommitand` 和`IBCPacketTx` 会传输到“枢纽"上来证明简化的`IBCPacket` 存在于"分区2"上。假设`IBCPacketTx` 的值如下：
 
 - `FromChainID`: "Zone2"
-- `FromBlockHeight`: 400 (say)
+- `FromBlockHeight`: 400 (假设)
 - `Packet`: an `IBCPacket`:
   - `Header`: an `IBCPacketHeader`:
     - `SrcChainID`: "Zone1"
@@ -1873,11 +1873,11 @@ on "Hub" that proves the existence of an abbreviated `IBCPacket` on
     - `Status`: `AckSent`
     - `Type`: "coin"
     - `MaxHeight`: 350
-  - `PayloadHash`: &lt;The hash bytes of the same "coin" payload&gt;
+  - `PayloadHash`: &lt;一个"代币"相同的有效负荷字节的哈希值&gt;
 
 
 - `FromChainID`: "Zone2"
-- `FromBlockHeight`: 400 (say)
+- `FromBlockHeight`: 400 (假设)
 - `Packet`: an `IBCPacket`:
   - `Header`: an `IBCPacketHeader`:
     - `SrcChainID`: "Zone1"
@@ -1886,13 +1886,13 @@ on "Hub" that proves the existence of an abbreviated `IBCPacket` on
     - `Status`: `AckSent`
     - `Type`: "coin"
     - `MaxHeight`: 350
-  - `PayloadHash`: &lt;相同"代币"有效负荷的哈希字节&gt;
+  - `PayloadHash`: &lt;一个"代币"相同的有效负荷字节的哈希值&gt;
 
 Finally, "Hub" must update the status of the packet from `AckPending` to
 `AckReceived`.  Evidence of this new finalized status should go back to
 "Zone2".  Say that `IBCPacketTx` has the following value:
 
-最后，“Hub”必须更新从`AckPending` 到`AckReceived`的数据包状态。这个新完成状态的证明应该返回到“Zone2”上。假设`IBCPacketTx`的值如下：
+最后，“枢纽”必须更新从`AckPending` 到`AckReceived`的数据包状态。这个新完成状态的证明应该返回到“分区2”上。假设`IBCPacketTx`的值如下：
 
 - `FromChainID`: "Hub"
 - `FromBlockHeight`: 301
@@ -1925,7 +1925,7 @@ above, if "Hub" had not received an `AckSent` status from "Zone2" by block
 350, it would have set the status automatically to `Timeout`.  This evidence of
 a timeout can get posted back on "Zone1", and any tokens can be returned.
 
-与此同时，“Zone1”会积极地假设“代币”包的交付已经成功，除非"Hub"上有证据给出相反的证明。在上述例子中，如果"Hub"没有从"Zone2"接收到第350个区块的`AckSent` 状态，那么它就会自动将其设置为`Timeout`（超时）。这个超时的证据可以贴回到"Zone1"上，然后所有代币都会被返还。
+与此同时，“分区1”会假设“代币”包的交付已经成功，除非"枢纽"上有证据给出相反的证明。在上述例子中，如果"枢纽"没有从"分区2"接收到第350个区块的`AckSent` 状态，那么它就会自动将其设置为`Timeout`（超时）。这个超时的证据可以贴回到"Zone1"上，然后所有代币都会被返还。
 
 ![Figure of Zone1, Zone2, and Hub IBC with acknowledgement and
 timeout](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/msc/ibc_with_ack_timeout.png)
