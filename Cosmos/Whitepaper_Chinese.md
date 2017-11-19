@@ -1443,7 +1443,7 @@ cause a fork and are hence punishable (assuming a fork-accountable BFT algorithm
 like Tendermint consensus). Long Range Attacks are often thought to be a
 critical blow to proof-of-stake.
 
-假设有一个足够有弹性的广播网络采集与一组静态验证组存在，那么任何区块链分叉都可以被检测到，而且发起攻击的验证人提交的保证金会被扣除。这个在2014年早期由Vitalik Buterin首次提出的新方法，解决了其他权益证明加密货币的"没有任何权益"问题（详见 [相关工作部分](#related-work)）。但由于验证组必须是能够变化的，在较长的一个时间段内最初的一些验证人会解除绑定，这就使他们可以自由地从创世区块中创建新链，并且因为他们不再有锁定的保证金，他们将不需要为这个行为支付任何费用。这类攻击被称为远程攻击（LRA），与短程攻击相比，后者对处在绑定中的验证人发起的分叉是可以对其进行惩罚的（假设有类似Tendermint共识这样的分叉问责制拜占庭容错算法）。所以远程攻击经常被认为是对权益证明机制的一种危险打击。
+假设有一个足够有弹性的广播网络采集与一组静态验证人组存在，那么任何区块链分叉都可以被检测到，而且发起攻击的验证人提交的保证金会被罚没。这个由Vitalik Buterin在2014年首次提出的新方法，解决了其他权益证明加密货币的"没有任何相关权益"问题（详见 [相关工作部分](#related-work)）。但由于验证人组必须是能够变化的，在较长的时间段内最初的一些验证人会解除j押金绑定，这就使他们可以自由地从创世区块中创建新链，并且因为他们不再有被锁定的保证金，他们将不需要为这个行为支付任何费用。这类攻击被称为远程攻击（LRA），与短程攻击相比，后者对处在押金绑定中的验证人发起的分叉是可以对其进行惩罚的（假设有类似Tendermint共识这样的分叉问责制拜占庭容错算法）。所以远程攻击经常被认为是对权益证明机制的一种危险打击。
 
 Fortunately, the LRA can be mitigated as follows.  First, for a validator to
 unbond (thereby recovering their collateral deposit and no longer earning fees
@@ -1460,9 +1460,7 @@ which would allow it to deceive the client by carrying out a long range attack
 by creating new blocks beginning back at a height where it was bonded (assuming
 it has control of sufficiently many of the early private keys).
 
-幸运的是，远程攻击（LRA）可以用以下的途径来缓解。第一，对于解除绑定的验证人而言（取回抵押保证金并且不再从参与共识中获取费用），保证金在一定时间内不能转移，也可以称其为"解绑周期"，这个周期可能长达数周或数月。第二，对于轻客户端的安全性而言，其首次连接到网络时必须根据可信源验证最新的一个区块哈希或者多个最好的区块哈希。这种情况有时被称为"弱主观性"。最后，为了保证安全，必须与最新的验证组进行频繁的同步，时长与解绑周期一致。
-
-这样就确保了轻客戸端在因验证人解绑资金而失去任何权益之前，知道验证组的变化情况，否则解绑的验证人就会在其绑定的高度后面开始创建新区块来实施远程攻击，以此来欺骗客户端（假设它可以控制足够多的早期私钥）。
+幸运的是，远程攻击（LRA）可以用以下的途径来缓解。第一，对于解除绑定的验证人而言（取回抵押保证金并且不再从参与共识中获取费用），保证金在一定时间内不能转移，也可以称其为"解绑周期"，这个周期可能长达数周或数月。第二，对于轻客户端的安全性而言，其首次连接到网络时必须根据可信源验证最新的一个区块哈希或者多个最好的区块哈希。这种情况有时被称为"弱主观性"。最后，为了保证安全，必须与最新的验证人组进行频繁的同步，时长与解绑周期一致。这样就确保了轻客戸端在因验证人解绑资金而失去任何权益之前，知道验证人组的变化情况，否则解绑的验证人就会在其绑定的高度后面开始创建新区块来实施远程攻击，以此来欺骗客户端（假设它可以控制足够多的早期私钥）。
 
 Note that overcoming the LRA in this way requires an overhaul of the original
 security model of proof-of-work. In PoW, it is assumed that a light client can
