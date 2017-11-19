@@ -1655,7 +1655,7 @@ mempool layer.
     * `Log (string)`:  错误信息
   * __使用__:<br/>
     验证一笔交易。这个信息不应该改变应用状态。交易在广播给其他节点前，首先通过CheckTx运行。你可以发起半状态化CheckTx，并在Commit or BeginBlock上清算状态，以允许序列执行同一区块中相关的交易。
-
+    
 ##### Commit
   * __Returns__:
     * `Data ([]byte)`: The Merkle root hash 默克尔根值
@@ -1663,13 +1663,28 @@ mempool layer.
   * __Usage__:<br/>
     Return a Merkle root hash of the application state.返回当前应用状态。
 
+##### 提交
+  * __返回值__:
+    * `Data ([]byte)`:  默克尔根值
+    * `Log (string)`:  调试或出错信息
+  * __使用__:<br/>
+    返回当前应用状态。
+
 ##### Query
   * __Arguments__:
-    * `Data ([]byte)`: The query request bytes 请求数据
+    * `Data ([]byte)`: The query request bytes 
   * __Returns__:
     * `Code (uint32)`: Response code
     * `Data ([]byte)`: The query response bytes
     * `Log (string)`: Debug or error message
+    
+##### 查询
+  * __命令行参数__:
+    * `Data ([]byte)`:  请求数据
+  * __返回值__:
+    * `Code (uint32)`: 回复代码
+    * `Data ([]byte)`: 查询回复字节
+    * `Log (string)`: 调试或出错信息
 
 ##### Flush
   * __Usage__:<br/>
@@ -1682,6 +1697,12 @@ need not implement this message -- it's handled by the project.
   * __Usage__:<br/>
     Return information about the application state.  Application specific.
 
+##### 信息
+  * __返回值__:
+    * `Data ([]byte)`: 信息字节串
+  * __使用__:<br/>
+    返回关于应用程序状态的信息.  应用指定。
+
 ##### SetOption
   * __Arguments__:
     * `Key (string)`: Key to set
@@ -1693,6 +1714,15 @@ need not implement this message -- it's handled by the project.
 connection, or Key="mode", Value="consensus" for a consensus connection.
     Other options are application specific.
 
+#### 设置选项
+  * __参数__:
+    * `Key (string)`: 设置参数
+    * `Value (string)`: 参数值
+  * __返回值__:
+    * `Log (string)`: Debug or error message
+  * __使用__:<br/>
+    比如，针对内存池的连接可以将键设置为"mode"（模式），值为"mempool"（内存池）。或者针对共识连接，将键设置为"mode"，值设置为"consensus"（共识）。其他选项根据可具体应用进行专门设置。
+    
 ##### InitChain
   * __Arguments__:
     * `Validators ([]Validator)`: Initial genesis-validators
