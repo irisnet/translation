@@ -1353,7 +1353,7 @@ the legal system is unreliable or excessively expensive to invoke, validators ca
 deposits in order to participate, and those deposits can be revoked, or slashed,
 when malicious behaviour is detected [\[10\]][10].
 
-经过精心设计的共识协议应该能够在超出容错能力或者共识出错的情况下为系统提供一定的保障。这在能够通过拜占庭行为获取实质经济回报的金融系统中显得尤为必要。_分叉问责制_ 就属于这种非常重要的保障机制，这种制度会使一个导致共识出错的进程（例如使协议客户端开始接受不同值——即分叉）被识别出来，并且根据协议规则对其进行惩罚，甚至将其移送至司法系统处置。但当司法系统不可靠或者诉讼费极其昂贵时，为了让验证人们都参与到这个机制当中，该制度会强制要求他们建立安全保证金，一旦检测到恶意行为，那么这些保证金将会被吊销或者削减[\[10\]][10].
+经过精心设计的共识协议应该能够在超出容错能力或者共识出错的情况下为系统提供一定的保障。这在能够通过拜占庭行为获取实质经济回报的金融系统中显得尤为必要。_分叉问责制_ 就属于这种非常重要的保障机制，这种制度会使一个导致共识出错的进程（例如使协议客户端开始接受不同值——即分叉）被识别出来，并且根据协议规则对其进行惩罚，甚至将其移送至司法系统处置。但当司法系统不可靠或者诉讼费极其昂贵时，为了让验证人们都参与到这个机制当中，该制度会强制要求他们建立安全保证金，一旦检测到恶意行为，那么这些保证金将会被罚没或者削减[\[10\]][10].
 
 Note this is unlike Bitcoin, where forking is a regular occurrence due to
 network asynchrony and the probabilistic nature of finding partial hash
@@ -1362,7 +1362,7 @@ fork due to asynchrony, Bitcoin cannot reliably implement fork-accountability,
 other than the implicit opportunity cost paid by miners for mining an orphaned
 block.
 
-注意这与比特币有所不同，由于网络非同步与局部哈希碰撞的概率特性，比特币的分叉是定期出现的。因为在很多情况下，恶意分叉与非同步引起的分叉是无法分辨的，除非让矿工为挖到的孤儿区块支付隐性的机会成本，否则比特币就很难准确地执行分叉问责制。
+注意这与比特币有所不同，由于网络非同步与局部哈希碰撞的概率特性，比特币的分叉是定期出现的。因为在很多情况下，恶意分叉与非同步引起的分叉是无法分辨的，除非让矿工为挖到的孤立区块支付隐性的机会成本，否则比特币就很难准确地执行分叉问责制。
 
 ### Tendermint Consensus | 共识
 
@@ -1384,7 +1384,7 @@ adversary to indefinitely thwart the weak synchrony assumption (causing the
 consensus to fail to ever commit a block), and doing so can be made even more
 difficult by using randomized values of TimeoutPropose on each validator.
 
-注意到协议中的严格决定论会引发一个弱同步假设，因为错误的前导字符必须被检测到并将其略过。验证人们在为Nil预投票之前会等待一段时间，称之为超时提议，这个超时提议的数值也会随着每一轮的进行而递增。每一轮的进行都是完全不同步的，在这个过程中，只有当验证人收听到超过⅔的网络投票才能进入到下一轮中。实际上，它需要极其强大的敌对者无限阻挠这个较弱的同步假设（导致共识无法提交区块），而且通过每个验证人超时提议（TimeoutPropose）的随机值还可更加提高这么做的难度。
+注意到协议中的严格的确定性会引发一个弱同步假设，因为错误的发起者必须被检测到并将其略过。验证人们在为Nil预投票之前会等待一段时间，称之为超时提议，这个超时提议的hi等待时间也会随着每一轮的进行而递增。每一轮的进行都是完全不同步的，在这个过程中，只有当验证人收听到超过⅔的网络投票才能进入到下一轮中。实际上，它需要极其强大的阻碍才能阻挠这个弱同步假设（导致无达成共识，无法提交区块），而且通过每个验证人超时提议（TimeoutPropose）的随机值还可更加提高这么做的难度。
 
 An additional set of constraints, or Locking Rules, ensure that the network will
 eventually commit just one block at each height. Any malicious attempt to cause
@@ -1400,7 +1400,7 @@ evidence as justification, and that validators which have already PreCommit
 cannot contribute to evidence to PreCommit something else.  This ensures both
 safety and liveness of the consensus algorithm.
 
-另一个附加的约束条件，或者叫锁定条例，它能确保网络最终在每个高度只提交一个区块。任何试图在给定高度提交超过一个区块的恶意行为都会被识别出来。首先，一个区块的预提交必须被认为是正当的，并且以Polka的形式提交。如果验证人已经准备在R_1轮中预提交一个区块，我们称他们锁定了这个区块，并且然后用于验证R_2轮新预提交动作的Polka必须进入R_polka轮，其中 R_1 < R_polka <= R_2。其次，验证人们必须为他们锁定的区块提议并且（或者）预投票。这两个条件共同作用，确保了验证人在对其正当性没有充分论证的情况下不能进行预提交操作，并且保证已经完成预提交的验证人不能再为其他东西的预提交贡献证明。这样不但可以保证共识算法的安全性，还能保证它的活跃度。
+另一个附加的约束条件，或者叫锁定条例，它能确保网络最终在每个高度只提交一个区块。任何试图在给定高度提交超过一个区块的恶意行为都会被识别出来。首先，一个区块的预提交必须被认为是正当的，并且以Polka的形式提交。如果验证人已经准备在R_1轮中预提交一个区块，我们称他们锁定了这个区块，并且然后用于验证R_2轮新预提交动作的Polka必须进入R_polka轮，其中 R_1 < R_polka <= R_2。其次，验证人们必须为他们锁定的区块提议并且（或者）预投票。这两个条件共同作用，确保了验证人在对其正当性没有充分论证的情况下不能进行预提交操作，并且保证已经完成预提交的验证人不能再为其他东西的预提交贡献证明投票。这样不但可以保证共识算法的安全性，还能保证它的活跃度。
 
 The full details of the protocol are described
 [here](https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm).
@@ -1417,7 +1417,7 @@ Additionally, light clients could periodically stay synced with changes to the
 validator set, in order to avoid [long range
 attacks](#preventing-long-range-attacks) (but other solutions are possible).
 
-作为替代链（一个分叉）的存在，Tendermint权益证明（Tendermint-PoS）取消了同步所有区块头的要求，这意味着不小于⅓的担保权益可以被消减。当然，削减也是需要有人共享分叉证据的，所以轻客戸端就要存储任何它见证的区块哈希提交。另外，轻客戸端可以定期地与验证人设置的改变保持同步，以避免出现远程攻击（但是其他解决方案也具有可能性）。
+因为生成侧链（一个分叉）意味着至少⅓的担保权益被罚没，Tendermint权益证明（Tendermint-PoS）取消了同步所有区块头的要求。当然，罚没保证金也是需要有人共享分叉证据的，所以轻客戸端就要存储任何它见证的区块哈希提交。另外，轻客戸端可以定期地与验证人组的改变保持同步，以避免出现远程攻击（但是其他解决方案也具有可能性）。
 
 In spirit similar to Ethereum, Tendermint enables applications to embed a
 global Merkle root hash in each block, allowing easily verifiable state queries
@@ -1425,7 +1425,7 @@ for things like account balances, the value stored in a contract, or the
 existence of an unspent transaction output, depending on the nature of the
 application.
 
-与以太坊类似，Tendermint能够让应用程序在每个区块中嵌入一个全球梅克尔根的哈希值，可以进行简单且可验证的状态查询，比如查询账户余额、存放在合约中的值，或者未使用交易输出（UTXO）的存在，具体由应用程序的特性决定。
+与以太坊类似，Tendermint能够让应用程序在每个区块中嵌入一个全局梅克尔根的哈希值，可以简单方便的验证的状态查询，比如查询账户余额、在智能合约中的值，或者未使用交易输出（UTXO）的存在，具体由应用程序的特性决定。
 
 ### Preventing Long Range Attacks | 远程攻击的防御
 
@@ -1443,7 +1443,7 @@ cause a fork and are hence punishable (assuming a fork-accountable BFT algorithm
 like Tendermint consensus). Long Range Attacks are often thought to be a
 critical blow to proof-of-stake.
 
-假设有一个足够有弹性的广播网络采集与一组静态验证组存在，那么任何区块链分叉都可以被检测到，而且发起攻击的验证人提交的保证金会被扣除。这个在2014年早期由Vitalik Buterin首次提出的新方法，解决了其他权益证明加密货币的"没有任何权益"问题（详见 [相关工作部分](#related-work)）。但由于验证组必须是能够变化的，在较长的一个时间段内最初的一些验证人会解除绑定，这就使他们可以自由地从创世区块中创建新链，并且因为他们不再有锁定的保证金，他们将不需要为这个行为支付任何费用。这类攻击被称为远程攻击（LRA），与短程攻击相比，后者对处在绑定中的验证人发起的分叉是可以对其进行惩罚的（假设有类似Tendermint共识这样的分叉问责制拜占庭容错算法）。所以远程攻击经常被认为是对权益证明机制的一种危险打击。
+假设有一个足够有弹性的广播网络采集与一组静态验证人组存在，那么任何区块链分叉都可以被检测到，而且发起攻击的验证人提交的保证金会被罚没。这个由Vitalik Buterin在2014年首次提出的新方法，解决了其他权益证明加密货币的"没有任何相关权益"问题（详见 [相关工作部分](#related-work)）。但由于验证人组必须是能够变化的，在较长的时间段内最初的一些验证人会解除j押金绑定，这就使他们可以自由地从创世区块中创建新链，并且因为他们不再有被锁定的保证金，他们将不需要为这个行为支付任何费用。这类攻击被称为远程攻击（LRA），与短程攻击相比，后者对处在押金绑定中的验证人发起的分叉是可以对其进行惩罚的（假设有类似Tendermint共识这样的分叉问责制拜占庭容错算法）。所以远程攻击经常被认为是对权益证明机制的一种危险打击。
 
 Fortunately, the LRA can be mitigated as follows.  First, for a validator to
 unbond (thereby recovering their collateral deposit and no longer earning fees
@@ -1460,9 +1460,7 @@ which would allow it to deceive the client by carrying out a long range attack
 by creating new blocks beginning back at a height where it was bonded (assuming
 it has control of sufficiently many of the early private keys).
 
-幸运的是，远程攻击（LRA）可以用以下的途径来缓解。第一，对于解除绑定的验证人而言（取回抵押保证金并且不再从参与共识中获取费用），保证金在一定时间内不能转移，也可以称其为"解绑周期"，这个周期可能长达数周或数月。第二，对于轻客户端的安全性而言，其首次连接到网络时必须根据可信源验证最新的一个区块哈希或者多个最好的区块哈希。这种情况有时被称为"弱主观性"。最后，为了保证安全，必须与最新的验证组进行频繁的同步，时长与解绑周期一致。
-
-这样就确保了轻客戸端在因验证人解绑资金而失去任何权益之前，知道验证组的变化情况，否则解绑的验证人就会在其绑定的高度后面开始创建新区块来实施远程攻击，以此来欺骗客户端（假设它可以控制足够多的早期私钥）。
+幸运的是，远程攻击（LRA）可以用以下的途径来缓解。第一，对于解除绑定的验证人而言（取回抵押保证金并且不再从参与共识中获取费用），保证金在一定时间内不能转移，也可以称其为"解绑周期"，这个周期可能长达数周或数月。第二，对于轻客户端的安全性而言，其首次连接到网络时必须根据可信源验证最新的一个区块哈希或者多个最好的区块哈希。这种情况有时被称为"弱主观性"。最后，为了保证安全，必须与最新的验证人组进行频繁的同步，时长与解绑周期一致。这样就确保了轻客戸端在因验证人解绑资金而失去任何权益之前，知道验证人组的变化情况，否则解绑的验证人就会在其绑定的高度后面开始创建新区块来实施远程攻击，以此来欺骗客户端（假设它可以控制足够多的早期私钥）。
 
 Note that overcoming the LRA in this way requires an overhaul of the original
 security model of proof-of-work. In PoW, it is assumed that a light client can
@@ -1475,7 +1473,7 @@ network against trusted sources. Of course, this latter requirement is similar
 to that of Bitcoin, where the protocol and software must also be obtained from a
 trusted source.
 
-注意到用这样的方式来对抗远程攻击（LRA）需要对工作量证明（proof-of-work）的原始安全模块进行彻底检查。在工作量证明中（PoW），一个轻客户端可以通过在每一个区块头中运行工作量证明，以此简便地在任何时候与可信任的创始区块的当前高度进行同步。但是，为了对抗远程攻击（LRA），我们需要轻客戸端定期上线追踪验证组的变动，其中在首次上线时必须格外仔细地根据可靠源来验证从网络采集的信息。诚然，后面这个要求和比特币类似，其协议和软件也必须从可靠源获得。
+注意到用这样的方式来对抗远程攻击（LRA）需要对工作量证明（proof-of-work）的原始安全模块进行彻底检查。在工作量证明中（PoW），一个轻客户端可以通过在每一个区块头中运行工作量证明，以此简便地在任何时候与可信任的创始区块的当前高度进行同步。但是，为了对抗远程攻击（LRA），我们需要轻客戸端定期上线追踪验证人组的变动，其中在首次上线时必须格外仔细地根据可靠源来验证从网络采集的信息。诚然，后面这个要求和比特币类似，其协议和软件也必须从可靠源获得。
 
 The above method for preventing LRA is well suited for validators and full nodes
 of a Tendermint-powered blockchain because these nodes are meant to remain
@@ -1493,7 +1491,7 @@ anyone could bond their tokens in a specially designed smart contract and
 provide attestation services for pay, effectively creating a market for
 light-client LRA security.
 
-以上这些为了防止远程攻击的方法，比较好地适用于由Tendermint驱动下的区块链验证人以及全部节点，因为这些节点需要保持与网络的连接。这些方法同样适用于希望频繁地与网络同步的轻客户端。但是，对于那些不希望频繁接入互联网或者区块链网络的轻客户端来说，还有另一种方法可以解决远程攻击的问题。不是验证人的代币持有者可以在很长的解绑期内（比如比验证人的解绑期更久）使用代币作为抵押，并且为轻客戸端提供二级证明当前有效性以及过去区块哈希的解决方案。虽然这些代币对于区块链共识的安全性并没有价值，不过他们还是可以为轻客戸端提供强大的保障。如果在以太坊中支持历史区块哈希查询，那么任何人都可以用特定的智能合约来绑定他们的代币，并且提供付费证明服务，从而有效地针对轻客戸端LRA安全问题开发出一个市场。
+以上这些为了防止远程攻击的方法，比较好地适用于由Tendermint驱动下的区块链验证人节点以及全节点，因为这些节点需要保持与网络的连接。这些方法同样适用于希望频繁地与网络同步的轻客户端。但是，对于那些不希望频繁接入互联网或者区块链网络的轻客户端来说，还有另一种方法可以解决远程攻击的问题。非验证人节点可以在很长的解绑期内（比如比验证人的解绑期更久）使用代币作为保证金，并且为轻客戸端提供二级证明当前有效性以及过去区块哈希的解决方案。虽然这些代币对于区块链共识的安全性并没有价值，不过他们还是可以为轻客戸端提供强大的保障。如果在以太坊中支持历史区块哈希查询，那么任何人都可以用特定的智能合约来绑定他们的代币，并且提供付费证明服务，从而有效地针对轻客戸端LRA安全问题开发出一个市场。
 
 ### Overcoming Forks and Censorship Attacks | 克服分叉与审查攻击
 
@@ -1508,7 +1506,7 @@ block commits to a near halt, or engage in any combination of these attacks.
 Finally, it can cause the blockchain to fork, by double-signing or violating the
 locking rules.
 
-由于对提交区块的定义，任何不少于⅓的联合投票权益都可以通过下线或者不广播选票来中止区块链运行。这样的联合也可以通过拒绝包含这些交易的区块来审查特定的交易，尽管这将导致大多数区块提案被拒绝，致使区块提交速率减缓，降低了它的实用性与价值。恶意的联合或许仍然会陆陆续续地广播选票，用阻挠区块链的区块提交来将其逼停，或者使用任何这些攻击的组合攻击。最终，它会通过双重签名或者违反锁定规则来造成区块链分叉。
+由于提交区块流程的定义，任何联合后不少于⅓的投票权的节点都可以通过下线或者不广播选票来中止区块链运行。这样的联合也可以通过拒绝包含这些交易的区块来审查特定的交易，尽管这将导致大多数区块提案被拒绝，致使区块提交速率减缓，降低了它的实用性与价值。恶意的联合或许仍然会陆陆续续地广播选票，用阻挠区块链的区块提交来将其逼停，或者使用任何这些攻击的组合攻击。最终，它会通过双重签名或者违反锁定规则来造成区块链分叉。
 
 If a globally active adversary were also involved, it could partition the network in
 such a way that it may appear that the wrong subset of validators were
@@ -1516,7 +1514,7 @@ responsible for the slowdown. This is not just a limitation of Tendermint, but
 rather a limitation of all consensus protocols whose network is potentially
 controlled by an active adversary.
 
-如果一个全球活跃的敌对者也参与进来，就会用可能出现错误的验证组子集导致速度降低的方法来分割网络。这不只是Tendermint面临的限制，更确切地说是所有被活跃敌对者控制了网络的共识协议所面临的限制。
+如果一个全球活跃的作恶者也参与进来，就会用可能出现错误的验证组人子集导致速度降低的方法来分割网络。这不只是Tendermint面临的局限性，更确切地说是所有被活跃敌对者控制了网络的共识协议所面临的局限性1。
 
 For these types of attacks, a subset of the validators should coordinate through
 external means to sign a reorg-proposal that chooses a fork (and any evidence
@@ -1528,7 +1526,7 @@ phone wallet app may prompt the user with a security warning, while a
 refrigerator may accept any reorg-proposal signed by +½ of the original
 validators by voting power.
 
-对于这些类型的攻击，验证人们的子集应该通过外部的方式进行协调，以签署选择一个分叉（及牵扯到的任何证据）与带有签名的验证人的初始子集的重组提案。签署了这样一份重组提案的验证者，将放弃在所有其他分叉上属于他们的抵押品。客户端应在重组提案中验证签名以及任何相关的证据，并作出判断或提示终端用户作出决定。例如，一个手机钱包app应该在冰箱可能接受任何由一半以上的初始验证人们通过投票权利签署的重组提案时，给予用户安全警告提示。
+对于这些类型的攻击，验证人的子集应该通过外部的方式进行协调，以签署选择一个分叉（及关系到的所有证据）与带有签名的验证人的初始子集的重组提案。签署了这样一份重组提案的验证者，将放弃在所有其他分叉上属于他们的保证金。客户端应在重组提案中验证签名以及任何相关的证据，并作出判断或提示终端用户作出决定。例如，一个手机钱包app应该在可能接受任何由一半以上的初始验证人们通过投票权利签署的重组提案时，给予用户安全警告提示。
 
 No non-synchronous Byzantine fault-tolerant algorithm can come to consensus when
 ≥⅓ of voting power are dishonest, yet a fork assumes that ≥⅓ of voting power
@@ -1542,12 +1540,12 @@ to ensure that there are no remaining network partitions prior to signing a
 reorg-proposal, to avoid situations where two conflicting reorg-proposals are
 signed.
 
-当不少于⅓的投票权益是不诚实的时候，没有非同步的拜占庭容错算法能够达成共识，然而，分叉假设，不少于⅓的投票权益已经因不正当的双重签名或者锁定改变而成为不诚实的。因此，签署重组提案是一个协调问题，任何非同步协议都无法解决这个问题（也就是自动的，并且不考虑底层网络的可靠性）。目前，我们通过互联网媒体的社会共识，把重组提案的协调问题留给了人类去协调。验证人必须在签署重组提案之前就确保没有出现网络分割的问题，以此来避免签署两个相冲突的重组提议的情况发生。
+当多于⅓的投票权益是不诚实的时候，一个非同步的拜占庭容错算法步能够达成共识，然而，分叉假设不少于⅓的投票权益已经因不正当的双重签名或者锁定改变而成为不诚实的。因此，签署重组提案是一个协调问题，任何非同步协议都无法解决这个问题（也就是自动的，并且不考虑底层网络的可靠性）。目前，我们通过互联网媒体的社会共识，把重组提案的协调问题留给了用户去协调。验证人必须在签署重组提案之前就确保没有出现网络分割的问题，以此来避免签署两个相冲突的重组提议的情况发生。
 
 Assuming that the external coordination medium and protocol is robust, it
 follows that forks are less of a concern than censorship attacks.
 
-假设外部协调媒介和协议是可靠的，就会出现对于分叉的担心会比审查攻击要少许多的结果。
+假设外部协调媒介和协议是可靠的，对于分叉的担心会比审查攻击要少许多。
 
 In addition to forks and censorship, which require ≥⅓ Byzantine voting power, a
 coalition of >⅔ voting power may commit arbitrary, invalid state.  This is
@@ -1566,14 +1564,14 @@ validators of a Tendermint blockchain may be expected to be identifiable,
 commitment of an invalid state may even be punishable by law or some external
 jurisprudence, if desired.
 
-除了需要不少于⅓的拜占庭投票权益才能启动的分叉和审查制度以外，超过⅔的联合投票权益可能会任意提交无效的状态。这是任何拜占庭容错算法的共识系统所特有的。与利用简单可验证证明来创建分叉的双重签名不同，检测无效状态的提交需要非验证节点来验证整个区块，这意味着非验证节点会保留一份本地的状态副本并执行每一笔交易，然后为他们自己独立计算出状态的根源。一旦检测出来，处理这类故障的唯一方法就是社会共识。打一个比方，在比特币出现问题的情况下，无论是由于软件漏洞造成的分叉（正如2013年3月），还是由于矿工拜占庭行为提交的无效状态（正如2015年7月），由商户、开发者、矿工和其他组织组成的联系紧密的社区所建立起来的社会共识会让他们按照分工来参与到修复网络的工作当中去。此外，由于Tendermint区块链的验证人可能希望是其身份是可识别的，那么如果需要的话，无效状态的提交实际上是可以被法律或其他外部法律体系惩治的。
+除了需要大于⅓的拜占庭投票权益才能启动的分叉和审查制度以外，超过⅔的联合投票权益可能会提交任意、无效的状态。这是任何拜占庭容错算法的共识系统所特有的问题。与利用简单可验证证明来创建分叉的双重签名不同，检测无效状态的提交需要非验证节点来验证整个区块，这意味着非验证节点会保留一份本地的状态副本并执行每一笔交易，然后为他们自己独立计算出状态的根源。一旦检测出来，处理这类故障的唯一方法就是社会共识。打一个比方，在比特币出现问题的情况下，无论是由于软件漏洞造成的分叉（正如2013年3月），还是由于矿工拜占庭行为提交的无效状态（正如2015年7月），由商户、开发者、矿工和其他组织组成的联系紧密的社区所建立起来的社会共识会让他们按照分工来参与到修复网络的工作当中去。此外，由于Tendermint区块链的验证人身份是可识别的，那么如果需要的话，无效状态的提交实际上是可以被法律或其他外部法律体系惩治的。
 
 ### ABCI Specification | ABCI说明书
 
 ABCI consists of 3 primary message types that get delivered from the core to the
 application. The application replies with corresponding response messages.
 
-ABCI由3种主要的信息类型组成，这三类信息从核心传递到应用程序上，然后应用程序用相应回复信息做出应答。
+ABCI由3种主要的信息类型组成，这三类信息从共识引擎传递到应用程序上，然后应用程序用相应回复信息做出应答。
 
 The `AppendTx` message is the work horse of the application. Each transaction in
 the blockchain is delivered with this message. The application needs to validate
@@ -1582,7 +1580,7 @@ application protocol, and the cryptographic credentials of the transaction. A
 validated transaction then needs to update the application state — by binding a
 value into a key values store, or by updating the UTXO database.
 
-`AppendTx` 信息是应用程序的主要设备。区块链中的每一笔交易都通过这个信息来传递。应用程序需要验证每笔交易，这将通过接收针对当前状态、应用协议和交易密码证书的AppendTx信息来实现。验证过的交易将需要通过捆绑数值到键值存储或者更新UTXO数据库的方式来升级应用状态。
+`AppendTx` 信息是应用程序的主要传递媒介。区块链中的每一笔交易都通过这个信息来传递。应用程序需要验证每笔交易，这将通过接收针对当前状态、应用协议和交易密码证书的AppendTx信息来实现。验证过的交易将需要通过添加数值到键值存储或者更新UTXO数据库的方式来更新应用状态。
 
 The `CheckTx` message is similar to AppendTx, but it’s only for validating
 transactions. Tendermint Core’s mempool first checks the validity of a
@@ -1590,7 +1588,7 @@ transaction with CheckTx, and only relays valid transactions to its peers.
 Applications may check an incrementing nonce in the transaction and return an
 error upon CheckTx if the nonce is old.
 
-`CheckTx`信息与AppendTx信息类似，但它只是为了交易验证。Tendermint Core的内存池会先用CheckTx验证交易有效性，并且只会将有效的交易分程传递给它的节点。应用程序会检查交易中递增随机数，如果随机数过期就会根据CheckTx返回一个错误。
+`CheckTx`信息与AppendTx信息类似，但它只是为了交易验证。Tendermint Core的内存池会先用CheckTx验证交易有效性，并且只会将有效的交易传递给其他的节点。应用程序会检查交易序列号，如果序列号过期就会根据CheckTx返回一个错误。
 
 The `Commit` message is used to compute a cryptographic commitment to the
 current application state, to be placed into the next block header. This has
@@ -1600,13 +1598,13 @@ simplifies the development of secure lightweight clients, as Merkle-hash proofs
 can be verified by checking against the block-hash, and the block-hash is signed
 by a quorum of validators (by voting power).
 
-`Commit`信息是用来计算之后会存入到下一区块头中的当前应用状态上的加密提交项的。这具有一些便利的特性。状态更新的矛盾性将会像引起整个阶段编程错误的区块链分叉一样的形式出现。这也简化了安全轻客戸端的开发，因为梅克尔哈希证明可以通过检查区块哈希来加以验证，而区块哈希是由规定人数的验证人们签署的（通过投票权益）。
+`Commit`信息是用来计算之后会存入到下一区块头中的当前应用状态的加密提交项。这具有便利的特性。状态的前后矛盾性将会像引起程序错误，从而导致区块链分叉。这也简化了安全轻客戸端的开发，因为梅克尔哈希证明可以通过检查区块哈希来加以验证，而区块哈希是由规定人数的验证人们签署的（通过投票权益）。
 
 Additional ABCI messages allow the application to keep track of and change the
 validator set, and for the application to receive the block information, such as
 the height and the commit votes.
 
-此外，ABCI信息允许应用程序保持追踪与改变验证组，并让应用程序接收诸如高度和提交选票之类的区块信息。
+此外，ABCI信息允许应用程序保持追踪验证人组的改变，并让应用程序接收诸如高度和提交选票之类的区块信息。
 
 ABCI requests/responses are simple Protobuf messages.  Check out the [schema
 file](https://github.com/tendermint/abci/blob/master/types/types.proto).
@@ -1615,55 +1613,99 @@ ABCI请求/响应是简单的Protobuf信息。请参考这里的[模式文件](h
 
 ##### AppendTx
   * __Arguments__:
-    * `Data ([]byte)`: The request transaction bytes
+    * `Data ([]byte)`: The request transaction bytes 交易请求信息
   * __Returns__:
-    * `Code (uint32)`: Response code
+    * `Code (uint32)`: Response code 回复代码
     * `Data ([]byte)`: Result bytes, if any
-    * `Log (string)`: Debug or error message
+    * `Log (string)`: Debug or error message 错误信息
   * __Usage__:<br/>
     Append and run a transaction.  If the transaction is valid, returns
-CodeType.OK
+CodeType.OK 用途：提交并执行一笔交易
+##### 附加交易
+  * __命令行参数__:
+    * `Data ([]byte)`: 交易请求信息
+  * __Returns__:
+    * `Code (uint32)`: 回复代码
+    * `Data ([]byte)`: 结果字节，如果有的话
+    * `Log (string)`:  错误信息
+  * __使用__:<br/>
+    提交并执行一笔交易，如果交易有效，那返回CodeType.OK
 
 ##### CheckTx
   * __Arguments__:
-    * `Data ([]byte)`: The request transaction bytes
+    * `Data ([]byte)`: The request transaction bytes 交易请求信息
   * __Returns__:
-    * `Code (uint32)`: Response code
+    * `Code (uint32)`: Response code 回复代码
     * `Data ([]byte)`: Result bytes, if any
-    * `Log (string)`: Debug or error message
+    * `Log (string)`: Debug or error message 错误信息
   * __Usage__:<br/>
     Validate a transaction.  This message should not mutate the state.
     Transactions are first run through CheckTx before broadcast to peers in the
 mempool layer.
     You can make CheckTx semi-stateful and clear the state upon `Commit` or
 `BeginBlock`,
-    to allow for dependent sequences of transactions in the same block.
-
+    to allow for dependent sequences of transactions in the same block. 
+    
+##### 检查交易
+  * __命令行参数__:
+    * `Data ([]byte)`: 交易请求信息
+  * __Returns__:
+    * `Code (uint32)`: 回复代码
+    * `Data ([]byte)`: 结果字节，如果有的话
+    * `Log (string)`:  错误信息
+  * __使用__:<br/>
+    验证一笔交易。这个信息不应该改变应用状态。交易在广播给其他节点前，首先通过CheckTx运行。你可以发起半状态化CheckTx，并在Commit or BeginBlock上清算状态，以允许序列执行同一区块中相关的交易。
+    
 ##### Commit
   * __Returns__:
-    * `Data ([]byte)`: The Merkle root hash
+    * `Data ([]byte)`: The Merkle root hash 默克尔根值
     * `Log (string)`: Debug or error message
   * __Usage__:<br/>
-    Return a Merkle root hash of the application state.
+    Return a Merkle root hash of the application state.返回当前应用状态。
+
+##### 提交
+  * __返回值__:
+    * `Data ([]byte)`:  默克尔根值
+    * `Log (string)`:  调试或出错信息
+  * __使用__:<br/>
+    返回当前应用状态。
 
 ##### Query
   * __Arguments__:
-    * `Data ([]byte)`: The query request bytes
+    * `Data ([]byte)`: The query request bytes 
   * __Returns__:
     * `Code (uint32)`: Response code
     * `Data ([]byte)`: The query response bytes
     * `Log (string)`: Debug or error message
+    
+##### 查询
+  * __命令行参数__:
+    * `Data ([]byte)`:  请求数据
+  * __返回值__:
+    * `Code (uint32)`: 回复代码
+    * `Data ([]byte)`: 查询回复字节
+    * `Log (string)`: 调试或出错信息
 
 ##### Flush
   * __Usage__:<br/>
     Flush the response queue.  Applications that implement `types.Application`
 need not implement this message -- it's handled by the project.
 
+##### 刷新
+  * __使用__:<br/>
+    刷新回复队列。应用types.Application的应用程序无需实施这条信息——这个由项目进行处理。
+
 ##### Info
   * __Returns__:
     * `Data ([]byte)`: The info bytes
   * __Usage__:<br/>
     Return information about the application state.  Application specific.
+
+##### 信息
+  * __返回值__:
+    * `Data ([]byte)`: 信息字节串
+  * __使用__:<br/>
+    返回关于应用程序状态的信息.  应用指定。
 
 ##### SetOption
   * __Arguments__:
@@ -1676,17 +1718,38 @@ need not implement this message -- it's handled by the project.
 connection, or Key="mode", Value="consensus" for a consensus connection.
     Other options are application specific.
 
+#### 设置选项
+  * __参数__:
+    * `Key (string)`: 设置参数
+    * `Value (string)`: 参数值
+  * __返回值__:
+    * `Log (string)`: Debug or error message
+  * __使用__:<br/>
+    比如，针对内存池的连接可以将键设置为"mode"（模式），值为"mempool"（内存池）。或者针对共识连接，将键设置为"mode"，值设置为"consensus"（共识）。其他选项根据可具体应用进行专门设置。
+    
 ##### InitChain
   * __Arguments__:
     * `Validators ([]Validator)`: Initial genesis-validators
   * __Usage__:<br/>
-    Called once upon genesis
+    Called once upon genesis 在创世区块创建时调用
+    
+##### 初始链
+  * __参数__:
+    * `Validators ([]Validator)`: 初始化创世验证人
+  * __使用__:<br/>
+    在创世区块创建时调用
 
 ##### BeginBlock
   * __Arguments__:
     * `Height (uint64)`: The block height that is starting
   * __Usage__:<br/>
     Signals the beginning of a new block. Called prior to any AppendTxs.
+    
+##### BeginBlock
+  * __参数__:
+    * `Height (uint64)`: 区块刚开始的高度
+  * __使用__:<br/>
+    为新区块的开始提供信号。在附加交易（AppendTxs）前进行调用。
 
 ##### EndBlock
   * __Arguments__:
@@ -1697,6 +1760,13 @@ connection, or Key="mode", Value="consensus" for a consensus connection.
   * __Usage__:<br/>
     Signals the end of a block.  Called prior to each Commit after all
 transactions
+##### EndBlock
+  * __参数__:
+    * `Height (uint64)`: 结束时的区块高度
+  * __返回值__:
+    * `Validators ([]Validator)`: 具有新选票的变动后的验证人（归零就去除）
+  * __使用__:<br/>
+     为区块结束提供信号。在每次提交前所有交易后调用。
 
 See [the ABCI repository](https://github.com/tendermint/abci#message-types) for more details
 
@@ -1711,14 +1781,14 @@ may want to impose a timeout on the packet (with the `MaxHeight` packet field),
 while any destination chain may suffer from a denial-of-service attack with a
 sudden spike in the number of incoming packets.
 
-发送者有很多需要接收链提供数据包交付确认的原因。比如，如果预计目的链会出错，那发送者就可能无法了解目的链的状态。或者，当目的链可能遇到因接收数据包猛烈增多而形成的拒绝服务攻击时，发送者会想要向数据包强加一次超时（借助`MaxHeight` 即最大值包域）。
+发送者有很多需要接收链提供数据包交付确认的原因。比如，如果预计目的链会出错，那发送者就可能无法了解目的链的状态。或者，当目的链可能遇到因接收数据包猛烈增多而形成的拒绝服务攻击时，发送者会想要设定数据包超时时限（借助`MaxHeight` 即最大值包域）。
 
 In these cases, the sender can require delivery acknowledgement by setting the
 initial packet status to `AckPending`.  Then, it is the receiving chain's
 responsibility to confirm delivery by including an abbreviated `IBCPacket` in the
 app Merkle hash.
 
-在这些案例中，发送人可以通过在`AckPending`上设置初始数据包状态来要求提供交付确认。然后就由接收链通过包含一个简略的`IBCPacket`的应用梅克尔哈希来确认交付。
+在这些案例中，发送人可以通过在`AckPending`上设置初始数据包状态来要求提供交付确认。然后就由接收链通过包含一个简化的`IBCPacket`的应用梅克尔哈希来确认交付。
 
 ![Figure of Zone1, Zone2, and Hub IBC with
 acknowledgement](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/msc/ibc_with_ack.png)
@@ -1727,10 +1797,10 @@ First, an `IBCBlockCommit` and `IBCPacketTx` are posted on "Hub" that proves
 the existence of an `IBCPacket` on "Zone1".  Say that `IBCPacketTx` has the
 following value:
 
-首先，一个`IBCBlockCommit`和`IBCPacketTx`是被上传到“Hub”上用来证明"Zone1"（分区1）上的`IBCPacket`的存在的。假设`IBCPacketTx`的值如下：
+首先，一个`IBCBlockCommit`和`IBCPacketTx`是被上传到“枢纽”上用来证明"分区1"上的`IBCPacket`的存在的。假设`IBCPacketTx`的值如下：
 
 - `FromChainID`: "Zone1"
-- `FromBlockHeight`: 100 (say)
+- `FromBlockHeight`: 100 (假设)
 - `Packet`: an `IBCPacket`:
   - `Header`: an `IBCPacketHeader`:
     - `SrcChainID`: "Zone1"
@@ -1738,8 +1808,8 @@ following value:
     - `Number`: 200 (say)
     - `Status`: `AckPending`
     - `Type`: "coin"
-    - `MaxHeight`: 350 (say "Hub" is currently at height 300)
-  - `Payload`: &lt;The bytes of a "coin" payload&gt;
+    - `MaxHeight`: 350 (假设 "枢纽" 当前高度为 300)
+  - `Payload`: &lt;一个"代币"的有效负荷字节&gt;
 
 
 - `FromChainID`: "Zone1"
@@ -1758,7 +1828,7 @@ Next, an `IBCBlockCommit` and `IBCPacketTx` are posted on "Zone2" that proves
 the existence of an `IBCPacket` on "Hub".  Say that `IBCPacketTx` has the
 following value:
 
-其次，一个`IBCBlockCommit` 和 `IBCPacketTx`被传输都“Zone2”（分区2）上用来证明`IBCPacket`在“Hub”上的存在。假设`IBCPacketTx`的值如下：
+其次，一个`IBCBlockCommit` 和 `IBCPacketTx`被传输都“分区2”上用来证明`IBCPacket`在“枢纽”上的存在。假设`IBCPacketTx`的值如下：
 
 - `FromChainID`: "Hub"
 - `FromBlockHeight`: 300
@@ -1770,7 +1840,7 @@ following value:
     - `Status`: `AckPending`
     - `Type`: "coin"
     - `MaxHeight`: 350
-  - `Payload`: &lt;The same bytes of a "coin" payload&gt;
+  - `Payload`: &lt;一个"代币"相同的有效负荷字节&gt;
 
 
 - `FromChainID`: "Hub"
@@ -1790,11 +1860,11 @@ new status of `AckSent`.  An `IBCBlockCommit` and `IBCPacketTx` are posted back
 on "Hub" that proves the existence of an abbreviated `IBCPacket` on
 "Zone2".  Say that `IBCPacketTx` has the following value:
 
-接下来，"Zone2"必须将缩写的包放入其应用程序哈希中来显示`AckSent`的最新状态。
-`IBCBlockCommitand` 和`IBCPacketTx` 会传输到“Hub"上来证明缩写的`IBCPacket` 存在于"Zone2"上。假设`IBCPacketTx` 的值如下：
+接下来，"Zone2"必须将缩写的来显示`AckSent`的最新状态包添加到应用程序状态哈希中。
+`IBCBlockCommitand` 和`IBCPacketTx` 会传输到“枢纽"上来证明简化的`IBCPacket` 存在于"分区2"上。假设`IBCPacketTx` 的值如下：
 
 - `FromChainID`: "Zone2"
-- `FromBlockHeight`: 400 (say)
+- `FromBlockHeight`: 400 (假设)
 - `Packet`: an `IBCPacket`:
   - `Header`: an `IBCPacketHeader`:
     - `SrcChainID`: "Zone1"
@@ -1803,11 +1873,11 @@ on "Hub" that proves the existence of an abbreviated `IBCPacket` on
     - `Status`: `AckSent`
     - `Type`: "coin"
     - `MaxHeight`: 350
-  - `PayloadHash`: &lt;The hash bytes of the same "coin" payload&gt;
+  - `PayloadHash`: &lt;一个"代币"相同的有效负荷字节的哈希值&gt;
 
 
 - `FromChainID`: "Zone2"
-- `FromBlockHeight`: 400 (say)
+- `FromBlockHeight`: 400 (假设)
 - `Packet`: an `IBCPacket`:
   - `Header`: an `IBCPacketHeader`:
     - `SrcChainID`: "Zone1"
@@ -1816,13 +1886,13 @@ on "Hub" that proves the existence of an abbreviated `IBCPacket` on
     - `Status`: `AckSent`
     - `Type`: "coin"
     - `MaxHeight`: 350
-  - `PayloadHash`: &lt;相同"代币"有效负荷的哈希字节&gt;
+  - `PayloadHash`: &lt;一个"代币"相同的有效负荷字节的哈希值&gt;
 
 Finally, "Hub" must update the status of the packet from `AckPending` to
 `AckReceived`.  Evidence of this new finalized status should go back to
 "Zone2".  Say that `IBCPacketTx` has the following value:
 
-最后，“Hub”必须更新从`AckPending` 到`AckReceived`的数据包状态。这个新完成状态的证明应该返回到“Zone2”上。假设`IBCPacketTx`的值如下：
+最后，“枢纽”必须更新从`AckPending` 到`AckReceived`的数据包状态。这个新完成状态的证明应该返回到“分区2”上。假设`IBCPacketTx`的值如下：
 
 - `FromChainID`: "Hub"
 - `FromBlockHeight`: 301
@@ -1855,7 +1925,7 @@ above, if "Hub" had not received an `AckSent` status from "Zone2" by block
 350, it would have set the status automatically to `Timeout`.  This evidence of
 a timeout can get posted back on "Zone1", and any tokens can be returned.
 
-与此同时，“Zone1”会积极地假设“代币”包的交付已经成功，除非"Hub"上有证据给出相反的证明。在上述例子中，如果"Hub"没有从"Zone2"接收到第350个区块的`AckSent` 状态，那么它就会自动将其设置为`Timeout`（超时）。这个超时的证据可以贴回到"Zone1"上，然后所有代币都会被返还。
+与此同时，“分区1”会假设“代币”包的交付已经成功，除非"枢纽"上有证据给出相反的证明。在上述例子中，如果"枢纽"没有从"分区2"接收到第350个区块的`AckSent` 状态，那么它就会自动将其设置为`Timeout`（超时）。这个超时的证据可以贴回到"Zone1"上，然后所有代币都会被返还。
 
 ![Figure of Zone1, Zone2, and Hub IBC with acknowledgement and
 timeout](https://raw.githubusercontent.com/gnuclear/atom-whitepaper/master/msc/ibc_with_ack_timeout.png)
