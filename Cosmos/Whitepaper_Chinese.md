@@ -1353,7 +1353,7 @@ the legal system is unreliable or excessively expensive to invoke, validators ca
 deposits in order to participate, and those deposits can be revoked, or slashed,
 when malicious behaviour is detected [\[10\]][10].
 
-经过精心设计的共识协议应该能够在超出容错能力或者共识出错的情况下为系统提供一定的保障。这在能够通过拜占庭行为获取实质经济回报的金融系统中显得尤为必要。_分叉问责制_ 就属于这种非常重要的保障机制，这种制度会使一个导致共识出错的进程（例如使协议客户端开始接受不同值——即分叉）被识别出来，并且根据协议规则对其进行惩罚，甚至将其移送至司法系统处置。但当司法系统不可靠或者诉讼费极其昂贵时，为了让验证人们都参与到这个机制当中，该制度会强制要求他们建立安全保证金，一旦检测到恶意行为，那么这些保证金将会被吊销或者削减[\[10\]][10].
+经过精心设计的共识协议应该能够在超出容错能力或者共识出错的情况下为系统提供一定的保障。这在能够通过拜占庭行为获取实质经济回报的金融系统中显得尤为必要。_分叉问责制_ 就属于这种非常重要的保障机制，这种制度会使一个导致共识出错的进程（例如使协议客户端开始接受不同值——即分叉）被识别出来，并且根据协议规则对其进行惩罚，甚至将其移送至司法系统处置。但当司法系统不可靠或者诉讼费极其昂贵时，为了让验证人们都参与到这个机制当中，该制度会强制要求他们建立安全保证金，一旦检测到恶意行为，那么这些保证金将会被罚没或者削减[\[10\]][10].
 
 Note this is unlike Bitcoin, where forking is a regular occurrence due to
 network asynchrony and the probabilistic nature of finding partial hash
@@ -1362,7 +1362,7 @@ fork due to asynchrony, Bitcoin cannot reliably implement fork-accountability,
 other than the implicit opportunity cost paid by miners for mining an orphaned
 block.
 
-注意这与比特币有所不同，由于网络非同步与局部哈希碰撞的概率特性，比特币的分叉是定期出现的。因为在很多情况下，恶意分叉与非同步引起的分叉是无法分辨的，除非让矿工为挖到的孤儿区块支付隐性的机会成本，否则比特币就很难准确地执行分叉问责制。
+注意这与比特币有所不同，由于网络非同步与局部哈希碰撞的概率特性，比特币的分叉是定期出现的。因为在很多情况下，恶意分叉与非同步引起的分叉是无法分辨的，除非让矿工为挖到的孤立区块支付隐性的机会成本，否则比特币就很难准确地执行分叉问责制。
 
 ### Tendermint Consensus | 共识
 
