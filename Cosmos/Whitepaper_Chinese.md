@@ -1473,7 +1473,7 @@ network against trusted sources. Of course, this latter requirement is similar
 to that of Bitcoin, where the protocol and software must also be obtained from a
 trusted source.
 
-注意到用这样的方式来对抗远程攻击（LRA）需要对工作量证明（proof-of-work）的原始安全模块进行彻底检查。在工作量证明中（PoW），一个轻客户端可以通过在每一个区块头中运行工作量证明，以此简便地在任何时候与可信任的创始区块的当前高度进行同步。但是，为了对抗远程攻击（LRA），我们需要轻客戸端定期上线追踪验证组的变动，其中在首次上线时必须格外仔细地根据可靠源来验证从网络采集的信息。诚然，后面这个要求和比特币类似，其协议和软件也必须从可靠源获得。
+注意到用这样的方式来对抗远程攻击（LRA）需要对工作量证明（proof-of-work）的原始安全模块进行彻底检查。在工作量证明中（PoW），一个轻客户端可以通过在每一个区块头中运行工作量证明，以此简便地在任何时候与可信任的创始区块的当前高度进行同步。但是，为了对抗远程攻击（LRA），我们需要轻客戸端定期上线追踪验证人组的变动，其中在首次上线时必须格外仔细地根据可靠源来验证从网络采集的信息。诚然，后面这个要求和比特币类似，其协议和软件也必须从可靠源获得。
 
 The above method for preventing LRA is well suited for validators and full nodes
 of a Tendermint-powered blockchain because these nodes are meant to remain
@@ -1491,7 +1491,7 @@ anyone could bond their tokens in a specially designed smart contract and
 provide attestation services for pay, effectively creating a market for
 light-client LRA security.
 
-以上这些为了防止远程攻击的方法，比较好地适用于由Tendermint驱动下的区块链验证人以及全部节点，因为这些节点需要保持与网络的连接。这些方法同样适用于希望频繁地与网络同步的轻客户端。但是，对于那些不希望频繁接入互联网或者区块链网络的轻客户端来说，还有另一种方法可以解决远程攻击的问题。不是验证人的代币持有者可以在很长的解绑期内（比如比验证人的解绑期更久）使用代币作为抵押，并且为轻客戸端提供二级证明当前有效性以及过去区块哈希的解决方案。虽然这些代币对于区块链共识的安全性并没有价值，不过他们还是可以为轻客戸端提供强大的保障。如果在以太坊中支持历史区块哈希查询，那么任何人都可以用特定的智能合约来绑定他们的代币，并且提供付费证明服务，从而有效地针对轻客戸端LRA安全问题开发出一个市场。
+以上这些为了防止远程攻击的方法，比较好地适用于由Tendermint驱动下的区块链验证人节点以及全节点，因为这些节点需要保持与网络的连接。这些方法同样适用于希望频繁地与网络同步的轻客户端。但是，对于那些不希望频繁接入互联网或者区块链网络的轻客户端来说，还有另一种方法可以解决远程攻击的问题。非验证人节点可以在很长的解绑期内（比如比验证人的解绑期更久）使用代币作为保证金，并且为轻客戸端提供二级证明当前有效性以及过去区块哈希的解决方案。虽然这些代币对于区块链共识的安全性并没有价值，不过他们还是可以为轻客戸端提供强大的保障。如果在以太坊中支持历史区块哈希查询，那么任何人都可以用特定的智能合约来绑定他们的代币，并且提供付费证明服务，从而有效地针对轻客戸端LRA安全问题开发出一个市场。
 
 ### Overcoming Forks and Censorship Attacks | 克服分叉与审查攻击
 
@@ -1506,7 +1506,7 @@ block commits to a near halt, or engage in any combination of these attacks.
 Finally, it can cause the blockchain to fork, by double-signing or violating the
 locking rules.
 
-由于对提交区块的定义，任何不少于⅓的联合投票权益都可以通过下线或者不广播选票来中止区块链运行。这样的联合也可以通过拒绝包含这些交易的区块来审查特定的交易，尽管这将导致大多数区块提案被拒绝，致使区块提交速率减缓，降低了它的实用性与价值。恶意的联合或许仍然会陆陆续续地广播选票，用阻挠区块链的区块提交来将其逼停，或者使用任何这些攻击的组合攻击。最终，它会通过双重签名或者违反锁定规则来造成区块链分叉。
+由于提交区块流程的定义，任何联合后不少于⅓的投票权的节点都可以通过下线或者不广播选票来中止区块链运行。这样的联合也可以通过拒绝包含这些交易的区块来审查特定的交易，尽管这将导致大多数区块提案被拒绝，致使区块提交速率减缓，降低了它的实用性与价值。恶意的联合或许仍然会陆陆续续地广播选票，用阻挠区块链的区块提交来将其逼停，或者使用任何这些攻击的组合攻击。最终，它会通过双重签名或者违反锁定规则来造成区块链分叉。
 
 If a globally active adversary were also involved, it could partition the network in
 such a way that it may appear that the wrong subset of validators were
@@ -1514,7 +1514,7 @@ responsible for the slowdown. This is not just a limitation of Tendermint, but
 rather a limitation of all consensus protocols whose network is potentially
 controlled by an active adversary.
 
-如果一个全球活跃的敌对者也参与进来，就会用可能出现错误的验证组子集导致速度降低的方法来分割网络。这不只是Tendermint面临的限制，更确切地说是所有被活跃敌对者控制了网络的共识协议所面临的限制。
+如果一个全球活跃的作恶者也参与进来，就会用可能出现错误的验证组人子集导致速度降低的方法来分割网络。这不只是Tendermint面临的局限性，更确切地说是所有被活跃敌对者控制了网络的共识协议所面临的局限性1。
 
 For these types of attacks, a subset of the validators should coordinate through
 external means to sign a reorg-proposal that chooses a fork (and any evidence
@@ -1526,7 +1526,7 @@ phone wallet app may prompt the user with a security warning, while a
 refrigerator may accept any reorg-proposal signed by +½ of the original
 validators by voting power.
 
-对于这些类型的攻击，验证人们的子集应该通过外部的方式进行协调，以签署选择一个分叉（及牵扯到的任何证据）与带有签名的验证人的初始子集的重组提案。签署了这样一份重组提案的验证者，将放弃在所有其他分叉上属于他们的抵押品。客户端应在重组提案中验证签名以及任何相关的证据，并作出判断或提示终端用户作出决定。例如，一个手机钱包app应该在冰箱可能接受任何由一半以上的初始验证人们通过投票权利签署的重组提案时，给予用户安全警告提示。
+对于这些类型的攻击，验证人的子集应该通过外部的方式进行协调，以签署选择一个分叉（及关系到的所有证据）与带有签名的验证人的初始子集的重组提案。签署了这样一份重组提案的验证者，将放弃在所有其他分叉上属于他们的保证金。客户端应在重组提案中验证签名以及任何相关的证据，并作出判断或提示终端用户作出决定。例如，一个手机钱包app应该在可能接受任何由一半以上的初始验证人们通过投票权利签署的重组提案时，给予用户安全警告提示。
 
 No non-synchronous Byzantine fault-tolerant algorithm can come to consensus when
 ≥⅓ of voting power are dishonest, yet a fork assumes that ≥⅓ of voting power
@@ -1545,7 +1545,7 @@ signed.
 Assuming that the external coordination medium and protocol is robust, it
 follows that forks are less of a concern than censorship attacks.
 
-假设外部协调媒介和协议是可靠的，就会出现对于分叉的担心会比审查攻击要少许多的结果。
+假设外部协调媒介和协议是可靠的，对于分叉的担心会比审查攻击要少许多。
 
 In addition to forks and censorship, which require ≥⅓ Byzantine voting power, a
 coalition of >⅔ voting power may commit arbitrary, invalid state.  This is
