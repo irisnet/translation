@@ -1417,7 +1417,7 @@ Additionally, light clients could periodically stay synced with changes to the
 validator set, in order to avoid [long range
 attacks](#preventing-long-range-attacks) (but other solutions are possible).
 
-作为替代链（一个分叉）的存在，Tendermint权益证明（Tendermint-PoS）取消了同步所有区块头的要求，这意味着不小于⅓的担保权益可以被消减。当然，削减也是需要有人共享分叉证据的，所以轻客戸端就要存储任何它见证的区块哈希提交。另外，轻客戸端可以定期地与验证人设置的改变保持同步，以避免出现远程攻击（但是其他解决方案也具有可能性）。
+因为生成侧链（一个分叉）意味着至少⅓的担保权益被罚没，Tendermint权益证明（Tendermint-PoS）取消了同步所有区块头的要求。当然，罚没保证金也是需要有人共享分叉证据的，所以轻客戸端就要存储任何它见证的区块哈希提交。另外，轻客戸端可以定期地与验证人组的改变保持同步，以避免出现远程攻击（但是其他解决方案也具有可能性）。
 
 In spirit similar to Ethereum, Tendermint enables applications to embed a
 global Merkle root hash in each block, allowing easily verifiable state queries
@@ -1425,7 +1425,7 @@ for things like account balances, the value stored in a contract, or the
 existence of an unspent transaction output, depending on the nature of the
 application.
 
-与以太坊类似，Tendermint能够让应用程序在每个区块中嵌入一个全球梅克尔根的哈希值，可以进行简单且可验证的状态查询，比如查询账户余额、存放在合约中的值，或者未使用交易输出（UTXO）的存在，具体由应用程序的特性决定。
+与以太坊类似，Tendermint能够让应用程序在每个区块中嵌入一个全局梅克尔根的哈希值，可以简单方便的验证的状态查询，比如查询账户余额、在智能合约中的值，或者未使用交易输出（UTXO）的存在，具体由应用程序的特性决定。
 
 ### Preventing Long Range Attacks | 远程攻击的防御
 
