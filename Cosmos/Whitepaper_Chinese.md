@@ -255,9 +255,9 @@ IBC协议可以自然定义为两种交易的使用：一种是IBCBlockCommitTx 
 
 _关于两种IBC交易类型，详细请参见 [IBCBlockCommitTx](#ibcblockcommittx) 和 [IBCPacketTx](#ibcpacketcommit)
 
-##用例 ###################################################################
+## 用例 
 
-###分布式交易所
+### 分布式交易所
 
 比特币借助大量复制来增加分布式账本的安全性。用类似的方式，我们可以在区块链上运行交易所，来降低其受内部及外部攻击的可能性。我们称之为去中心化交易所。
 
@@ -271,7 +271,7 @@ Tendermint提供的快速交易执行是另一大优势。Cosmos的内部网络�
 
 综上，根据现有加密货币交易所的情况，Cosmos的一项重大应用就是去中心化交易所（称为 Cosmos DEX）。其交易吞吐能量和委托延时可以与那些中心化交易所媲美。交易者可以在各方离线的状态下提交限价订单。并且，基于Tendermint，Cosmos枢纽以及IBC的情况下，交易者可以快速地完成在交易所及其他网络的资金进出。
 
-###作为其他加密货币的纽带
+### 作为其他加密货币的纽带
 
 A privileged zone can act as the source of a bridged token of another
 cryptocurrency. A bridge is similar to the relationship between a
