@@ -1,36 +1,36 @@
-### I. Cosmos Economic Design
+### I. Cosmos的经济设计
 
-Cosmos is an upcoming network of blockchains that could revolutionize the blockchain landscape by providing much-needed scalability and interoperability. The Cosmos Network will be secured jointly by the holders of atoms (the staking token of Cosmos) and validators, who will run consensus nodes to validate transactions and maintain network consensus.
+Cosmos是即将上线的区块链网络，它通过提供急需的扩容性和交互操作性来变革区块链领域。Cosmos宙网络将由原子币（Cosmos的投注代币）的持有者和验证者共同担保，他们将运行共识节点来验证交易并保持网络共识。
 
-#### Definitions:
+#### 定义：
 
-We subsequently define key parts of the Cosmos system, as even people with a good understanding of Cosmos may not be aware of the current plans. We start by breaking down key components of the economic design.
+我们随后定义了Cosmos系统的关键部分，因为即使对Cosmos非常了解客户也可能不知道我们目前的计划。我们首先开始把我们经济设计的关键组成部分分解一下。
 
 #### Cosmos Hub
 
-The Cosmos Hub is the first blockchain of the Cosmos Network. The hub will connect to many other blockchains, effectively functioning as a light client of those chains. This will allow token transfers across different chains to be routed via the hub.
+Cosmos Hub是Cosmos网络的第一区块链。该集线器将连接到许多其他区块链，有效起到这些区块链的轻量级客户端的作用。这将使得跨链之间的代币转移能够能通过集线器进行路由。
 
-#### Atoms
+#### 原子币
 
-The atom is the native token of the Cosmos Hub. The core utility of atoms is to act as a staking mechanism to secure the Hub as deposits in the staking process. You can think of the atom as a virtualized ASIC of sorts, to loosely frame it in Proof-of-Work mining terms. The amount of atoms staked towards a validator defines the frequency by which the validator may propose a new block and its weight in votes to commit a block. For an deep dive into how weighted voting for validators works, read [this blog post](https://blog.cosmos.network/tendermint-explained-bringing-bft-based-pos-to-the-public-blockchain-domain-f22e274a0fdb). In return for bonding (staking) atoms with their chosen validator, an atom holder, who has delegated (see below) becomes eligible for block rewards paid in atoms and photons, as well as transaction fees paid in any of the whitelisted tokens (see below).
+原子币是Cosmos Hub的本地代币。原子币的核心效用是作为一个投注机制来确保Hub在投注过程中起到押金作用。您可以将原子币视为各种虚拟化的ASIC，并将其粗略地视作用来证明挖矿工作量的说法。向验证者投注的原子币数量定义了验证者可以产生新区块的频率以及在承担一个区块义务时的权重。想深入了解如何对验证者的工作进行加权投票，请阅读 [此博客](https://blog.cosmos.network/tendermint-explained-bringing-bft-based-pos-to-the-public-blockchain-domain-f22e274a0fdb)。 作为将（投注的）原子币与他们选定的验证者相结合的回报，那些已经有委托人的（见下文）原子币持有者有资格获得区块奖励，这些区块奖励由原子币和光子币来支付，也有资格用任何白名单上的代币来支付交易费用（请参阅下文）。
 
-#### Validators
+#### 验证者
 
-Validators secure the Cosmos Hub by validating and relaying transactions, proposing, verifying and finalizing blocks. Validators can stake their own atoms or be delegated tokens from other atom holders. There will be a limited number of validators, initially 100, who will be individually required to operate highly reliable automated signing infrastructure. Validators must also keep their validation keys secure while connected to the P2P network to sign blocks. Validators will be able to charge delegators a commission in atoms for their work in securing the network.
+验证者通过验证和中继交易，提出、核实和清理区块来确保Cosmos Hub的安全。验证者可以投注自己的原子币或从其他原子币持有者委托代币给验证者。验证人的数量是有限的，最初为100人，每个人将被单独要求运行高度可靠的自动签名的基础设施。验证者在连接到P2P网络进行区块签名时，他们必须确保他们的私钥是安全的。验证者可以向委托人以原子币方式索取一笔佣金，作为他们保护网络工作的手续费。
 
-#### Delegators
+#### 委托人
 
-Delegators of the Cosmos Hub are holders of the staking token, atoms, who use some or all of their atoms to secure the Cosmos Hub. There is no minimum amount of atoms required in order to stake atoms. They do so by selecting one or more validators and delegating their voting power to them by putting up atoms as collateral. In the case of misbehavior by the validator (for example, signing two different blocks at the same block height), part of the collateral deposited by both the errant validator and delegator will get slashed. In return, delegators can earn a proportion of the transaction fees as well as block rewards.
+Cosmos Hub的委托人是投注代币和原子币的持有者，他们使用部分或全部原子币来保护Cosmos的安全。投注原子币时没有最小数量的要求。具体的途径是他们通过选择一个或多个验证者，并通过用原子币作为抵押将表决权委托给验证者。如果验证者行为不当（例如，在同一个区块高度签署两个不同的区块），那么有错误行为的验证者和委托人抵押的部分抵押品都将会被削减。作为回报，委托人可以获得一定比例的交易费用和区块奖励。
 
-#### Inflationary Atoms
+#### “通货膨胀”的原子币
 
-New atoms are created every block and distributed to validators and delegators participating in the consensus process. This provides an incentive to atom holders to not just passively hold their tokens in wallets, but to put them at risk in order to secure the network. The number of new atoms created per block is variable and depends on the percentage of the atom supply that is staked in the network. The target rate of atoms put up as collateral to secure the network is at least ⅔ of the total atom supply. If less atoms are staked, atom supply via block rewards increases up to a ceiling of 20% annualized inflation of the total supply. If more than ⅔ are being staked, atom block rewards decrease gradually down to a floor of 7% annualized inflation.
+每个区块都会创建新的原子币，并将其分发给参与共识流程的验证者和委托人。这也激励了原子币的持有者，不是被动地将他们的代币存放在钱包中，而且使代币处于风险机制中以保证网络安全。每个块创建的新的原子币的数量是可变的，取决于投注在网络中的原子币供应的百分比。作为抵押物用来保护网络的原子币的目标比率至少是原子币总供应量的2/3。如果投注的原子币较少，通过区块奖励的原子供应将会增加，上限是总供应的年通货膨胀率的20％。如果超过2/3被投注，原子区块奖励就会逐步下降，底限是年通货膨胀率的7％。
 
-#### Transactions Fees
+#### 交易费
 
-Transactions on the Cosmos Network will be subject to transaction fees similar to other existing blockchains. Unlike current blockchains, the Cosmos Network plans to accept a multitude of tokens for the purpose of payment of transaction fees (see whitelisting tokens below for more information). Resulting transaction fees, minus a network tax that goes into a reserve pool, are split among validators and delegators based on their stake. Funds from the reserve pool are planned to be used to increase the security and value of the Cosmos Network and may also be distributed in accordance with decisions from the governance system.
+Cosmos网络上的交易将会收取与其他现有区块链相似的交易费用。与现有的区块链不同的是，Cosmos网络计划接受大量代币用于支付交易费用（请参阅列入白名单的代币以索取更多信息）。产生的交易费用减去网络税，之后进入储备库，然后根据投注大小分配给验证者和委托人。储备库中的资金计划用于增加Cosmos网络的安全性和价值，也可能根据治理系统的决策进行分配。
 
-#### Governance
+#### 管理
 
-The Cosmos Network employs on-chain governance by letting token holders vote on proposals that can adjust parameters of the system, implement upgrades or change the written constitution governing the Cosmos Hub. (No written constitution governing the Cosmos Hub has yet been implemented.) Each zone in the network can have its own constitution and governance mechanism. Delegators implicitly take part in the voting process by inheriting the vote of the validator they are delegating to. Delegators are given an option to override the vote of the validator they delegated atoms to for a vote on a specific issue.
+Cosmos网络采用让代币持有者对提案投票的方法进行链上管理，提案可以调整系统参数，实施升级或改变管理Cosmos Hub的成文法规。（目前关于Cosmos Hub的成文法规尚未实施。）网络中的每个区域都可以有自己的法规和治理机制。委托人通过继承他们所委派的验证人的选票暗中参与投票过程。如果有特定情况，委托人有选择权重写原先他们委托给原子币验证者的选票。
 
