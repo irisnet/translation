@@ -2,9 +2,9 @@
 
 ## 构建 `nameservice` 应用程序
 
-如果您想在这里构建`nameservice`应用，并使用它提供的功能，您首先需要安装`dep`.
+如果您想在这里构建`nameservice`应用，并使用它提供的功能，您首先需要安装`dep`.
 
-> _*注释*_: 如果您想在您自己的代码仓库上开始建立此应用，您需将前面所写的代码倒入您的代码仓库。本教程设置的代码倒入路径是(`github.com/cosmos/sdk-application-tutorial`)，如果你是在您自己的代码仓库上开发，那么您需要先将代码倒入的路径设置为您代码仓库的路径(`github.com/{ .Username }/{ .Project.Repo }`)，然后再编译您的应用。 
+> _*注释*_: 如果您想在您自己的代码仓库上开始建立此应用，您需将前面所写的代码倒入您的代码仓库。本教程设置的代码倒入路径是(`github.com/cosmos/sdk-application-tutorial`)，如果你是在您自己的代码仓库上开发，那么您需要先将代码倒入的路径设置为您代码仓库的路径(`github.com/{ .Username }/{ .Project.Repo }`)，然后再编译您的应用。 
 
 ```bash
 # Initialize dep and install dependencies
@@ -74,5 +74,5 @@ nscli tx nameservice buy-name jack.id 10mycoin \
     --chain-id testchain
 ```
 
-### 恭喜您已经构建了一个Cosmos SDK应用！我们的教程也即将结束。如果您希望了解如何采用REST服务来运行相同的命令, 可以[双击这里](./run-rest.md)。 
+### 恭喜您已经构建了一个Cosmos SDK应用！我们的教程也即将结束。如果您希望了解如何采用REST服务来运行相同的命令, 可以[双击这里](./run-rest.md)。 
 
