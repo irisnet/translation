@@ -176,4 +176,4 @@ func setNameHandler(cdc *codec.Codec, cliCtx context.CLIContext) http.HandlerFun
 - [`BaseReq`](https://godoc.org/github.com/cosmos/cosmos-sdk/client/utils#BaseReq) 函数包含了完成交易需要的基本项（用哪个key，如何编码，应用在那个区块链上，等等），并且如上述代码那样嵌入到程序中。
 - `baseReq.ValidateBasic` 和 `utils.CompleteAndBroadcastTxREST`为您设置了响应代码，通过这些函数您不需要为处理操作错误而担心。 
   
-### 现在你的模型已经有了与Cosmos SDK应用[合并所需要的所有东西(./app-complete.md) ！
+### 现在你的模型已经有了[与Cosmos SDK应用合并](./app-complete.md)的一切！
