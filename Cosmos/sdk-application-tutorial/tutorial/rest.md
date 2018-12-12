@@ -1,11 +1,11 @@
-# Nameservice模型的Rest接口
+# Nameservice模块的Rest接口
 
-你的模型也可以提供一个REST接口用于程序方法模型提供的功能。为此让我们先建立一个文件来负责HTTP处理程序。
+你的模块也可以提供一个REST接口，用于程序访问模块的功能。为此让我们先建立一个文件来负责HTTP处理程序。
 
 
 - `./x/nameservice/client/rest/rest.go`
 
-首先加入 `imports` 和 `const`s:
+首先加入 `imports` 和 `const`s:
 
 ```go
 package rest
@@ -30,7 +30,7 @@ const (
 
 ### 注册路径
 
-首先，在`RegisterRoutes`函数中定义模型的REST客户端接口。路径以模块名称开始以避免与其他模块的路径冲突：
+首先，在`RegisterRoutes`函数中定义模型的REST客户端接口。路径以模块名称开始，以避免与其他模块的路径冲突：
 
 ```go
 // RegisterRoutes - Central function to define routes that get registered by the main application
@@ -44,7 +44,7 @@ func RegisterRoutes(cliCtx context.CLIContext, r *mux.Router, cdc *codec.Codec, 
 
 ### 查询处理程序
 
-然后，开始建立我们前面提到的HTTP处理程序。这和前面定义CLI方法很相似。从`whois` 和 `resolve`查询开始：
+然后，开始建立我们前面提到的HTTP处理程序。这和前面定义的CLI方法很相似。从`whois` 和 `resolve`查询开始：
 
 ```go
 func resolveNameHandler(cdc *codec.Codec, cliCtx context.CLIContext, storeName string) http.HandlerFunc {
@@ -80,11 +80,11 @@ func whoIsHandler(cdc *codec.Codec, cliCtx context.CLIContext, storeName string)
 
 以上代码注解:
 - 注意，我在这里同样采用`cliCtx.QueryWithData`函数获得数据
-- 上面的函数和相应的CLI功能项基本一样
+- 上面的函数和相应的CLI功能基本一样
 
 ### Tx处理程序
 
-现在定义`buyName` and `setName`交易处理程序路径
+现在定义`buyName` and `setName`交易处理程序路径
 
 ```go
 type buyNameReq struct {
@@ -173,7 +173,7 @@ func setNameHandler(cdc *codec.Codec, cliCtx context.CLIContext) http.HandlerFun
 ```
 
 以上代码注解:
-- [`BaseReq`](https://godoc.org/github.com/cosmos/cosmos-sdk/client/utils#BaseReq) 函数包含了完成交易需要的基本项（用哪个key，如何编码，应用在那个区块链上，等。。。）并且如上面展示的那样嵌入到程序中
-- `baseReq.ValidateBasic` 和 `utils.CompleteAndBroadcastTxREST`为您设置响应代码，使用这些函数您不需要为处理操作错误或者成功而担心。 
+- [`BaseReq`](https://godoc.org/github.com/cosmos/cosmos-sdk/client/utils#BaseReq) 函数包含了完成交易需要的基本项（用哪个key，如何编码，应用在那个区块链上，等等），并且如上述代码那样嵌入到程序中。
+- `baseReq.ValidateBasic` 和 `utils.CompleteAndBroadcastTxREST`为您设置了响应代码，通过这些函数您不需要为处理操作错误而担心。 
   
-### 现在你的模型已经有了与Cosmos SDK应用[合并所需要的所有东西(./app-complete.md)!
+### 现在你的模型已经有了与Cosmos SDK应用[合并所需要的所有东西(./app-complete.md)!
