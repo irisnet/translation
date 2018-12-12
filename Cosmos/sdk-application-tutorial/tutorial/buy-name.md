@@ -108,4 +108,4 @@ func handleMsgBuyName(ctx sdk.Context, keeper Keeper, msg MsgBuyName) sdk.Result
 
 > _*注释*_: 这个处理程序采用`coinKeeper`提供的函数来处理通证操作。如果您想在应用中实现通证操作，想了解更多可用的函数，请[参考这个模块的介绍](https://godoc.org/github.com/cosmos/cosmos-sdk/x/bank#BaseKeeper) .
 
-### 现在您已经完成了`Msgs` 和 `Handlers`的定义，下面来了解如何在[能够查询的交易](./queriers.md)!上生成数据!
+### 现在您已经完成了`Msgs` 和 `Handlers`的定义，下面来了解如何在[能够查询的交易](./queriers.md)上生成数据!
