@@ -4,7 +4,7 @@
 
 ## `Msgs`
 
-`Msgs` 触发状态转换。`Msgs`包含在客户端提交给网络的[`Txs`](https://github.com/cosmos/cosmos-sdk/blob/develop/types/tx_msg.go#L34-L38) 中。 Cosmos SDK包装并解包来自`Txs`的`Msgs`，这意味着，作为开发人员，您只需要定义`Msgs`。 `Msgs`必须满足以下接口：
+`Msgs` 触发状态转换。`Msgs`包含在客户端提交给网络的[`Txs`](https://github.com/cosmos/cosmos-sdk/blob/develop/types/tx_msg.go#L34-L38) 中。 Cosmos SDK会封装并解封来自`Txs`的`Msgs`，也就是说作为开发人员，您只需要定义`Msgs`， `Msgs`必须满足以下接口：
 
 ```go
 // Transactions messages must fulfill the Msg
