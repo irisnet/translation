@@ -39,4 +39,4 @@
 
 当交易（包含在块中）到达Tendermint节点时，它将通过[ABCI](https://github.com/tendermint/tendermint/tree/master/abci) 传递给应用程序并解码以获取消息。 然后将消息发送到适当的模块，并根据`Handler`中定义的逻辑进行处理。 如果需要更新状态，则`Handler`会调用`Keeper`来执行更新。 本教程的后续步骤可了解更多相关概念的信息。
 
-现在您已经从设计层面了解了应用的整体功能框架，那么接下来就开始[实现](./app-init.md)它吧
+### 现在您已经从设计层面了解了应用的整体功能框架，那么接下来就开始[实现](./app-init.md)它吧
