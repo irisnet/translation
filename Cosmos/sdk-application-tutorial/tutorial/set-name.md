@@ -1,10 +1,9 @@
-# SetName
+SetName
 
-## `Msg`
+Msg
 
-The naming convention for SDK `Msgs` is `Msg{ .Action }`. The first action to implement is `SetName`, a `Msg` that allows owner of an address to set the result of resolving a name. Start by defining `MsgSetName` in a new file called `./x/nameservice/msgs.go`:
+SDK Msgs 的命名一般为Msg{ .Action }。 要实现的第一个操作是SetName，它是一个允许地址所有者设置解析名称结果的Msg。 首先在名为./x/nameservice/msgs.go的新文件中定义MsgSetName：
 
-```go
 package nameservice
 
 import (
@@ -28,28 +27,21 @@ func NewMsgSetName(name string, value string, owner sdk.AccAddress) MsgSetName {
 		Owner:  owner,
 	}
 }
-```
+MsgSetName 设置名称值有三个属性:
 
-The `MsgSetName` has the three attributes needed to set the value for a name:
-- `name` - The name trying to be set.
-- `value` - What the name resolves to.
-- `owner` - The owner of that name.
+name - 设置的名称
+value - 名称解析值
+owner - 名称所有者
+注意: 字段名称是 NameID而不是Name，因为.Route()是Msg 接口上方法的名称。 这将在SDK未来的更新中得到解决。
+接下来，实现Msg接口:
 
-> *NOTE*: the field name is `NameID` rather than `Name` as `.Route()` is the name of a method on the `Msg` interface.  This will be resolved in a [future update of the SDK](https://github.com/cosmos/cosmos-sdk/issues/2456).
-
-Next, implement the `Msg` interface:
-
-```go
 // Type should return the name of the module
 func (msg MsgSetName) Route() string { return "nameservice" }
 
 // Name should return the action
 func (msg MsgSetName) Type() string { return "set_name"}
-```
+SDK使用上述函数将Msgs传递到适当的模块进行处理。 它们还为用于索引的数据库标记添加了可读的名称。
 
-The above functions are used by the SDK to route `Msgs` to the proper module for handling. They also add human readable names to database tags used for indexing.
-
-```go
 // ValdateBasic Implements Msg.
 func (msg MsgSetName) ValidateBasic() sdk.Error {
 	if msg.Owner.Empty() {
@@ -60,11 +52,8 @@ func (msg MsgSetName) ValidateBasic() sdk.Error {
 	}
 	return nil
 }
-```
+ValidateBasic用于提供对Msg是否有效的一些基本无状态检查。 在这种情况下，检查没有属性为空。 请注意这里使用sdk.Error 类型。 SDK提供了一组开发人员经常遇到的错误类型。
 
-`ValidateBasic` is used to provide some basic **stateless** checks on the validity of the `Msg`.  In this case, check that none of the attributes are empty. Note the use of the `sdk.Error` types here. The SDK provides a set of error types that are frequently encountered by application developers.
-
-```go
 // GetSignBytes Implements Msg.
 func (msg MsgSetName) GetSignBytes() []byte {
 	b, err := json.Marshal(msg)
@@ -73,26 +62,20 @@ func (msg MsgSetName) GetSignBytes() []byte {
 	}
 	return sdk.MustSortJSON(b)
 }
-```
+GetSignBytes 定义了Msg如何编码以进行签名。 多数情况下，这意味着要对排序的JSON进行编组，输出不应修改。
 
-`GetSignBytes` defines how the `Msg` gets encoded for signing. In most cases this means marshal to sorted JSON. The output should not be modified.
-
-```go
 // GetSigners Implements Msg.
 func (msg MsgSetName) GetSigners() []sdk.AccAddress {
 	return []sdk.AccAddress{msg.Owner}
 }
-```
+GetSigners 定义在 Tx 上需要的签名以使其有效。 例如，在这种情况下， MsgSetName要求Owner在尝试重置名称所指向的内容时签署该交易。
 
-`GetSigners` defines whose signature is required on a `Tx` in order for it to be valid.  In this case, for example, the `MsgSetName` requires that the `Owner` signs the transaction when trying to reset what the name points to.
+Handler
 
-## `Handler`
+现在指定了MsgSetName，下一步是定义收到此消息时需要采取的操作。 这就是handler的作用。
 
-Now that `MsgSetName` is specified, the next step is to define what action(s) needs to be taken when this message is received. This is the role of the `handler`.
+在新文件中(./x/nameservice/handler.go) 从下列代码开始:
 
-In a new file (`./x/nameservice/handler.go`) start with the following code:
-
-```go
 package nameservice
 
 import (
@@ -113,15 +96,11 @@ func NewHandler(keeper Keeper) sdk.Handler {
 		}
 	}
 }
-```
+NewHandler本质上是一个子路由器，它将进入该模块的消息定向到正确的处理程序Handler。 目前，只有一个Msg/Handler。
 
-`NewHandler` is essentially a sub-router that directs messages coming into this module to the proper handler. At the moment, there is only one `Msg`/`Handler`.
+现在，您需要在handleMsgSetName中定义处理MsgSetName消息的实际逻辑：
 
-Now, you need to define the actual logic for handling the `MsgSetName` message in `handleMsgSetName`.:
-
-> _*NOTE*_: The naming convention for handler names in the SDK is `handleMsg{ .Action }`
-
-```go
+注意: SDK中handler的名称一般为 handleMsg{ .Action }
 // Handle MsgSetName
 func handleMsgSetName(ctx sdk.Context, keeper Keeper, msg MsgSetName) sdk.Result {
 	if !msg.Owner.Equals(keeper.GetOwner(ctx, msg.NameID)) { // Checks if the the msg sender is the same as the current owner
@@ -130,8 +109,6 @@ func handleMsgSetName(ctx sdk.Context, keeper Keeper, msg MsgSetName) sdk.Result
 	keeper.SetName(ctx, msg.NameID, msg.Value) // If so, set the name to the value specified in the msg.
 	return sdk.Result{}                      // return
 }
-```
+在该函数中，检查Msg发件人是否是真正的名称所有者（keeper.GetOwner）。 如果是这样，他们可以通过调用Keeper上的函数来设置名称。 如果没有，抛出错误并将其返回给用户。
 
-In this function, check to see if the `Msg` sender is actually the owner of the name (`keeper.GetOwner`).  If so, they can set the name by calling the function on the `Keeper`.  If not, throw an error and return that to the user.
-
-### Great, now owners can `SetName`s! But what if a name doesn't have an owner yet? Your module needs a way for users to buy names! Let us define [define the `BuyName` message](./buy-name.md).
+太棒了，现在名称所有者可以SetName了！ 但是，如果一个名称还没有拥有者呢？ 模块中就需要一种方式让用户购买名称！ 接下来就让我们定义BuyName消息吧！
