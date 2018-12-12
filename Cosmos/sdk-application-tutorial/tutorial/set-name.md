@@ -30,7 +30,7 @@ func NewMsgSetName(name string, value string, owner sdk.AccAddress) MsgSetName {
 }
 ```
 
-`MsgSetName` 设置名称值有三个属性:
+`MsgSetName` 设置名称值涉及三个属性:
 - `name` - 设置的名称
 - `value` - 名称解析值
 - `owner` - 名称所有者
@@ -47,7 +47,7 @@ func (msg MsgSetName) Route() string { return "nameservice" }
 func (msg MsgSetName) Type() string { return "set_name"}
 ```
 
-SDK使用上述函数将`Msgs`传递到适当的模块进行处理。 它们还为用于索引的数据库标记添加了可读的名称。
+SDK使用上述函数将`Msgs`传递到适当的模块进行处理。它们还为用于索引的数据库标记添加了可读的名称。
 
 ```go
 // ValdateBasic Implements Msg.
@@ -62,7 +62,7 @@ func (msg MsgSetName) ValidateBasic() sdk.Error {
 }
 ```
 
-`ValidateBasic`用于提供对`Msg`是否有效的一些基本**无状态**检查。 在这种情况下，检查没有属性为空。 请注意这里使用`sdk.Error` 类型。 SDK提供了一组开发人员经常遇到的错误类型。
+`ValidateBasic`用于提供对`Msg`是否有效的一些基本**无状态**检查。 在这种情况下，检查没有属性为空。请注意这里使用`sdk.Error` 类型。 SDK提供了一组开发人员经常遇到的错误类型。
 
 ```go
 // GetSignBytes Implements Msg.
@@ -75,7 +75,7 @@ func (msg MsgSetName) GetSignBytes() []byte {
 }
 ```
 
-`GetSignBytes` 定义了`Msg`如何编码以进行签名。 多数情况下，这意味着要对排序的JSON进行编组，输出不应修改。
+`GetSignBytes` 定义了`Msg`如何编码以进行签名。多数情况下，这意味着要对排序的JSON进行编组，而不应修改输出。
 
 ```go
 // GetSigners Implements Msg.
@@ -84,7 +84,7 @@ func (msg MsgSetName) GetSigners() []sdk.AccAddress {
 }
 ```
 
-`GetSigners` 定义在 `Tx` 上需要的签名以使其有效。 例如，在这种情况下， `MsgSetName`要求`Owner`在尝试重置名称所指向的内容时签署该交易。
+`GetSigners` 定义在 `Tx` 上需要的签名以使其有效。例如，在这种情况下，`MsgSetName`要求`Owner`在尝试重置名称所指向的内容时签署该交易。
 
 ## `Handler`
 
@@ -132,6 +132,6 @@ func handleMsgSetName(ctx sdk.Context, keeper Keeper, msg MsgSetName) sdk.Result
 }
 ```
 
-在该函数中，检查`Msg`发件人是否是真正的名称所有者（`keeper.GetOwner`）。 如果是这样，他们可以通过调用`Keeper`上的函数来设置名称。 如果没有，抛出错误并将其返回给用户。
+在该函数中，检查`Msg`发件人是否是真正的名称所有者（`keeper.GetOwner`）。 如果是这样，他们可以通过调用`Keeper`上的函数来设置名称。如果没有，抛出错误并将其返回给用户。
 
-### 太棒了，现在名称所有者可以`SetName`了！ 但是，如果一个名称还没有拥有者呢？ 模块中就需要一种方式让用户购买名称！ 接下来就让我们[定义BuyName消息](./buy-name.md)吧！
+### 太棒了，现在名称所有者可以`SetName`了！ 但是，如果一个名称还没有拥有者呢？模块中就需要一种方式让用户购买名称！接下来就让我们[定义BuyName消息](./buy-name.md)吧！
