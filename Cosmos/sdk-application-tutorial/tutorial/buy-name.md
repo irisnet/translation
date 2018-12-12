@@ -2,7 +2,7 @@
 
 ## Msg消息
 
-现在是时候定义购买域名的消息`Msg`，并把它加入到`./x/nameservice/msgs.go`文件中.这部分代码和`SetName`很相似。 
+现在我们来定义购买域名的消息`Msg`，并把它加入到`./x/nameservice/msgs.go`文件中，这部分代码和`SetName`很相似。 
 
 ```go
 // MsgBuyName defines the BuyName message
