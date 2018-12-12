@@ -1,6 +1,6 @@
 # The Keeper
 
-Cosmos SDK模块的主要核心是`Keeper`。 它处理与存储器之间的的交互，引用其他管理员进行跨模块交互，并包含Cosmos SDK模块的大部分核心功能。
+Cosmos SDK模块的主要核心是`Keeper`。 它处理与存储器之间的交互，引用其他keeper进行跨模块交互，并包含Cosmos SDK模块的大部分核心功能。
 
 首先创建文件`./x/nameservice/keeper.go`来保存模块的keeper。 在Cosmos SDK应用程序中，模块一般位于`./x/`文件夹中。
 
@@ -36,21 +36,21 @@ type Keeper struct {
 
     - [`codec`](https://godoc.org/github.com/cosmos/cosmos-sdk/codec)	- `codec`提供了使用Cosmos编码格式的工具 [Amino](https://github.com/tendermint/go-amino)。
 	
-	- [`bank`](https://godoc.org/github.com/cosmos/cosmos-sdk/x/bank) -`bank`模块控制账户及token的转移。
+	- [`bank`](https://godoc.org/github.com/cosmos/cosmos-sdk/x/bank) -`bank`模块控制账户及通证的转移。
 	- [`types`](https://godoc.org/github.com/cosmos/cosmos-sdk/types) - `types` 包含整个SDK中的常用类型。
 * `Keeper` 的架构。在keeper中有几个关键部分:
-	- [`bank.Keeper`](https://godoc.org/github.com/cosmos/cosmos-sdk/x/bank#Keeper) -这是`bank`模块中对`Keeper` 的引用，允许该模块中的代码从`bank`模块调用函数。 SDK使用[对象功能](https://en.wikipedia.org/wiki/Object-capability_model) 来访问应用程序状态的各个部分。 这是为了允许开发人员采用最少权限的方法，限制故障或恶意模块的功能影响它不需要访问的部分状态。
+	- [`bank.Keeper`](https://godoc.org/github.com/cosmos/cosmos-sdk/x/bank#Keeper) -这是`bank`模块中对`Keeper` 的引用，允许该模块中的代码从`bank`模块调用函数。SDK使用[对象功能](https://en.wikipedia.org/wiki/Object-capability_model) 来访问应用程序的各个状态。 这是为了允许开发人员以最小的权限，限制故障或恶意模块的功能，以避免对它不需要访问的状态产生影响。
 	
 	- [`*codec.Codec`](https://godoc.org/github.com/cosmos/cosmos-sdk/codec#Codec) -这是Amino用于指向编码和解码二进制结构的codec指针。
 	- [`sdk.StoreKey`](https://godoc.org/github.com/cosmos/cosmos-sdk/types#StoreKey) -可以访问一个长期保存应用程序状态的`sdk.KVStore` 。
 * 该模块有3个存储密钥:
-	- `namesStoreKey` - 这是用于存储由name指向的值字符串的主存储器 (i.e. `map[name]value`)
+	- `namesStoreKey` - 这是用于存储由名称指向的值字符串的主存储器 (i.e. `map[name]value`)
 	- `ownersStoreKey` -  该存储器中包含所有给定名称的当前所有者(i.e. `map[sdk_address]name`)
-	- `priceStoreKey` - 该存储器包含当前所有者为给定名称支付的价格。 任何购买此名称的人都必须以高于当前所有者的价格来购买。 (i.e. `map[name]price`)
+	- `priceStoreKey` - 该存储器包含当前所有者为给定名称支付的价格。任何购买此名称的人都必须以高于当前所有者的价格来购买。 (i.e. `map[name]price`)
 
 ## Getters and Setters
 
-现在来通过`Keeper`添加与存储器交互的方法。 首先，添加一个函数来设置给定名称解析的字符串：
+现在来通过`Keeper`添加与存储器交互的方法。首先，添加一个函数来设置给定名称解析的字符串：
 
 ```go
 // SetName - sets the value string that a name resolves to
@@ -77,7 +77,7 @@ func (k Keeper) ResolveName(ctx sdk.Context, name string) string {
 }
 ```
 
-这里，与`SetName`方法一样，首先使用 `StoreKey`访问存储器。 接下来，不使用存储键上的`Set`方法，而是使用`.Get([]byte) []byte`的方法，作为函数的参数，传递密钥，即`name`字符串转换为`[]byte`，并以`[]byte`的形式返回结果，再将`[]byte`转换为`string`并返回结果。
+这里，与`SetName`方法一样，首先使用 `StoreKey`访问存储器。接下来，不使用存储键上的`Set`方法，而是使用`.Get([]byte) []byte`的方法，作为函数的参数，传递密钥，即`name`字符串转换为`[]byte`，并以`[]byte`的形式返回结果，再将`[]byte`转换为`string`并返回结果。
 
 添加类似功能以获取并设置名称所有者:
 
@@ -150,4 +150,4 @@ func NewKeeper(coinKeeper bank.Keeper, namesStoreKey sdk.StoreKey, ownersStoreKe
 }
 ```
 
-### 接下来我们将了解用户如何使用[`Msgs` 和 `Handlers`](./msgs-handlers.md)与新存储器进行交互
+### 接下来我们将了解用户如何使用[`Msgs` 和 `Handlers`](./msgs-handlers.md)与新存储器进行交互。
