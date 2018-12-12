@@ -1,6 +1,6 @@
 # Msgs and Handlers
 
-现在您已经有了`Keeper`设置，现在就可以构建真正允许用户购买名称并设置值的`Msgs` 和`Handlers`了。
+现在您已经设置了`Keeper`，可以开始构建真正允许用户购买名称并设置值的`Msgs` 和`Handlers`了。
 
 ## `Msgs`
 
@@ -35,6 +35,6 @@ type Msg interface {
 
 `Handlers`定义收到给定`Msg`时需要采取的操作（哪些存储需要更新，如何以及在什么条件下进行更新）。
 
-在此模块中，您有两种类型的`Msgs`，用户可以发送这些消息以与应用程序状态进行交互：[`SetName`](./set-name.md) 和[`BuyName`](./buy-name.md)。 每种类型都有一个相关的`Handler`。
+在此模块中，您有两种类型的`Msgs`，用户可以通过发送这些消息与应用程序状态进行交互：[`SetName`](./set-name.md) 和[`BuyName`](./buy-name.md)。 每种类型都有一个相关的`Handler`。
 
-### 现在您已经更好地了解了 `Msgs`和`Handlers`，可以开始构建您的第一条消息了：[`SetName`](./set-name.md)。
+### 现在您已经很好地学习了 `Msgs`和`Handlers`，下面可以开始构建您的第一条消息了：[`SetName`](./set-name.md)。
