@@ -1,10 +1,10 @@
-# 构建和执行应用程序
+# 构建并运行应用程序
 
 ## 构建 `nameservice` 应用程序
 
-如果您想在这里构建`nameservice`应用，并使用它提供的功能，您首先需要安装`dep`.
+如果您想在这里构建`nameservice`应用，并使用其功能，您首先需要安装`dep`.
 
-> _*注释*_: 如果您想在您自己的代码仓库上开始建立此应用，您需将前面所写的代码倒入您的代码仓库。本教程设置的代码倒入路径是(`github.com/cosmos/sdk-application-tutorial`)，如果你是在您自己的代码仓库上开发，那么您需要先将代码倒入的路径设置为您代码仓库的路径(`github.com/{ .Username }/{ .Project.Repo }`)，然后再编译您的应用。 
+> _*注释*_: 如果您想在您自己的代码仓库上开始建立此应用，您需将前面所写的代码导入您的代码仓库。本教程设置的代码导入路径是(`github.com/cosmos/sdk-application-tutorial`)，如果你是在您自己的代码仓库上开发，那么您需要先将代码导入的路径设置为您代码仓库的路径(`github.com/{ .Username }/{ .Project.Repo }`)，然后再编译您的应用。 
 
 ```bash
 # Initialize dep and install dependencies
@@ -18,11 +18,11 @@ nsd help
 nscli help
 ```
 
-## Running the live network and using the commands
+## 运行实时网络并运用命令
 
-To initialize configuration and a `genesis.json` file for your application and an account for the transactions, start by running:
+要初始化配置和应用程序的`genesis.json`文件以及交易帐户，请先运行：
 
-> _*NOTE*_: In the below commands addresses are are pulled using terminal utilities. You can also just input the raw strings saved from creating keys, shown below. The commands require [`jq`](https://stedolan.github.io/jq/download/) to be installed on your machine.
+> _*注意*_: 在下面的命令中，使用终端实用程序来提取地址。您也可以输入从创建密钥中保存的原始字符串，如下所示。这些命令需要在您的机器上安装[`jq`](https://stedolan.github.io/jq/download/)。
 
 ```bash
 # Initialize configuration files and genesis file
@@ -39,9 +39,9 @@ nsd add-genesis-account $(nscli keys show jack --address) 1000mycoin,1000jackCoi
 nsd add-genesis-account $(nscli keys show alice --address) 1000mycoin,1000aliceCoin
 ```
 
-现在您可以通过执行`nsd start`来启动`nsd`,您将看到日志开始流出，这表示区块已经开始产生。这个过程可能需要等待数秒钟时间。 
+现在您可以通过执行`nsd start`来启动`nsd`,您将看到日志开始产生，这表示区块已经开始生成。这个过程可能需要等待数秒钟时间。 
 
-打开另一个终端来运行您刚刚创建的网络。 
+打开另一个终端来运行您刚刚创建的网络。 
 
 ```bash
 # First check the accounts to ensure they have funds
@@ -74,5 +74,5 @@ nscli tx nameservice buy-name jack.id 10mycoin \
     --chain-id testchain
 ```
 
-### 恭喜您已经构建了一个Cosmos SDK应用！我们的教程也即将结束。如果您希望了解如何采用REST服务来运行相同的命令, 可以[双击这里](./run-rest.md)。 
+### 恭喜您已经构建了一个Cosmos SDK应用！我们的教程也即将结束。如果您希望了解如何采用REST服务来运行相同的命令,可以[双击这里](./run-rest.md)。 
 
