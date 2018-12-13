@@ -4,7 +4,7 @@
 
 如果您想在这里构建`nameservice`应用，并使用其功能，您首先需要安装`dep`.
 
-> _*注释*_: 如果您想在您自己的代码仓库上开始建立此应用，您需将前面所写的代码导入您的代码仓库。本教程设置的代码导入路径是(`github.com/cosmos/sdk-application-tutorial`)，如果你是在您自己的代码仓库上开发，那么您需要先将代码导入的路径设置为您代码仓库的路径(`github.com/{ .Username }/{ .Project.Repo }`)，然后再编译您的应用。 
+> _*注意*_: 如果您想在您自己的代码仓库上开始建立此应用，您需将前面所写的代码导入您的代码仓库。本教程设置的代码导入路径是(`github.com/cosmos/sdk-application-tutorial`)，如果你是在您自己的代码仓库上开发，那么您需要先将代码导入的路径设置为您代码仓库的路径(`github.com/{ .Username }/{ .Project.Repo }`)，然后再编译您的应用。 
 
 ```bash
 # Initialize dep and install dependencies
@@ -18,11 +18,12 @@ nsd help
 nscli help
 ```
 
-## 运行实时网络并运用命令
+## 运行实时网络并体验命令
 
-要初始化配置和应用程序的`genesis.json`文件以及交易帐户，请先运行：
+下面的命令帮助完成初始化配置和应用程序的`genesis.json`文件以及交易帐户：
+# Initialize dep and install dependencies
 
-> _*注意*_: 在下面的命令中，使用终端实用程序来提取地址。您也可以输入从创建密钥中保存的原始字符串，如下所示。这些命令需要在您的机器上安装[`jq`](https://stedolan.github.io/jq/download/)。
+> _*注意*_: 在下面的命令中，使用终端工具程序来提取地址。您也可以输入在创建密钥时保存的原始字符串，如下所示。这些命令需要在您的机器上安装[`jq`](https://stedolan.github.io/jq/download/)。
 
 ```bash
 # Initialize configuration files and genesis file
