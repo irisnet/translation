@@ -1,21 +1,21 @@
-# Run REST routes
+# 运行REST服务路由
 
-Now that you tested your CLI queries and transactions, time to test same things in the REST server. Leave the `nsd` that you had running earlier and start by gathering your addresses:
+现在，您已经测试了你的CLI查询命令和交易，可以开始测试REST服务了。退出我们前面启动的`nsd`，并收集用户的地址。 
 
 ```bash
 $ nscli keys show jack --address
 $ nscli keys show alice --address
 ```
 
-Now its time to start the `rest-server` in another terminal window:
+现在可以在另一个终端窗口中启动`rest-server`
 
 ```bash
 $ nscli rest-server --chain-id testchain --trust-node
 ```
 
-Then you can construct and run the following queries:
+然后您可以构造并运行下列查询:
 
-> NOTE: Be sure to substitute your password and buyer/owner addresses for the ones listed below!
+> 注意: 确定用您的密码和对应购买者/拥有者的地址替代下面地址!
 
 ```bash
 # Get the sequence and account numbers for jack to construct the below requests
@@ -47,9 +47,9 @@ $ curl -XPOST -s -k https://localhost:1317/nameservice/names --data-binary '{"ba
 # > {"check_tx":{"gasWanted":"200000","gasUsed":"1264"},"deliver_tx":{"log":"Msg 0: ","gasWanted":"200000","gasUsed":"4509","tags":[{"key":"YWN0aW9u","value":"YnV5X25hbWU="}]},"hash":"81A371392B52F703266257D524538085F8C749EE3CBC1C579873632EFBAFA40C","height":"70"}
 ```
 
-### Request Schemas:
+### 请求样式:
 
-#### `POST /nameservice/names` BuyName Request Body:
+#### `POST /nameservice/names` BuyName请求的主体：
 ```json
 {
   "base_req": {
@@ -67,7 +67,7 @@ $ curl -XPOST -s -k https://localhost:1317/nameservice/names --data-binary '{"ba
 }
 ```
 
-#### `PUT /nameservice/names` SetName Request Body:
+#### `PUT /nameservice/names` SetName请求的主体:
 ```json
 {
   "base_req": {
