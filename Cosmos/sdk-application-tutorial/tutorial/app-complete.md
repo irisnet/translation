@@ -1,4 +1,4 @@
-# 导入模块，完成应用开发
+# 合并模块，完成应用开发
 
 现在你的模块已经完成了，开以和[`auth`](https://godoc.org/github.com/cosmos/cosmos-sdk/x/auth) 与 [`bank`](https://godoc.org/github.com/cosmos/cosmos-sdk/x/bank)这两个模块合并:
 
@@ -28,7 +28,6 @@ import (
 
 ```
 然后，你需要把存储的keys以及`Keepers`加到你`nameserviceApp`结构中，并且更新相应的构造函数。 
-
 
 ```go
 const (
@@ -77,16 +76,16 @@ func NewnameserviceApp(logger log.Logger, db dbm.DB) *nameserviceApp {
 }
 ```
 
-在这点上，构造函数仍然缺失重要的逻辑。也就是说，它需要：
+在这点上，构造函数仍然缺少重要的逻辑。也就是说，它需要：
 
-- 从每个所需模块中将需要的`Keepers`举例说明
-- 生成`Keepers`所需的`storeKeys`
-- 注册每个模块的`Handler`s，并且在结束时使用`baseapp`的`router`对象的`AddRoute()`方法
-- 注册每个模块的`Querier`s，并且在结束时使用`baseapp`的`queryRouter`对象的`AddRoute()`方法
-- 将`KVStore`s安装到`baseApp` multistore提供的keys上。
+- 从每个所需模块中将需要的`Keepers`实例化
+- 生成`Keeper`所需的`storeKeys`
+- 注册每个模块的`Handlers`，并且在结束时使用`baseapp`的`router`对象的`AddRoute()`方法
+- 注册每个模块的`Queriers`，并且最后使用`baseapp`的`queryRouter`属性的`AddRoute()`方法加入Queriers的路由。 
+- 将`KVStore`s安装到`baseApp` multistore中的keys上。
 - 设置`initChainer`，定义初始应用状态。 
 
-您最后完成的构造函数应该类似于：
+您最后完成的构造函数看上去应该时这样的：
 
 ```go
 // NewnameserviceApp is a constructor function for nameserviceApp
@@ -167,9 +166,9 @@ func NewnameserviceApp(logger log.Logger, db dbm.DB) *nameserviceApp {
 }
 ```
 
-`initChainer`定义了`genesis.json`中的账户如何映射到区块链初始化开始时的应用状态。`ExportAppStateAndValidators`函数帮助引导程序引导应用进入初始状态。你现在不需要过多的担心任何一件事。 
+`initChainer`定义了区块链初始化开始时，`genesis.json`中的账户如何映射到应用状态。`ExportAppStateAndValidators`函数帮助引导程序引导应用程序进入初始状态。你现在不需要过多的担心它们任何一件事。 
 
-构造函数注册`initChainer`函数，但是这里还没有定义这个函数，接下来开始创建这个函数。
+构造函数需要注册`initChainer`函数，但是这里还没有定义这个函数，接下来开始创建这个函数。
 
 ```go
 // GenesisState represents chain state at the start of the chain. Any initial state (account balances) are stored here.
@@ -221,7 +220,7 @@ func (app *nameserviceApp) ExportAppStateAndValidators() (appState json.RawMessa
 }
 ```
 
-最后增加一个helper函数来生成一个amino [`*codec.Codec`](https://godoc.org/github.com/cosmos/cosmos-sdk/codec#Codec)来完整登记在这个应用中使用过的所有模块。 
+最后增加一个helper函数生成一个amino [`*codec.Codec`](https://godoc.org/github.com/cosmos/cosmos-sdk/codec#Codec)用于完整登记在这个应用中使用过的所有模块。 
 
 ```go
 // MakeCodec generates the necessary codecs for Amino
@@ -237,4 +236,4 @@ func MakeCodec() *codec.Codec {
 }
 ```
 
-### 现在您已经创建了一个内含模块的应用，现在开始[建立你的入口点](./entrypoint.md)了!
+### 现在您已经创建了一个保护您开发模块的应用，现在开始[建立你的入口点](./entrypoint.md)了!
