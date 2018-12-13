@@ -1,18 +1,18 @@
-# 建立入口点
+# 建立应用入口点
 
-在golang项目中，编译后的二进制文件通常被放在`./cmd` 目录下。 在这个项目中将创建两个二进制文件：
+在golang项目中，编译后的二进制文件通常被放在`./cmd` 目录下。在这个项目中将创建两个二进制文件：
 
 - `nsd`: 这个二进制文件与其他加密货币程序中的`bitcoind`进程相似，主要负责管理p2p连接，交易传输，处理本地存储和提供RPC接口与网络连接。在这个项目中，Tendermint将用于网络连接和交易排序。 
-- `nscli`: 该可执行文件提供了用户与应用进行交互的命令。
+- `nscli`: 该二进制行文件提供了用户与应用进行交互的命令接口。
   
-下面开始在项目目录中创建下面两个文件，以创建二进制文件的实例。 
+下面开始在项目目录中创建两个文件，用以创建二进制文件的实例。 
 
 - `./cmd/nsd/main.go`
 - `./cmd/nscli/main.go`
 
 ## `nsd`
 
-让我们在`nsd/main.go`中加入如下代码:
+让我们开始在`nsd/main.go`中加入如下代码:这
 
 > _*注意*_: 您的应用需要导入您刚写的代码，教程所在代码仓库的导入路径是：(`github.com/cosmos/sdk-application-tutorial/x/nameservice`)。如果您是在您自己的代码仓库开发，那么这个导入路径的格式如下：(`github.com/{ .Username }/{ .Project.Repo }/x/nameservice`).
 
@@ -205,17 +205,17 @@ $ nsd add-genesis-account cosmos1tse7r2fadvlrrgau3pa0ss7cqh55wrv6y9alwh 1000STAK
 }
 ```
 
-以上代码注解:
+上述代码的注意事项:
 - 上面大部分的代码用于与下列模块中的CLI融合
-	1. Tendermint
-	2. Cosmos-SDK
-	3. Your Nameservice module
+   1. Tendermint
+   2. Cosmos-SDK
+   3. Your Nameservice module
 - `InitCmd` 允许app通过配置生成genesis状态。深入了解其中的函数调用过程将有利于学习区块链的启动过程。 
 - `AddGenesisAccountCmd` 用于将账户加入genesis文件，在区块链启动时接受含有通证的钱包。
   
 ## `nscli`
 
-完成创建 `nscli` 指令:
+完成代码创建的最后一部分工作：`nscli`指令。
 
 > *注意*_: 您的应用需要导入您刚写的代码，教程所在代码仓库的导入路径是：(`github.com/cosmos/sdk-application-tutorial/x/nameservice`)。如果您是在您自己的代码仓库开发，那么这个导入路径的格式如下：(`github.com/{ .Username }/{ .Project.Repo }/x/nameservice`).
 
@@ -349,13 +349,13 @@ func txCmd(cdc *amino.Codec, mc []sdk.ModuleClients) *cobra.Command {
 }
 ```
 
-上面代码的注解:
+上述代码的注意事项:
 - 以上代码与下列模块中的CLI结合:
 	1. Tendermint
 	2. Cosmos-SDK
 	3. Your Nameservice module
--  [`cobra` CLI 介绍](http://github.com/spf13/cobra) 可以帮助您更好地理解上面的代码。
+- [`cobra` CLI 介绍](http://github.com/spf13/cobra) 可以帮助您更好地理解上面的代码。
 - 您可以看到前面定义的`ModuleClient`模块在这里的作用。 
-- 可以关注路径是如何加入`registerRoutes`函数的。 
+- 可以关注路径是如何加入到`registerRoutes`函数中的。 
   
-### 您已经完成了二进制文件的定义，现在开始[管理代码依赖关系并且构建您的应用](./dep.md)!
+### 您已经完成了二进制文件的定义，现在开始[应对管理代码依赖关系并且建立您的应用](./dep.md)!
