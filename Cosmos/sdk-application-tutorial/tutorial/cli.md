@@ -1,6 +1,6 @@
-# Nameservice模型CLI
+# Nameservice模块的CLI定义
 
-Cosmos SDK采用[`cobra`](https://github.com/spf13/cobra) 库实现CLI交互，通过这个库，各个模块可以非常简单的把自己的命令开放出来。创建以下文件，开始定义用户CLI与模块之间的交互:
+Cosmos SDK采用[`cobra`](https://github.com/spf13/cobra) 库实现CLI交互，通过这个库，各个模块可以非常方便的把自己的命令开放出来。让我们首先创建以下文件并开始定义用户CLI与模块之间的交互:
 
 - `./x/nameservice/client/cli/query.go`
 - `./x/nameservice/client/cli/tx.go`
@@ -8,11 +8,11 @@ Cosmos SDK采用[`cobra`](https://github.com/spf13/cobra) 库实现CLI交互，�
 
 ### 查询
 
-从`query.go`开始， 为每个模块`Queriers` (`resolve`, 和 `whois`)定义`cobra.Command`
+从`query.go`开始，为你的模块的每个查询(`resolve`, 和 `whois`)定义`cobra.Command`
 
 ```go
 package cli
-
+ 
 import (
 	"fmt"
 
@@ -68,18 +68,18 @@ func GetCmdWhois(queryRoute string, cdc *codec.Codec) *cobra.Command {
 }
 ```
 
-以上代码的注解:
-- CLI引入一个新的实例 `context`: [`CLIContext`]，其中包括了CLI交互所需的用户输入与应用配置的数据。
-- `cliCtx.QueryWithData()`请求的`path`直接映射到查询路径中的名称。
-  * 路径中的第一部分用于区分SDK应用程序可能的查询类型： `Queriers`是`custom`。
-  * 第二部分`nameservice`是查询指向的模块的名字。 
-  * 最后将调用模块中特定的查询。
-  * 在这个例子中，第四部分是查询，这是可以实现的，因为查询的参数是简单的字符串。如果要实现更复杂的查询，那么就需要用到[`.QueryWithData()`](https://godoc.org/github.com/cosmos/cosmos-sdk/client/context#CLIContext.QueryWithData)函数的第二个参数来带入`data`。此类查询的样例可以参考[Staking模块中的查询样例](https://github.com/cosmos/cosmos-sdk/blob/develop/x/stake/querier/querier.go#L103)。
+上述代码注意事项:
+- CLI引入一个新的实例 `context`实例: [`CLIContext`]，其中包括了CLI交互所需的用户输入与应用配置的数据。
+- `cliCtx.QueryWithData()`函数的`path`参数指明应该查询的路由名称。
+  * 路径中的第一部分用于区分SDK应用程序可能的查询类型： `custom`即指的是`Queriers`。
+  * 第二部分是查询指向的模块的名字（即`nameservice`）。 
+  * 最后是模块中将要调用的特定查询。
+  * 在这个例子中，第四部分是所查询内容，这是可以实现的，因为查询的参数是简单的字符串。如果要实现更复杂的查询，那么就需要用到[`.QueryWithData()`](https://godoc.org/github.com/cosmos/cosmos-sdk/client/context#CLIContext.QueryWithData)函数的第二个参数来带入`data`。此类查询的样例可以参考[Staking模块中的查询样例](https://github.com/cosmos/cosmos-sdk/blob/develop/x/stake/querier/querier.go#L103)。
  
 
 ### 交易
 
-现在，我们已经完成了查询交互的定义，现在转到`tx.go`生成交易。
+现在，我们已经完成了查询的交互命令的定义，现在转到`tx.go`完成交易的交互命令。
 
 > _*注意*_: 您的应用需要导入您刚写的代码，教程所在代码仓库的导入路径是：(`github.com/cosmos/sdk-application-tutorial/x/nameservice`)。如果您是在您自己的代码仓库开发，那么这个导入路径的格式如下：(`github.com/{ .Username }/{ .Project.Repo }/x/nameservice`).
 
@@ -171,12 +171,12 @@ func GetCmdSetName(cdc *codec.Codec) *cobra.Command {
 }
 ```
 
-以上代码注解:
-- 这里使用了`authcmd`数据包. [godocs提供了很多如何使用该数据包的方法](https://godoc.org/github.com/cosmos/cosmos-sdk/x/auth/client/cli#GetAccountDecoder). `authcmd`数据包提供了对CLI控制的账户的访问，并且便于对其签名。
+上述代码的注意事项：
+- 这里使用了`authcmd`数据包. [godocs为使用该数据包提供帮助](https://godoc.org/github.com/cosmos/cosmos-sdk/x/auth/client/cli#GetAccountDecoder). `authcmd`数据包提供了对CLI控制的账户的访问，并且便于为其签名。
 
 ### 模块客户端
 
-实现这个功能应用的最后一部分工作叫做 `ModuleClient`. [Module clients](https://godoc.org/github.com/cosmos/cosmos-sdk/types#ModuleClients) 提供一个标准的方法，为模块导出它的客户端应用功能。 
+实现这个功能应用的最后一部分叫做 `ModuleClient`. [Module clients](https://godoc.org/github.com/cosmos/cosmos-sdk/types#ModuleClients) 提供一个标准的方法，为模块导出它的客户端应用功能。 
 
 > _*注意*_: 您的应用需要导入您刚写的代码，教程所在代码仓库的导入路径是：(`github.com/cosmos/sdk-application-tutorial/x/nameservice`)。如果您是在自己的代码仓库开发，那么这个导入路径的格式如下：(`github.com/{ .Username }/{ .Project.Repo }/x/nameservice`).
 
@@ -232,8 +232,8 @@ func (mc ModuleClient) GetTxCmd() *cobra.Command {
 }
 ```
 
-以上代码的注解:
-- 这个抽象结构允许客户端以标准方法从模块导入客户端功能。您将在[构建入口](./entrypoint.md)中看到这些。
-- 这里一个有[尚未完成的功能](https://github.com/cosmos/cosmos-sdk/issues/2955) ，即在该接口添加Rest功能 (我们将在此教程的下一部分讨论这个问题) .
+上述代码的注意事项：
+- 这个抽象结构允许客户端以标准方法从模块导入客户端功能。当我们[构建入口点](./entrypoint.md)时您将了解如何为客户端导入这些应用功能。
+- 这里一个有[尚未完成的功能](https://github.com/cosmos/cosmos-sdk/issues/2955) ，即在该接口添加REST功能 (我们将在此教程的下一部分讨论这个问题) .
 
-### 现在你可以[为Rest客户端定义与模块进行通讯的路径](./rest.md)了！
+### 现在你可以[为REST客户端定义与模块进行通讯的路径](./rest.md)了！
