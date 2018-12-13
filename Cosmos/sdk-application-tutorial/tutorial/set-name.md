@@ -62,7 +62,7 @@ func (msg MsgSetName) ValidateBasic() sdk.Error {
 }
 ```
 
-`ValidateBasic`用于提供对`Msg`的有效性检查，如一些基本的**无状态**检查。在这里，需要检查没有属性为空。请注意这里使用的`sdk.Error`类型。Cosmos SDK为开发人员提供了一组经常遇到的错误类型。
+`ValidateBasic`用于提供对`Msg`的有效性检查，如一些基本的**无状态**检查。在这里，需要检查没有属性的值为空。请注意这里使用的`sdk.Error`类型。Cosmos SDK已经为开发人员提供了一组经常遇到的错误类型。
 
 ```go
 // GetSignBytes Implements Msg.
