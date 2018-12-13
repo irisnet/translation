@@ -75,5 +75,5 @@ nscli tx nameservice buy-name jack.id 10mycoin \
     --chain-id testchain
 ```
 
-### 恭喜您已经构建了一个Cosmos SDK应用！我们的教程也即将结束。如果您希望了解如何采用REST服务来运行相同的命令,可以[双击这里](./run-rest.md)。 
+### 恭喜您已经构建了一个Cosmos SDK应用！我们的教程也即将结束。如果您希望了解如何采用REST服务来运行相同的命令,可以[点击这里](./run-rest.md)。 
 
