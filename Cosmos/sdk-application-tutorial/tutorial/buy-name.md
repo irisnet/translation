@@ -56,7 +56,7 @@ func (msg MsgBuyName) GetSigners() []sdk.AccAddress {
 }
 ```
 
-接下来，在./x/nameservice/handler.go`文件中将`MsgBuyName`的处理函数加入到模块的路由函数中中：
+接下来，在./x/nameservice/handler.go`文件中将`MsgBuyName`的处理函数加入到模块的路由函数中：
 
 ```go
 // NewHandler returns a handler for "nameservice" type messages.
