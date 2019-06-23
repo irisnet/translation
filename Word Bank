@@ -1,7 +1,5 @@
-# 区块链常用词汇列表：
+A
 
-
-# A
 Account：账户
 
 Actuator Layer: 激励层
@@ -34,8 +32,8 @@ Atomic Swap：原子互换
 
 Autonomous：自治性
 
+B
 
-# B
 BaaS：Blockchain as a Service 区块链服务
 
 Bitcoin Cash / BCH：比特现金
@@ -66,8 +64,7 @@ Brute Force Attack / BFA：暴力破解法
 
 Byzantine Generals Problem / BGP：拜占庭将军问题
 
-
-# C
+C
 
 Central Ledger：中央帐簿
 
@@ -107,8 +104,8 @@ Cryptographic Hash Function：加密哈希函数
 
 Cryptography：密码学
 
+D
 
-# D
 DAO：去中心化自治组织
 
 Dapp：去中心化应用程序
@@ -163,8 +160,8 @@ Due diligence check: 尽职调查
 
 Dumping：高价抛售
 
+E
 
-# E
 Elliptic Curve Cryptography /ECC：椭圆加密算法
 
 Emission：发行
@@ -177,8 +174,8 @@ Ethereum：以太坊
 
 EVM：以太坊虚拟机
 
+F
 
-# F
 Faucet：水龙头
 
 Federated Byzantine Agreement / FBA：联邦拜占庭协议
@@ -191,8 +188,8 @@ Fork：分支
 
 Full Node：全节点
 
+G
 
-# G
 Game-theoretic model：博弈理论模型
 
 Game of Stakes：权益争夺赛
@@ -203,8 +200,8 @@ GHOST Protocol：幽灵协议
 
 Global parameters 全局变量
 
+H
 
-# H
 Hacking：黑客攻击
 
 Hard Fork：硬分叉
@@ -229,23 +226,24 @@ Hot Wallet：热钱包
 
 Hybrid PoS/PoW：混合PoS / PoW
 
+I
 
-# I
 Initial Coin Offering / ICO：首次币发行
 
 Initial Public Offering / IPO：首次公开发行
 
 Inter-chain：跨链
 
+J
 
-# J
 Jurisdiction:管辖权
 
-# K
+K
+
 Know Your Customer / KYC：KYC 规则
 
+L
 
-# L
 Ledger：账本
 
 Leverage：杠杆
@@ -260,9 +258,9 @@ Local Wallet：本地钱包
 
 Low-level protocols：底层协议
 
+M
 
-# M
-Mainnet：主网 
+Mainnet：主网
 
 Max Supply：最大供应量
 
@@ -288,8 +286,8 @@ Mooning：登月
 
 Multi-Signature：多重签名
 
+N
 
-# N
 Network Layer：网络层
 
 Node：节点
@@ -298,8 +296,8 @@ Noncurrency：非货币
 
 Notary Schemes：见证人机制
 
+O
 
-# O
 Off-chain：链下
 
 Offline Storage：离线存储
@@ -312,8 +310,8 @@ Openness: 开放性
 
 Orphan Block：孤块
 
+P
 
-# P
 Parent Block: 父块
 
 Peer-to-Peer / P2P：点对点
@@ -356,11 +354,12 @@ Pump and Dump：低吸高抛
 
 Pumping：拉抬价格
 
+Q
 
-# Q
 Qtum：量子链
 
-# R
+R
+
 Raiden Network：雷电网络
 
 Random Number：账户随机数
@@ -383,8 +382,8 @@ Roadmap：路线图
 
 RSA Algorithm：RSA 加密算法
 
+S
 
-# S
 Satoshis Nakamoto：中本聪
 
 Secret Key：密钥
@@ -421,11 +420,11 @@ Stake：抵押
 
 Staking refactor：staking模块重构
 
+T
 
-# T
 Tamper Proof: 不可篡改
 
-Testnet：测试网 
+Testnet：测试网
 
 Text proposals：文本提议
 
@@ -453,8 +452,8 @@ Trustless：去信任
 
 Turing Complete：图灵完备
 
+U
 
-# U
 Unbond: 解绑
 
 Undelegate：解委托
@@ -463,8 +462,8 @@ Unregulated：无监管
 
 Unspent Transaction Output / UTXO：未花费的交易输出
 
+V
 
-# V
 Validator node：验证节点
 
 Validator：验证人
@@ -477,16 +476,16 @@ Virtual PoS Security Hackathon：PoS在线攻防黑客松
 
 Volatility：波动性
 
+W
 
-# W
 White Paper：白皮书
 
-# X
+X
 
-# Y
+Y
 
-# Z
+Z
+
 Zerocash Protocol：零币协议
 
 Zero-Knowledge Proof：零知识证明
-
