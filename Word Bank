@@ -1,1 +1,492 @@
-区块链术语
+# 区块链常用词汇列表：
+
+
+# A
+Account：账户
+
+Actuator Layer: 激励层
+
+Address：地址
+
+Airdrop：空投
+
+Angel Investment：天使投资
+
+Angel Round：天使轮
+
+Anonymous：匿名性
+
+Anti-spam measures ：反垃圾交易措施
+
+Application Layer: 应用层
+
+Application-specific blockchains：应用专有链
+
+Arbitrage：套利
+
+ASIC：专用集成电路
+
+Asymmetric Cryptography / Public Key Cryptography：公钥加密
+
+Asymmetric Cryptography：非对称加密
+
+Atomic Swap：原子互换
+
+Autonomous：自治性
+
+
+# B
+BaaS：Blockchain as a Service 区块链服务
+
+Bitcoin Cash / BCH：比特现金
+
+Bitcoin：比特币
+
+Block Body: 区块体
+
+Block Explorer：区块浏览器
+
+Block Header: 区块头
+
+Block Height：区块高度
+
+Block Reward：区块奖励
+
+Block Size：区块容量
+
+Block：区块
+
+Blockchain：区块链
+
+Bonded Proof of Stake / BPoS: 绑定权益证明
+
+Bounty pool：奖金池
+
+Brute Force Attack / BFA：暴力破解法
+
+Byzantine Generals Problem / BGP：拜占庭将军问题
+
+
+# C
+
+Central Ledger：中央帐簿
+
+Cipher：加密
+
+Ciphertext：密文
+
+Circulating Supply：供应量
+
+Client: 客户端
+
+Cold Storage：冷存储
+
+Cold Wallet：冷钱包
+
+Collectively Maintain: 集体维护
+
+Computationally Feasible：计算上不可行
+
+Confirmation：确认
+
+Consensus Layer: 共识层
+
+Consensus：共识
+
+Consortium Blockchain：联盟链
+
+Contract Layer: 合约层
+
+Cross-Chain：跨链
+
+Crowdfunding：众筹
+
+Cryptocurrency：加密货币
+
+Cryptographic Hash Function：加密哈希函数
+
+Cryptography：密码学
+
+
+# D
+DAO：去中心化自治组织
+
+Dapp：去中心化应用程序
+
+Data Layer：数据层
+
+Database Availability Group / DAG：有向无环图
+
+Decentralized Application / DApp：去中心化应用
+
+Decentralized exchange：去中心化交易所
+
+Decentralized：去中心化
+
+Defense-in-depth strategy:纵深防御策略
+
+Delegated Byzantine Fault Tolerance / dBFT：授权拜占庭容错算法
+
+Delegated Investment：代投
+
+Delegated Proof of Stake / DPoS：抵押权益证明
+
+Delegation：委托
+
+Delegator：委托人
+
+Digital Certificate：数字证书
+
+Digital Currency：数字货币
+
+Digital Signature：数字加密
+
+Digital Signatures：数字签名
+
+Distributed Consensus：分布式共识
+
+Distributed Data Store / DDS：分布式存储
+
+Distributed ledger Technology / DLT：分布式账本技术
+
+Distributed Ledger：分布式账本
+
+Distributed Network：分布式网络
+
+Distributed：分布式
+
+Double Spending：双重支付
+
+Double Spending：双重支付/ 双重花费/ 双花
+
+Due diligence check: 尽职调查
+
+Dumping：高价抛售
+
+
+# E
+Elliptic Curve Cryptography /ECC：椭圆加密算法
+
+Emission：发行
+
+Encryption Algorithm：加密算法
+
+Ether / ETH：以太币
+
+Ethereum：以太坊
+
+EVM：以太坊虚拟机
+
+
+# F
+Faucet：水龙头
+
+Federated Byzantine Agreement / FBA：联邦拜占庭协议
+
+Fiat Currency：法币/ 法定货币
+
+Flippening：大反转
+
+Fork：分支
+
+Full Node：全节点
+
+
+# G
+Game-theoretic model：博弈理论模型
+
+Game of Stakes：权益争夺赛
+
+Genesis Block：创世区块
+
+GHOST Protocol：幽灵协议
+
+Global parameters 全局变量
+
+
+# H
+Hacking：黑客攻击
+
+Hard Fork：硬分叉
+
+Hard Fork：硬分支
+
+Hardware Wallet：硬件钱包
+
+Hash Rate：哈希率
+
+Hash：哈希
+
+Hashed TimeLock Contract / HTLC：哈希时间锁定合约
+
+Hashrate：算力/ 哈希率
+
+Homomorphic Encryption：同态加密
+
+Hot Storage：热存储
+
+Hot Wallet：热钱包
+
+Hybrid PoS/PoW：混合PoS / PoW
+
+
+# I
+Initial Coin Offering / ICO：首次币发行
+
+Initial Public Offering / IPO：首次公开发行
+
+Inter-chain：跨链
+
+
+# J
+Jurisdiction:管辖权
+
+# K
+Know Your Customer / KYC：KYC 规则
+
+
+# L
+Ledger：账本
+
+Leverage：杠杆
+
+Lightning Network：闪电网络
+
+Lightweight Client / SPV Wallet：轻量客户端/ 轻钱包
+
+Litecoin / LTC：莱特币
+
+Local Wallet：本地钱包
+
+Low-level protocols：底层协议
+
+
+# M
+Mainnet：主网 
+
+Max Supply：最大供应量
+
+Merkle Tree：默克尔树
+
+Miner：矿工
+
+Mining Farm：矿场/ 挖矿基地
+
+Mining Pool：矿池
+
+Mining Rig：矿机
+
+Mining：挖矿
+
+Mining：挖矿
+
+Mixing Service：混币服务
+
+Monotonic time source：单调时间源
+
+Mooning：登月
+
+Multi-Signature：多重签名
+
+
+# N
+Network Layer：网络层
+
+Node：节点
+
+Noncurrency：非货币
+
+Notary Schemes：见证人机制
+
+
+# O
+Off-chain：链下
+
+Offline Storage：离线存储
+
+On-chain：链上
+
+Online Storage：在线存储
+
+Openness: 开放性
+
+Orphan Block：孤块
+
+
+# P
+Parent Block: 父块
+
+Peer-to-Peer / P2P：点对点
+
+Peer-to-Peer Storage / P2P Storage：P2P 存储
+
+Permissionless: 无需许可
+
+Plaintext：明文
+
+POOL：验证池机制
+
+Practical Byzantine Fault Tolerance / PBFT：改进型实用拜占庭容错
+
+Private Blockchain：私有链
+
+Private Equity：私募机构
+
+Private Key：私钥
+
+Programmable:可编程
+
+Proof of Burn / PoB：燃烧证明
+
+Proof of Developer / PoD：开发者证明
+
+Proof of Important / PoI：重要性证明
+
+Proof of Stake / PoS：权益证明
+
+Proof of Work / PoW：工作量证明
+
+Public Blockchain：公有链
+
+Public Key：公钥
+
+Public Offering：公募轮
+
+Pump and Dump：低吸高抛
+
+Pumping：拉抬价格
+
+
+# Q
+Qtum：量子链
+
+# R
+Raiden Network：雷电网络
+
+Random Number：账户随机数
+
+Redelegate：转委托
+
+Regulated：受监管
+
+Relays：中继技术
+
+Return on Investment / ROI：投资回报率
+
+Ring Signatures：环签名
+
+Ripple / XRP：瑞波币
+
+Ripple Consensus：瑞波共识机制
+
+Roadmap：路线图
+
+RSA Algorithm：RSA 加密算法
+
+
+# S
+Satoshis Nakamoto：中本聪
+
+Secret Key：密钥
+
+Secure Hash Algorithm 256 / SHA256：安全哈希算法
+
+Seed Round：基石轮/ 种子轮
+
+Segregated Witness / SW：隔离见证
+
+Sharding：分片
+
+Shorting：做空
+
+Side Chain：侧链
+
+Silo blockchains:互相独立的区块链
+
+Single node stake flip attack：单节点抵押反转攻击
+
+Slash: 罚没
+
+Smart Contract：智能合约
+
+Soft Fork：软分叉
+
+Software upgrade proposals：软件升级提议
+
+Specific log lines:特定日志项
+
+Stake Flip Attack：权益反转攻击
+
+Stake：抵押
+
+Staking refactor：staking模块重构
+
+
+# T
+Tamper Proof: 不可篡改
+
+Testnet：测试网 
+
+Text proposals：文本提议
+
+Timestamp：时间戳
+
+Token / Token Coin：代币
+
+Token-Less Blockchain：无代币区块链
+
+Total Supply：总供给
+
+Traceability:可追溯
+
+Traffic attack：流量攻击
+
+Transaction / TX：交易
+
+Transaction Broadcast：交易广播
+
+Transaction Fee：交易费用/ 矿工费
+
+Transient store：瞬态存储
+
+Trustless：去信任
+
+Turing Complete：图灵完备
+
+
+# U
+Unbond: 解绑
+
+Undelegate：解委托
+
+Unregulated：无监管
+
+Unspent Transaction Output / UTXO：未花费的交易输出
+
+
+# V
+Validator node：验证节点
+
+Validator：验证人
+
+Venture Capital：风险投资
+
+Virtual Address：虚拟地址
+
+Virtual PoS Security Hackathon：PoS在线攻防黑客松
+
+Volatility：波动性
+
+
+# W
+White Paper：白皮书
+
+# X
+
+# Y
+
+# Z
+Zerocash Protocol：零币协议
+
+Zero-Knowledge Proof：零知识证明
+
