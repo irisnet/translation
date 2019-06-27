@@ -33,7 +33,7 @@ Autonomous：自治性
 
 
 # B
-BaaS：Blockchain as a Service 区块链服务
+BaaS：Blockchain as a Service 区块链云服务
 
 Bitcoin Cash / BCH：比特现金
 
@@ -49,7 +49,7 @@ Block Height：区块高度
 
 Block Reward：区块奖励
 
-Block Size：区块容量
+Block Size：区块大小
 
 Block：区块
 
@@ -184,7 +184,7 @@ Fiat Currency：法币/ 法定货币
 
 Flippening：大反转
 
-Fork：分支
+Fork：分叉
 
 Full Node：全节点
 
@@ -206,8 +206,6 @@ Hacking：黑客攻击
 
 Hard Fork：硬分叉
 
-Hard Fork：硬分支
-
 Hardware Wallet：硬件钱包
 
 Hash Rate：哈希率
@@ -223,6 +221,8 @@ Homomorphic Encryption：同态加密
 Hot Storage：热存储
 
 Hot Wallet：热钱包
+
+Hub：枢纽；Cosmos IRISnet 生态中专门承担跨链交易的枢纽区块链；相对应地另外一种类型是 Zone， 分区
 
 Hybrid PoS/PoW：混合PoS / PoW
 
