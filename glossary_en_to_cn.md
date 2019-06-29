@@ -202,6 +202,8 @@ Hybrid PoS/PoW：混合PoS / PoW
 
 
 # I
+IBC(Inter-Blockchain Communication) * :  跨链通讯协议；Cosmos项目发明的支持异构网络传递资产的通用协议
+
 Initial Coin Offering / ICO：首次币发行
 
 Initial Public Offering / IPO：首次公开发行
