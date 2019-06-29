@@ -367,7 +367,9 @@ Silo blockchains:互相独立的区块链
 
 Single node stake flip attack：单节点抵押反转攻击
 
-Slash *: 惩罚
+Skin in the game * ：利益共享,风险共担
+
+Slash * ：惩罚
 
 Smart Contract：智能合约
 
