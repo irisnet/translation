@@ -98,11 +98,11 @@ Data Layer：数据层
 
 Database Availability Group / DAG：有向无环图
 
-Decentralized Application / DApp：去中心化应用
+DApp：分布式应用；Distributed Application
 
-Decentralized exchange：去中心化交易所
+Decentralized：去中心化 或 分布式 （有时去中心化比较敏感）
 
-Decentralized：去中心化
+DEX *：去中心化交易所；Decentralized Exchange
 
 Defense-in-depth strategy:纵深防御策略
 
