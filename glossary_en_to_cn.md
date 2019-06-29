@@ -7,27 +7,21 @@ Address：地址
 
 Airdrop：空投
 
-Angel Investment：天使投资
+Angel Investment/Round：天使投资/轮
 
-Angel Round：天使轮
-
-Anonymous：匿名性
+Anonymous：匿名的
 
 Anti-spam measures ：反垃圾交易措施
 
 Application Layer: 应用层
 
-Application-specific blockchains：应用专有链
+Application-specific blockchains *：应用专有链
 
 Arbitrage：套利
 
-ASIC：专用集成电路
-
-Asymmetric Cryptography / Public Key Cryptography：公钥加密
-
 Asymmetric Cryptography：非对称加密
 
-Atomic Swap：原子互换
+Atomic Swap *：原子互换
 
 Autonomous：自治性
 
@@ -35,15 +29,15 @@ Autonomous：自治性
 # B
 BaaS：Blockchain as a Service 区块链云服务
 
+Block, Blockchain：区块, 区块链
+
 Block Body: 区块体
 
 Block Explorer：区块浏览器
 
 Block Header: 区块头
 
-Block, Blockchain：区块, 区块链
-
-Bonded Proof of Stake / BPoS: 绑定权益证明
+Bonded Proof of Stake / BPoS *: 绑定权益证明
 
 Bounty pool：奖金池
 
@@ -60,7 +54,7 @@ Cipher：加密
 
 Ciphertext：密文
 
-Circulating Supply：供应量
+Circulating(circulation) Supply：流通供应量
 
 Client: 客户端
 
@@ -69,8 +63,6 @@ Cold Storage：冷存储
 Cold Wallet：冷钱包
 
 Collectively Maintain: 集体维护
-
-Consensus Layer: 共识层
 
 Consensus：共识
 
