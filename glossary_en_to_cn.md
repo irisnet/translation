@@ -225,6 +225,8 @@ Lightning Network：闪电网络
 
 Lightweight Client / SPV Wallet：轻量客户端/ 轻钱包
 
+Liquid democracy * : 动态流动性的民主权益; Cosmos IRISnet 通证持有人可以参与通证质押，享受民主权利
+
 Litecoin / LTC：莱特币
 
 Local Wallet：本地钱包
