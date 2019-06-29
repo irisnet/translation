@@ -35,25 +35,13 @@ Autonomous：自治性
 # B
 BaaS：Blockchain as a Service 区块链云服务
 
-Bitcoin Cash / BCH：比特现金
-
-Bitcoin：比特币
-
 Block Body: 区块体
 
 Block Explorer：区块浏览器
 
 Block Header: 区块头
 
-Block Height：区块高度
-
-Block Reward：区块奖励
-
-Block Size：区块大小
-
-Block：区块
-
-Blockchain：区块链
+Block, Blockchain：区块, 区块链
 
 Bonded Proof of Stake / BPoS: 绑定权益证明
 
@@ -81,10 +69,6 @@ Cold Storage：冷存储
 Cold Wallet：冷钱包
 
 Collectively Maintain: 集体维护
-
-Computationally Feasible：计算上不可行
-
-Confirmation：确认
 
 Consensus Layer: 共识层
 
@@ -222,7 +206,7 @@ Hot Storage：热存储
 
 Hot Wallet：热钱包
 
-Hub：枢纽；Cosmos IRISnet 生态中专门承担跨链交易的枢纽区块链；相对应地另外一种类型是 Zone， 分区
+Hub *：枢纽；Cosmos IRISnet 生态中专门承担跨链交易的枢纽区块链；相对应地另外一种类型是 Zone， 分区
 
 Hybrid PoS/PoW：混合PoS / PoW
 
@@ -232,7 +216,7 @@ Initial Coin Offering / ICO：首次币发行
 
 Initial Public Offering / IPO：首次公开发行
 
-Inter-chain：跨链
+Inter-chain *：跨链
 
 
 # J
@@ -291,8 +275,6 @@ Network Layer：网络层
 
 Node：节点
 
-Noncurrency：非货币
-
 Notary Schemes：见证人机制
 
 
@@ -307,12 +289,7 @@ Online Storage：在线存储
 
 Openness: 开放性
 
-Orphan Block：孤块
-
-
 # P
-Parent Block: 父块
-
 Peer-to-Peer / P2P：点对点
 
 Peer-to-Peer Storage / P2P Storage：P2P 存储
@@ -323,15 +300,13 @@ Plaintext：明文
 
 POOL：验证池机制
 
-Practical Byzantine Fault Tolerance / PBFT：改进型实用拜占庭容错
+Practical Byzantine Fault Tolerance / PBFT：实用拜占庭容错
 
 Private Blockchain：私有链
 
 Private Equity：私募机构
 
 Private Key：私钥
-
-Programmable:可编程
 
 Proof of Burn / PoB：燃烧证明
 
@@ -366,7 +341,7 @@ Redelegate：转委托
 
 Regulated：受监管
 
-Relays：中继技术
+Relay *：中继
 
 Return on Investment / ROI：投资回报率
 
@@ -396,7 +371,7 @@ Sharding：分片
 
 Shorting：做空
 
-Side Chain：侧链
+Side Chain *：侧链
 
 Silo blockchains:互相独立的区块链
 
@@ -447,9 +422,9 @@ Turing Complete：图灵完备
 
 
 # U
-Unbond: 解绑
+Unbond *: 解绑
 
-Undelegate：解委托
+Undelegate *：解委托
 
 Unregulated：无监管
 
@@ -457,9 +432,9 @@ Unspent Transaction Output / UTXO：未花费的交易输出
 
 
 # V
-Validator node：验证节点
+Validator node *：验证节点
 
-Validator：验证人
+Validator *：验证人
 
 Venture Capital：风险投资
 
@@ -481,4 +456,7 @@ White Paper：白皮书
 Zerocash Protocol：零币协议
 
 Zero-Knowledge Proof：零知识证明
+
+Zone *：分区；是跨链生态中的独立区块链，可参见Hub的解释
+
 
