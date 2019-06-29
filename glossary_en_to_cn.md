@@ -402,7 +402,7 @@ Silo blockchains:互相独立的区块链
 
 Single node stake flip attack：单节点抵押反转攻击
 
-Slash: 罚没
+Slash *: 惩罚
 
 Smart Contract：智能合约
 
@@ -414,10 +414,7 @@ Specific log lines:特定日志项
 
 Stake Flip Attack：权益反转攻击
 
-Stake：抵押
-
-Staking refactor：staking模块重构
-
+Stake *：权益抵押
 
 # T
 Tamper Proof: 不可篡改
@@ -431,8 +428,6 @@ Timestamp：时间戳
 Token / Token Coin：代币
 
 Token-Less Blockchain：无代币区块链
-
-Total Supply：总供给
 
 Traceability:可追溯
 
