@@ -136,9 +136,7 @@ Distributed Network：分布式网络
 
 Distributed：分布式
 
-Double Spending：双重支付
-
-Double Spending：双重支付/ 双重花费/ 双花
+Double Spending：双重支付/ 双花
 
 Due diligence check: 尽职调查
 
