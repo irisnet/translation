@@ -237,6 +237,8 @@ Litecoin / LTC：莱特币
 
 Local Wallet：本地钱包
 
+Long rang attack *：长程攻击 
+
 Low-level protocols：底层协议
 
 
