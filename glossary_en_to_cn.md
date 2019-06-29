@@ -308,8 +308,6 @@ Private Key：私钥
 
 Proof of Burn / PoB：燃烧证明
 
-Proof of Developer / PoD：开发者证明
-
 Proof of Important / PoI：重要性证明
 
 Proof of Stake / PoS：权益证明
@@ -365,7 +363,7 @@ Seed Round：基石轮/ 种子轮
 
 Segregated Witness / SW：隔离见证
 
-Sharding：分片
+Sharding *：分片
 
 Shorting：做空
 
@@ -398,9 +396,9 @@ Text proposals：文本提议
 
 Timestamp：时间戳
 
-Token / Token Coin：代币
+Token / Token Coin：通证 或 代币（一般我们翻译为通证）
 
-Token-Less Blockchain：无代币区块链
+Token-Less Blockchain：无币区块链
 
 Traceability:可追溯
 
