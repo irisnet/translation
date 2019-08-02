@@ -109,6 +109,8 @@ Delegation：委托
 
 Delegator：委托人
 
+Deposit:抵押
+
 Digital Certificate：数字证书
 
 Digital Currency：数字货币
@@ -236,6 +238,8 @@ Local Wallet：本地钱包
 
 Long rang attack *：长程攻击 
 
+Long Term Service (LTS) Guarantee: 长时间服务（LTS）保证
+
 Low-level protocols：底层协议
 
 
@@ -313,6 +317,8 @@ Proof of Stake / PoS：权益证明
 
 Proof of Work / PoW：工作量证明
 
+Proposal: 提案
+
 Public Blockchain：公有链
 
 Public Key：公钥
@@ -329,6 +335,8 @@ Qtum：量子链
 
 # R
 Raiden Network：雷电网络
+
+Rewards Distribution:奖励分配
 
 Random Number：账户随机数
 
@@ -370,7 +378,7 @@ Side Chain *：侧链
 
 Silo blockchains:互相独立的区块链
 
-Single node stake flip attack：单节点抵押反转攻击
+Single node stake flip attack：单节点质押反转攻击
 
 Skin in the game * ：利益共享,风险共担
 
@@ -384,9 +392,11 @@ Software upgrade proposals：软件升级提议
 
 Specific log lines:特定日志项
 
-Stake Flip Attack：权益反转攻击
+Sybil-resistance: 抗女巫攻击
 
-Stake *：权益抵押
+Stake Flip Attack：质押反转攻击
+
+Stake *：权益质押
 
 # T
 Tamper Proof: 不可篡改
@@ -422,6 +432,8 @@ Turing Complete：图灵完备
 Unbond *: 解绑
 
 Undelegate *：解委托
+
+Uniswap： 原子交换
 
 Unregulated：无监管
 
