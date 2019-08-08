@@ -65,6 +65,8 @@ Cold Wallet：冷钱包
 
 Collectively Maintain: 集体维护
 
+coins 通常是代币
+
 Consensus：共识
 
 Consortium Blockchain：联盟链
