@@ -78,6 +78,8 @@ Cosmonauts是对Cosmos社区成员的昵称（宇航员们），翻或不翻都�
 
 Collectively Maintain: 集体维护
 
+coins 通常是代币
+
 Consensus：共识
 
 Consortium Blockchain：联盟链
@@ -127,7 +129,11 @@ Delegation：委托
 
 Delegator：委托人
 
+DeFi: 开放金融
+
 DeFi technology：DeFi 技术
+
+Deposit:抵押
 
 Digital Certificate：数字证书
 
@@ -275,9 +281,9 @@ Litecoin / LTC：莱特币
 
 Local Wallet：本地钱包
 
-Long Term Service (LTS) Guarantee 长时间服务（LTS）保证
-
 Long rang attack *：长程攻击
+
+Long Term Service (LTS) Guarantee: 长时间服务（LTS）保证
 
 Low-level protocols：底层协议
 
@@ -367,8 +373,7 @@ Proof of Work / PoW：工作量证明
 
 Proposal 提案
 
-Protobuf 应该是指序列化
-
+Protobuf: 这个不用翻译，就用英文 oogle's language-neutral, platform-neutral, extensible mechanism for serializing structured data – think XML, but smaller, faster, and simpler.
 Public Blockchain：公有链
 
 Public Key：公钥
@@ -386,6 +391,8 @@ Qtum：量子链
 # R
 
 Raiden Network：雷电网络
+
+Rewards Distribution:奖励分配
 
 Random Number：账户随机数
 
@@ -427,7 +434,7 @@ Side Chain *：侧链
 
 Silo blockchains:互相独立的区块链
 
-Single node stake flip attack：单节点抵押反转攻击
+Single node stake flip attack：单节点质押反转攻击
 
 Skin in the game * ：利益共享,风险共担
 
@@ -441,9 +448,11 @@ Software upgrade proposals：软件升级提议
 
 Specific log lines:特定日志项
 
-Stake Flip Attack：权益反转攻击
+Sybil-resistance: 抗女巫攻击
 
-Stake *：权益抵押
+Stake Flip Attack：质押反转攻击
+
+Stake *：权益质押
 
 Staking keeper 可以不用翻译，指的是cosmos-sdk模块的/staking/keeper
 
@@ -485,6 +494,8 @@ Turing Complete：图灵完备
 Unbond *: 解绑
 
 Undelegate *：解委托
+
+Uniswap： 原子交换
 
 Unregulated：无监管
 
