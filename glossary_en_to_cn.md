@@ -159,6 +159,8 @@ Distributions 或 distribution module 指分配或分配模块
 
 Double Spending：双重支付/ 双花
 
+Downtime: 掉线时长
+
 Due diligence check: 尽职调查
 
 Dumping：高价抛售
@@ -499,6 +501,8 @@ Uniswap： 原子交换
 
 Unregulated：无监管
 
+Uptime: 在线时长 
+
 Unspent Transaction Output / UTXO：未花费的交易输出
 
 # V
@@ -514,6 +518,8 @@ Virtual Address：虚拟地址
 Virtual PoS Security Hackathon：PoS在线攻防黑客松
 
 Volatility：波动性
+
+Voting Power：投票权
 
 # W
 
