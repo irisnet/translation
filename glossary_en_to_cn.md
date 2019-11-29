@@ -92,6 +92,8 @@ Cross-linked dependencies 应该指的是模块间的交叉关联依赖
 
 Contract Layer: 合约层
 
+Context-free:  上下文无关
+
 Crowdfunding：众筹
 
 Cryptocurrency：加密货币
@@ -413,6 +415,8 @@ Ripple Consensus：瑞波共识机制
 Roadmap：路线图
 
 RSA Algorithm：RSA 加密算法
+
+Runtime: 运行时；直接用runtime也可以
 
 # S
 
