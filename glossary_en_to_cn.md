@@ -161,6 +161,8 @@ Distributions 或 distribution module 指分配或分配模块
 
 Double Spending：双重支付/ 双花
 
+Downtime：不在线时长
+
 Due diligence check: 尽职调查
 
 Dumping：高价抛售
@@ -502,6 +504,8 @@ Undelegate *：解委托
 Uniswap： 原子交换
 
 Unregulated：无监管
+
+uptime: 在线时长
 
 Unspent Transaction Output / UTXO：未花费的交易输出
 
