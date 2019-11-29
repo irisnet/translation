@@ -416,6 +416,8 @@ Ripple Consensus：瑞波共识机制
 
 Roadmap：路线图
 
+Rotation：轮换
+
 RSA Algorithm：RSA 加密算法
 
 Runtime: 运行时；直接用runtime也可以
