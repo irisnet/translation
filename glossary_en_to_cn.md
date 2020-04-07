@@ -1,3 +1,6 @@
+* 标示的是 Cosmos/IRISnet 常用或专用术语
+
+
 # A
 
 Account：账户
