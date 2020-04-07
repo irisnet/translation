@@ -407,7 +407,7 @@ Redelegate：转委托
 
 Regulated：受监管
 
-Relay *：中继
+Relay *：中继， relayer 中继器
 
 Return on Investment / ROI：投资回报率
 
