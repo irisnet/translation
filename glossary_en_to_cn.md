@@ -1,4 +1,4 @@
-* * 标示的是 Cosmos/IRISnet 常用或专用术语
+  *： 标示的是 Cosmos/IRISnet 常用或专用术语
 
 
 # A
