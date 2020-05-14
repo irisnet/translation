@@ -81,7 +81,9 @@ Cosmonauts是对Cosmos社区成员的昵称（宇航员们），翻或不翻都�
 
 Collectively Maintain: 集体维护
 
-coins 通常是代币
+coins: 通证
+
+coinswap * : 链上闪兑，是IRIS Hub 上实现的类似 uniswap 的功能
 
 Consensus：共识
 
