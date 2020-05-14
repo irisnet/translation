@@ -1,3 +1,6 @@
+  *： 标示的是 Cosmos/IRISnet 常用或专用术语
+
+
 # A
 
 Account：账户
@@ -91,6 +94,8 @@ Cross-Chain：跨链
 Cross-linked dependencies 应该指的是模块间的交叉关联依赖
 
 Contract Layer: 合约层
+
+Context-free:  上下文无关
 
 Crowdfunding：众筹
 
@@ -402,7 +407,7 @@ Redelegate：转委托
 
 Regulated：受监管
 
-Relay *：中继
+Relay *：中继， relayer 中继器。如果IBC可以比喻成高速公路，那么中继器（Cosmos 架构中在两条链中摆渡信息的进程）就是高速路上无信任风险的汽车，你不需要信任汽车，协议就能保证其传递的信息不肯能被篡改
 
 Return on Investment / ROI：投资回报率
 
@@ -414,7 +419,11 @@ Ripple Consensus：瑞波共识机制
 
 Roadmap：路线图
 
+Rotation：轮换
+
 RSA Algorithm：RSA 加密算法
+
+Runtime: 运行时；直接用runtime也可以
 
 # S
 
